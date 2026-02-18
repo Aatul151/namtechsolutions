@@ -2,6 +2,7 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Loader } from './components/ui/Loader';
 import { Hero } from './components/sections/Hero';
+import { AboutCompany } from './components/sections/AboutCompany';
 import { Services } from './components/sections/Services';
 import { Stats } from './components/sections/Stats';
 import { WhyChooseUs } from './components/sections/WhyChooseUs';
@@ -16,6 +17,7 @@ function App() {
       <Header />
       <main className="pt-0 md:pt-2">
         <Hero />
+        <AboutCompany />
         <Services />
         <Stats />
         <WhyChooseUs />
