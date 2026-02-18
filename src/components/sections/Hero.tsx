@@ -6,6 +6,10 @@ import { StatCard } from '../ui/StatCard';
 import { MarkedText } from '../ui/MarkedText';
 import { AchievementCard } from '../ui/AchievementCard';
 import acvimentlogo from '../../assets/upworkLogo.png'
+import { useComponyDetail } from '../../context/componyContext';
+import { useEffect, useState } from 'react';
+import { getFormEntriesByFormName } from '../../services/formservices';
+import { FORMNAMES } from '../../utilities/codes';
 
 interface Achievement {
   title: string;
@@ -15,10 +19,39 @@ interface Achievement {
 }
 
 export function Hero() {
-  // Dynamic headline from API - use [[text]] markers for gradient parts
-  // Example: "Build [[Premium Software]] That Scales"
-  // You can have multiple gradients: "[[Fast]] and [[Reliable]] Solutions"
-  const headline = 'Build [[Premium Software]] That Scales';
+  const { componyProfile } = useComponyDetail();
+  const [statistics, setStatistics] = useState([]);
+
+  useEffect(() => {
+    getStats();
+  }, [])
+
+  const getStats = async () => {
+    try {
+      const data = await getFormEntriesByFormName(FORMNAMES.STATISTICS);
+
+      if (data) {
+        let values: any = []
+        const animationStyles = [
+          'absolute -top-8 -right-8 animate-float',
+          'absolute top-1/4 -left-8 animate-float',
+          'absolute bottom-1/4 -right-12 animate-float',
+          'absolute -bottom-8 left-8 animate-float',
+        ]
+
+        const animationDelay = ['0.5s', '1.5s', '2.5s', '3.5s']
+
+        for (let index = 0; index < data?.length; index++) {
+          const eachval = data[index];
+          values?.push({ ...eachval, animationStyle: animationStyles[index], animationDelay: animationDelay[index] })
+        }
+        setStatistics(values)
+
+      }
+    } catch (error) {
+
+    }
+  }
 
   // Dynamic achievements data from API
   // Replace this with your API call
@@ -49,25 +82,23 @@ export function Hero() {
             <div className="inline-block">
               <Badge variant="success" className="animate-slide-up">
                 <span className="flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  Replies within 5 minutes
+                  {componyProfile?.welcome_tagline}
                 </span>
               </Badge>
             </div>
 
             {/* Headline */}
-            <MarkedText
-              as="h1"
-              text={headline}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance"
-            />
+            {componyProfile?.short_title &&
+              <MarkedText
+                as="h1"
+                text={componyProfile?.short_title}
+                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance"
+              />
+            }
 
             {/* Supporting Paragraph */}
             <p className="text-xl text-text-secondary max-w-xl leading-relaxed">
-              Enterprise-grade software development services. We deliver scalable, 
-              secure, and innovative solutions that drive your business forward.
+              {componyProfile?.short_description}
             </p>
 
             {/* CTA Buttons */}
@@ -99,20 +130,16 @@ export function Hero() {
               </div>
             )}
 
-            {/* Social Proof Stats */}
+            {/* Social Proof statistics */}
             <div className="flex flex-wrap gap-8 pt-4 border-t border-border">
-              <div>
-                <div className="text-3xl font-bold text-text-primary">4.9/5</div>
-                <div className="text-sm text-text-secondary">Average Rating</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-text-primary">150+</div>
-                <div className="text-sm text-text-secondary">Projects Delivered</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-text-primary">50+</div>
-                <div className="text-sm text-text-secondary">Expert Engineers</div>
-              </div>
+              {statistics?.length > 0 &&
+                statistics?.slice(4, statistics.length)?.map((stat: any, idx) => (
+                  <div key={idx}>
+                    <div className="text-3xl font-bold text-text-primary">{stat?.payload?.number}</div>
+                    <div className="text-sm text-text-secondary">{stat?.payload?.title}</div>
+                  </div>
+                ))
+              }
             </div>
           </div>
 
@@ -132,38 +159,18 @@ export function Hero() {
               </div>
 
               {/* Floating Stat Cards */}
-              <div className="absolute -top-8 -right-8 animate-float" style={{ animationDelay: '0.5s' }}>
-                <StatCard
-                  value="5 Min"
-                  label="Avg Response"
-                  floating
-                  className="w-48 bg-bg-card/95 backdrop-blur-sm"
-                />
-              </div>
-              <div className="absolute top-1/4 -left-8 animate-float" style={{ animationDelay: '1.5s' }}>
-                <StatCard
-                  value="100%"
-                  label="Transparency"
-                  floating
-                  className="w-48 bg-bg-card/95 backdrop-blur-sm"
-                />
-              </div>
-              <div className="absolute bottom-1/4 -right-12 animate-float" style={{ animationDelay: '2.5s' }}>
-                <StatCard
-                  value="150+"
-                  label="Projects Shipped"
-                  floating
-                  className="w-48 bg-bg-card/95 backdrop-blur-sm"
-                />
-              </div>
-              <div className="absolute -bottom-8 left-8 animate-float" style={{ animationDelay: '3.5s' }}>
-                <StatCard
-                  value="Sprint"
-                  label="Delivery"
-                  floating
-                  className="w-48 bg-bg-card/95 backdrop-blur-sm"
-                />
-              </div>
+              {statistics?.length > 0 &&
+                statistics?.slice(0, 4)?.map((stats: any, idx) => (
+                  <div className={stats?.animationStyle} style={{ animationDelay: stats?.animationDelays }}>
+                    <StatCard
+                      value={stats?.payload?.number}
+                      label={stats?.payload?.title}
+                      floating
+                      className="w-48 bg-bg-card/95 backdrop-blur-sm"
+                    />
+                  </div>
+                ))
+              }
             </div>
           </div>
 

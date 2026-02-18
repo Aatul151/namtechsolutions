@@ -1,5 +1,6 @@
 import axios from "axios";
 import { APIENDPOINT } from "./apihelper";
+import { fetchGuestUserToken } from "./authservices";
 
 const api = axios.create({
   baseURL: `${APIENDPOINT}/api`,
@@ -9,8 +10,15 @@ const api = axios.create({
   },
 });
 
+const PublicUrls = ["/auth/public/session"];
+
 api.interceptors.request.use(
-  async (config:any) => {
+  async (config: any) => {
+    let token = localStorage.getItem("token");
+    if (!token && !PublicUrls.includes(config?.url)) {
+      token = await fetchGuestUserToken();
+    }
+    config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error) => Promise.reject(error)

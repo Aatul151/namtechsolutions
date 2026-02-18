@@ -2,27 +2,28 @@ import { useState } from 'react';
 import { Button } from '../ui/Button';
 import { useTheme } from '../../hooks/useTheme';
 import { useScrollShadow } from '../../hooks/useScrollShadow';
-import headerLogo from '../../assets/logo/namTechSolutions.png';
+import { useComponyDetail } from '../../context/componyContext';
+import { APIENDPOINT } from '../../services/apihelper';
 
 export function Header() {
+  const { componyProfile } = useComponyDetail();
   const { theme, toggleTheme } = useTheme();
   const hasShadow = useScrollShadow();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 z-50 bg-bg-main/80 backdrop-blur-md border-b border-border transition-shadow duration-300 ${
-        hasShadow ? 'shadow-strong' : ''
-      }`}
+      className={`sticky top-0 left-0 right-0 z-50 bg-bg-main/80 backdrop-blur-md border-b border-border transition-shadow duration-300 ${hasShadow ? 'shadow-strong' : ''
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="#" className="flex items-center">
-              <img 
-                src={headerLogo} 
-                alt="Namtech Solutions" 
+              <img
+                src={APIENDPOINT + componyProfile?.logo?.fileUrl}
+                alt="Namtech Solutions"
                 className="h-8 md:h-10 w-auto object-contain"
               />
             </a>
