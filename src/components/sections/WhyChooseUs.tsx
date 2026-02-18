@@ -1,7 +1,7 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
-import { GradientText } from '../ui/GradientText';
+import { MarkedText } from '../ui/MarkedText';
 
 const features = [
   {
@@ -66,16 +66,18 @@ export function WhyChooseUs() {
     <Section id="why-us" py="xl">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Why Choose <GradientText>Us</GradientText>
-          </h2>
+          <MarkedText
+            as="h2"
+            text="Why Choose [[Us]]"
+            className="text-4xl md:text-5xl font-bold mb-4"
+          />
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             We combine technical excellence with business acumen to deliver exceptional results
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
+          {features?.map((feature, index) => (
             <Card key={index} hover className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="text-primary mb-4">{feature.icon}</div>
               <h3 className="text-xl font-semibold mb-2 text-text-primary">{feature.title}</h3>

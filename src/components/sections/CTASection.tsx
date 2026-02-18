@@ -1,7 +1,7 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Button } from '../ui/Button';
-import { GradientText } from '../ui/GradientText';
+import { MarkedText } from '../ui/MarkedText';
 
 export function CTASection() {
   return (
@@ -15,9 +15,11 @@ export function CTASection() {
           </div>
 
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Build Something <GradientText>Amazing?</GradientText>
-            </h2>
+            <MarkedText
+              as="h2"
+              text="Ready to Build Something [[Amazing?]]"
+              className="text-4xl md:text-5xl font-bold mb-6"
+            />
             <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
               Let's discuss how we can help transform your ideas into reality. 
               Get started with a free consultation today.

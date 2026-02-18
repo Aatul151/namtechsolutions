@@ -2,11 +2,16 @@ import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
-import { GradientText } from '../ui/GradientText';
 import { StatCard } from '../ui/StatCard';
 import { IconBadge } from '../ui/IconBadge';
+import { MarkedText } from '../ui/MarkedText';
 
 export function Hero() {
+  // Dynamic headline from API - use [[text]] markers for gradient parts
+  // Example: "Build [[Premium Software]] That Scales"
+  // You can have multiple gradients: "[[Fast]] and [[Reliable]] Solutions"
+  const headline = 'Build [[Premium Software]] That Scales';
+
   return (
     <Section py="2xl" className="relative overflow-hidden">
       {/* Background Gradient Blobs */}
@@ -33,13 +38,11 @@ export function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance">
-              Build{' '}
-              <GradientText className="text-5xl md:text-6xl lg:text-7xl">
-                Premium Software
-              </GradientText>
-              {' '}That Scales
-            </h1>
+            <MarkedText
+              as="h1"
+              text={headline}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance"
+            />
 
             {/* Supporting Paragraph */}
             <p className="text-xl text-text-secondary max-w-xl leading-relaxed">

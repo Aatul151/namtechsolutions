@@ -1,7 +1,7 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
-import { GradientText } from '../ui/GradientText';
+import { MarkedText } from '../ui/MarkedText';
 
 const services = [
   {
@@ -65,9 +65,11 @@ export function Services() {
     <Section id="services" py="xl">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <GradientText>Services</GradientText>
-          </h2>
+          <MarkedText
+            as="h2"
+            text="Our [[Services]]"
+            className="text-4xl md:text-5xl font-bold mb-4"
+          />
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             Comprehensive software development solutions tailored to your business needs
           </p>
