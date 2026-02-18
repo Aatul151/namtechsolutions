@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '../ui/Button';
 import { useTheme } from '../../hooks/useTheme';
 import { useScrollShadow } from '../../hooks/useScrollShadow';
+import headerLogo from '../../assets/logo/namTechSolutions.png';
 
 export function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -18,8 +19,12 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="#" className="text-2xl font-bold text-primary">
-              Namtech<span className="text-secondary">Solutions</span>
+            <a href="#" className="flex items-center">
+              <img 
+                src={headerLogo} 
+                alt="Namtech Solutions" 
+                className="h-8 md:h-10 w-auto object-contain"
+              />
             </a>
           </div>
 

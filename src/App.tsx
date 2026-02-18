@@ -1,16 +1,19 @@
 import { Header } from './components/layout/Header';
 import { SubHeader } from './components/layout/SubHeader';
 import { Footer } from './components/layout/Footer';
+import { Loader } from './components/ui/Loader';
 import { Hero } from './components/sections/Hero';
 import { Services } from './components/sections/Services';
 import { Stats } from './components/sections/Stats';
 import { WhyChooseUs } from './components/sections/WhyChooseUs';
 import { Testimonials } from './components/sections/Testimonials';
 import { CTASection } from './components/sections/CTASection';
+import logoImage from './assets/logo/logo.png';
 
 function App() {
   return (
     <div className="min-h-screen bg-bg-main">
+      <Loader logoImage={logoImage} />
       <Header />
       <SubHeader />
       <main className="pt-16 lg:pt-20">
