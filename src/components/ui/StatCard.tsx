@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 interface StatCardProps {
   value: string | number;
@@ -6,6 +6,7 @@ interface StatCardProps {
   icon?: ReactNode;
   className?: string;
   floating?: boolean;
+  style?: CSSProperties;
 }
 
 export function StatCard({

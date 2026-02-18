@@ -68,7 +68,6 @@ export function Services() {
           <MarkedText
             as="h2"
             text="Our [[Services]]"
-            className="text-4xl md:text-5xl font-bold mb-4"
           />
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             Comprehensive software development solutions tailored to your business needs

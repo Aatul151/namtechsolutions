@@ -1,21 +1,14 @@
-import { type ElementType, type ComponentPropsWithoutRef } from 'react';
+import { type ElementType } from 'react';
 
 import { parseGradientText } from '../../utils/textParser';
 
-type MarkedTextProps<TAs extends ElementType> = {
-  as?: TAs;
-  text: string;
-  className?: string;
-  gradientClassName?: string;
-} & Omit<ComponentPropsWithoutRef<TAs>, 'as' | 'children' | 'className'>;
-
-export function MarkedText<TAs extends ElementType = 'span'>({
+export function MarkedText({
   as,
   text,
-  className,
+  className = "text-4xl md:text-5xl font-bold mb-4",
   gradientClassName,
   ...rest
-}: MarkedTextProps<TAs>) {
+}: any) {
   const Component = (as ?? 'span') as ElementType;
 
   return (

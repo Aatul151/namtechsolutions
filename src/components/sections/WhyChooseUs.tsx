@@ -69,7 +69,6 @@ export function WhyChooseUs() {
           <MarkedText
             as="h2"
             text="Why Choose [[Us]]"
-            className="text-4xl md:text-5xl font-bold mb-4"
           />
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             We combine technical excellence with business acumen to deliver exceptional results

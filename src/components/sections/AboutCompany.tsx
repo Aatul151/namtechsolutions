@@ -45,7 +45,6 @@ export function AboutCompany({
           <MarkedText
             as="h2"
             text={title}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight"
           />
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
         </div>

@@ -32,7 +32,6 @@ export function Testimonials() {
           <MarkedText
             as="h2"
             text="What Our [[Clients Say]]"
-            className="text-4xl md:text-5xl font-bold mb-4"
           />
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             Don't just take our word for it - hear from businesses we've helped succeed
