@@ -1,5 +1,4 @@
 import { Header } from './components/layout/Header';
-import { SubHeader } from './components/layout/SubHeader';
 import { Footer } from './components/layout/Footer';
 import { Loader } from './components/ui/Loader';
 import { Hero } from './components/sections/Hero';
@@ -15,8 +14,7 @@ function App() {
     <div className="min-h-screen bg-bg-main">
       <Loader logoImage={logoImage} />
       <Header />
-      <SubHeader />
-      <main className="pt-16 lg:pt-20">
+      <main className="pt-0 md:pt-2">
         <Hero />
         <Services />
         <Stats />

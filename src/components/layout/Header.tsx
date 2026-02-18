@@ -11,7 +11,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-bg-main/80 backdrop-blur-md border-b border-border transition-shadow duration-300 ${
+      className={`sticky top-0 left-0 right-0 z-50 bg-bg-main/80 backdrop-blur-md border-b border-border transition-shadow duration-300 ${
         hasShadow ? 'shadow-strong' : ''
       }`}
     >

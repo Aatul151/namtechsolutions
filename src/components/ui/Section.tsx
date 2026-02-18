@@ -4,7 +4,7 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   id?: string;
-  py?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  py?: 'xs'|'sm' | 'md' | 'lg' | 'xl' | '2xl';
 }
 
 export function Section({
@@ -14,6 +14,7 @@ export function Section({
   py = 'lg',
 }: SectionProps) {
   const padding = {
+    xs: 'py-8',
     sm: 'py-12',
     md: 'py-16',
     lg: 'py-24',
