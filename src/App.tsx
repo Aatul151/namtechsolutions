@@ -7,13 +7,14 @@ import { useComponyDetail } from './context/componyContext';
 import { getFormEntriesByFormName } from './services/formservices';
 import { FORMNAMES } from './utilities/codes';
 import { fetchGuestUserToken } from './services/authservices';
-import { useLoader } from './context/LoaderContext';
+import { useLoader } from './hooks/useLoader';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { WhyChooseUsPage } from './pages/WhyChooseUsPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
 import { ContactPage } from './pages/ContactPage';
+import ErrorComponent from './components/ui/ErrorComponent';
 
 function App() {
   const { setLoading } = useLoader();
@@ -38,7 +39,6 @@ function App() {
     }
   };
 
-
   const getComponyProfile = async () => {
     try {
       const data = await getFormEntriesByFormName(FORMNAMES.PROFILE);
@@ -54,9 +54,9 @@ function App() {
   }
   return (
     <>
-      {(guestToken && componyProfile) &&
+      <Loader />
+      {/* {(guestToken && componyProfile) ? */}
         <div className="min-h-screen bg-bg-main">
-          <Loader />
           <Header />
           <main>
             <Routes>
@@ -70,7 +70,9 @@ function App() {
           </main>
           <Footer />
         </div>
-      }
+        {/* :
+        <ErrorComponent /> */}
+      {/* } */}
     </>
   );
 }

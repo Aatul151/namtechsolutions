@@ -160,8 +160,8 @@ export function Hero() {
 
               {/* Floating Stat Cards */}
               {statistics?.length > 0 &&
-                statistics?.slice(0, 4)?.map((stats: any, idx) => (
-                  <div className={stats?.animationStyle} style={{ animationDelay: stats?.animationDelays }}>
+                statistics?.slice(0, 4)?.map((stats: any) => (
+                  <div className={stats?.animationStyle} style={{ animationDelay: stats?.animationDelay }}>
                     <StatCard
                       value={stats?.payload?.number}
                       label={stats?.payload?.title}
