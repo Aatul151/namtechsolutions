@@ -5,7 +5,7 @@ import { MarkedText } from '../ui/MarkedText';
 
 export function MissionVision() {
   return (
-    <Section py="xl" className="bg-bg-muted">
+    <Section py="xl" >
       <Container>
         <div className="text-center mb-16">
           <MarkedText
