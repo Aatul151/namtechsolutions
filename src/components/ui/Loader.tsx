@@ -39,16 +39,16 @@ export function Loader() {
           ) : (
             <>
               {/* Logo Placeholder */}
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-primary to-secondary p-1 animate-pulse">
-                <div className="w-full h-full rounded-full bg-bg-main flex items-center justify-center">
-                  <div className="text-4xl md:text-5xl font-bold">
-                    <span className="text-primary">N</span>
-                    <span className="text-secondary">S</span>
-                  </div>
-                </div>
+              {/* <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-primary to-secondary p-1 animate-pulse"> */}
+              {/* <div className="w-full h-full rounded-full bg-bg-main flex items-center justify-center"> */}
+              <div className="text-4xl md:text-5xl font-bold">
+                <span className="text-primary">NAMTech</span>
+                <span className="text-secondary"> Solutions</span>
               </div>
+              {/* </div> */}
+              {/* </div> */}
               {/* Spinning ring */}
-              <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-secondary animate-spin"></div>
+              {/* <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-secondary animate-spin"></div> */}
             </>
           )}
         </div>
