@@ -1,9 +1,9 @@
-import { CTASection } from '../components/sections/CTASection';
+import { CompanyLocation } from '../components/sections/CompanyLocation';
 
 export function ContactPage() {
   return (
     <>
-      <CTASection />
+      <CompanyLocation />
     </>
   );
 }

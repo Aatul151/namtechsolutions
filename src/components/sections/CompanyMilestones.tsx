@@ -77,8 +77,8 @@ export function CompanyMilestones() {
                     {/* Left Side - Year Badge (even) or Content (odd) */}
                     <div className={`w-[calc(50%-20px)] flex ${isEven ? 'justify-end pr-4' : 'justify-start pl-4'}`}>
                       {isEven ? (
-                        <Card className="p-4 md:p-6 border-2 border-primary/30 bg-primary/5 hover:bg-primary/10 transition-all duration-300">
-                          <div className="text-2xl md:text-3xl font-bold text-primary text-right">{milestone.year}</div>
+                        <Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
+                          <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{milestone.year}</div>
                         </Card>
                       ) : (
                         <Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
@@ -101,8 +101,8 @@ export function CompanyMilestones() {
                           <p className="text-sm md:text-base text-text-secondary leading-relaxed">{milestone.description}</p>
                         </Card>
                       ) : (
-                        <Card className="p-4 md:p-6 border-2 border-primary/30 bg-primary/5 hover:bg-primary/10 transition-all duration-300">
-                          <div className="text-2xl md:text-3xl font-bold text-primary text-left">{milestone.year}</div>
+                        <Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
+                          <div className="text-2xl md:text-3xl font-bold text-text-primary text-left">{milestone.year}</div>
                         </Card>
                       )}
                     </div>
@@ -115,8 +115,8 @@ export function CompanyMilestones() {
                     
                     {/* Content */}
                     <div className="flex-1 space-y-3">
-                      <Card className="p-4 border-2 border-primary/30 bg-primary/5">
-                        <div className="text-xl font-bold text-primary">{milestone.year}</div>
+                      <Card className="p-4" noBaseStyles={true}>
+                        <div className="text-xl font-bold text-text-primary">{milestone.year}</div>
                       </Card>
                       <Card className="p-4 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
                         <h3 className="text-lg font-semibold mb-2 text-text-primary">{milestone.title}</h3>
