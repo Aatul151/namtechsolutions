@@ -14,6 +14,7 @@ import { ServicesPage } from './pages/ServicesPage';
 import { WhyChooseUsPage } from './pages/WhyChooseUsPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
 import { ContactPage } from './pages/ContactPage';
+import { ProjectsPage } from './pages/ProjectsPage';
 import ErrorComponent from './components/ui/ErrorComponent';
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/why-us" element={<WhyChooseUsPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />

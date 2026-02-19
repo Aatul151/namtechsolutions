@@ -41,6 +41,9 @@ export function Header() {
             <Link to="/services" className="text-text-secondary hover:text-text-primary transition-colors">
               Services
             </Link>
+            <Link to="/projects" className="text-text-secondary hover:text-text-primary transition-colors">
+              Projects
+            </Link>
             <Link to="/why-us" className="text-text-secondary hover:text-text-primary transition-colors">
               Why Us
             </Link>
@@ -105,6 +108,9 @@ export function Header() {
               </Link>
               <Link to="/services" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
                 Services
+              </Link>
+              <Link to="/projects" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                Projects
               </Link>
               <Link to="/why-us" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
                 Why Us
