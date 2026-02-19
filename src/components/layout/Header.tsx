@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { useTheme } from '../../hooks/useTheme';
 import { useScrollShadow } from '../../hooks/useScrollShadow';
@@ -31,18 +32,24 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-text-secondary hover:text-text-primary transition-colors">
+            <Link to="/" className="text-text-secondary hover:text-text-primary transition-colors">
+              Home
+            </Link>
+            <Link to="/about" className="text-text-secondary hover:text-text-primary transition-colors">
+              About
+            </Link>
+            <Link to="/services" className="text-text-secondary hover:text-text-primary transition-colors">
               Services
-            </a>
-            <a href="#why-us" className="text-text-secondary hover:text-text-primary transition-colors">
+            </Link>
+            <Link to="/why-us" className="text-text-secondary hover:text-text-primary transition-colors">
               Why Us
-            </a>
-            <a href="#testimonials" className="text-text-secondary hover:text-text-primary transition-colors">
+            </Link>
+            <Link to="/testimonials" className="text-text-secondary hover:text-text-primary transition-colors">
               Testimonials
-            </a>
-            <a href="#contact" className="text-text-secondary hover:text-text-primary transition-colors">
+            </Link>
+            <Link to="/contact" className="text-text-secondary hover:text-text-primary transition-colors">
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* Right Side Actions */}
@@ -90,18 +97,24 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden pb-4 border-t border-border mt-4 pt-4">
             <nav className="flex flex-col space-y-4">
-              <a href="#services" className="text-text-secondary hover:text-text-primary transition-colors">
+              <Link to="/" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                Home
+              </Link>
+              <Link to="/about" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                About
+              </Link>
+              <Link to="/services" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
                 Services
-              </a>
-              <a href="#why-us" className="text-text-secondary hover:text-text-primary transition-colors">
+              </Link>
+              <Link to="/why-us" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
                 Why Us
-              </a>
-              <a href="#testimonials" className="text-text-secondary hover:text-text-primary transition-colors">
+              </Link>
+              <Link to="/testimonials" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
                 Testimonials
-              </a>
-              <a href="#contact" className="text-text-secondary hover:text-text-primary transition-colors">
+              </Link>
+              <Link to="/contact" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
                 Contact
-              </a>
+              </Link>
               <Button variant="primary" size="md" className="w-full">
                 Get Started
               </Button>

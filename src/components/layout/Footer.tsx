@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export function Footer() {
   return (
     <footer className="bg-bg-card border-t border-border">
@@ -36,24 +38,34 @@ export function Footer() {
             <h4 className="font-semibold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#services" className="text-text-secondary hover:text-primary transition-colors">
+                <Link to="/" className="text-text-secondary hover:text-primary transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-text-secondary hover:text-primary transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-text-secondary hover:text-primary transition-colors">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#why-us" className="text-text-secondary hover:text-primary transition-colors">
+                <Link to="/why-us" className="text-text-secondary hover:text-primary transition-colors">
                   Why Choose Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#testimonials" className="text-text-secondary hover:text-primary transition-colors">
+                <Link to="/testimonials" className="text-text-secondary hover:text-primary transition-colors">
                   Testimonials
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-text-secondary hover:text-primary transition-colors">
+                <Link to="/contact" className="text-text-secondary hover:text-primary transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

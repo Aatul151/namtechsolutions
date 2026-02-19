@@ -1,18 +1,19 @@
+import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Loader } from './components/ui/Loader';
-import { Hero } from './components/sections/Hero';
-import { Services } from './components/sections/Services';
-import { Stats } from './components/sections/Stats';
-import { WhyChooseUs } from './components/sections/WhyChooseUs';
-import { Testimonials } from './components/sections/Testimonials';
-import { CTASection } from './components/sections/CTASection';
 import { useEffect, useState } from 'react';
 import { useComponyDetail } from './context/componyContext';
 import { getFormEntriesByFormName } from './services/formservices';
 import { FORMNAMES } from './utilities/codes';
 import { fetchGuestUserToken } from './services/authservices';
 import { useLoader } from './context/LoaderContext';
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { WhyChooseUsPage } from './pages/WhyChooseUsPage';
+import { TestimonialsPage } from './pages/TestimonialsPage';
+import { ContactPage } from './pages/ContactPage';
 
 function App() {
   const { setLoading } = useLoader();
@@ -31,6 +32,7 @@ function App() {
         setGuestToken(responseToken)
         getComponyProfile();
       }
+      setLoading(false)
     } catch (error: any) {
       setLoading(false)
     }
@@ -56,13 +58,15 @@ function App() {
         <div className="min-h-screen bg-bg-main">
           <Loader />
           <Header />
-          <main className="pt-0 md:pt-2">
-            <Hero />
-            <Services />
-            <Stats />
-            <WhyChooseUs />
-            <Testimonials />
-            <CTASection />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/why-us" element={<WhyChooseUsPage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
           </main>
           <Footer />
         </div>
