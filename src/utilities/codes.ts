@@ -5,5 +5,6 @@ export const FORMNAMES = {
     SERVICES: 'services',
     WHY_US: 'why_us',
     TECHNOLOGIES: "technologies",
-    WORK: 'work'
+    WORK: 'work',
+    TESTIMONIALS: 'testimonials'
 }
