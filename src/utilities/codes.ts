@@ -1,5 +1,6 @@
 export const FORMNAMES = {
     PROFILE : 'profile',
     STATISTICS : 'statistics',
-    STRENGTHS : 'strengths'
+    STRENGTHS : 'strengths',
+    SERVICES : 'services'
 }
