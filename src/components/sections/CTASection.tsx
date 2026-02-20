@@ -2,8 +2,10 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Button } from '../ui/Button';
 import { MarkedText } from '../ui/MarkedText';
+import { useNavigate } from 'react-router-dom';
 
 export function CTASection() {
+  const navigate = useNavigate();
   return (
     <Section id="contact" py="xl">
       <Container>
@@ -21,25 +23,14 @@ export function CTASection() {
               className="text-4xl md:text-5xl font-bold mb-6"
             />
             <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help transform your ideas into reality. 
+              Let's discuss how we can help transform your ideas into reality.
               Get started with a free consultation today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="primary" size="lg">
-                Start Your Project
-              </Button>
-              <Button variant="outline" size="lg">
-                Schedule a Call
+              <Button variant="primary" size="lg" onClick={() => navigate('/contact')}>
+                Contact now
               </Button>
             </div>
-            <p className="text-sm text-text-secondary mt-6">
-              <span className="inline-flex items-center gap-2">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Response within 5 minutes
-              </span>
-            </p>
           </div>
         </div>
       </Container>

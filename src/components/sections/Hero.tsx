@@ -9,10 +9,12 @@ import { useComponyDetail } from '../../context/componyContext';
 import { useEffect, useState } from 'react';
 import { getFormEntriesByFormName } from '../../services/formservices';
 import { FORMNAMES } from '../../utilities/codes';
+import { useNavigate } from 'react-router-dom';
 
 export function Hero() {
   const { componyProfile, setStatistics, statistics } = useComponyDetail();
   const [achievements, setAchievements] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getStatistics();
@@ -89,10 +91,10 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <Button variant="primary" size="lg">
-                Start Your Project
+              <Button variant="primary" size="lg" onClick={() => navigate('/about')}>
+                About Us
               </Button>
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" onClick={() => navigate('/projects')}>
                 View Our Work
               </Button>
             </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { useTheme } from '../../hooks/useTheme';
 import { useScrollShadow } from '../../hooks/useScrollShadow';
@@ -11,6 +11,7 @@ export function Header() {
   const { theme, toggleTheme } = useTheme();
   const hasShadow = useScrollShadow();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header
@@ -77,8 +78,8 @@ export function Header() {
             </button>
 
             {/* CTA Button */}
-            <Button variant="primary" size="md" className="hidden sm:inline-flex">
-              Get Started
+            <Button variant="primary" size="md" className="hidden sm:inline-flex" onClick={() => navigate('/contact')}>
+              Contact Us
             </Button>
 
             {/* Mobile Menu Button */}
