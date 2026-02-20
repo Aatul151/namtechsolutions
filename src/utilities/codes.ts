@@ -4,5 +4,6 @@ export const FORMNAMES = {
     STRENGTHS: 'strengths',
     SERVICES: 'services',
     WHY_US: 'why_us',
-    TECHNOLOGIES: "technologies"
+    TECHNOLOGIES: "technologies",
+    WORK: 'work'
 }
