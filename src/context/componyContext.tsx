@@ -8,15 +8,18 @@ import {
 interface componyContextType {
   componyProfile: any;
   setComponyProfile: any;
+  statistics: any;
+  setStatistics: any;
 }
 
 const componyContext = createContext<componyContextType | undefined>(undefined);
 
 export function ComponyDetailProvider({ children }: { children: ReactNode }) {
   const [componyProfile, setComponyProfile] = useState({});
+  const [statistics, setStatistics] = useState([]);
 
   return (
-    <componyContext.Provider value={{ componyProfile, setComponyProfile }}>
+    <componyContext.Provider value={{ componyProfile, setComponyProfile, statistics, setStatistics }}>
       {children}
     </componyContext.Provider>
   );

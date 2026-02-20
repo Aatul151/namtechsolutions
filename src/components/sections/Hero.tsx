@@ -7,7 +7,7 @@ import { MarkedText } from '../ui/MarkedText';
 import { AchievementCard } from '../ui/AchievementCard';
 import acvimentlogo from '../../assets/upworkLogo.png'
 import { useComponyDetail } from '../../context/componyContext';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getFormEntriesByFormName } from '../../services/formservices';
 import { FORMNAMES } from '../../utilities/codes';
 
@@ -19,17 +19,15 @@ interface Achievement {
 }
 
 export function Hero() {
-  const { componyProfile } = useComponyDetail();
-  const [statistics, setStatistics] = useState([]);
+  const { componyProfile, setStatistics, statistics } = useComponyDetail();
 
   useEffect(() => {
-    getStats();
+    getStatistics();
   }, [])
 
-  const getStats = async () => {
+  const getStatistics = async () => {
     try {
       const data = await getFormEntriesByFormName(FORMNAMES.STATISTICS);
-
       if (data) {
         let values: any = []
         const animationStyles = [
@@ -39,18 +37,13 @@ export function Hero() {
           'absolute -bottom-8 left-8 animate-float',
         ]
 
-        const animationDelay = ['0.5s', '1.5s', '2.5s', '3.5s']
-
         for (let index = 0; index < data?.length; index++) {
           const eachval = data[index];
-          values?.push({ ...eachval, animationStyle: animationStyles[index], animationDelay: animationDelay[index] })
+          values?.push({ ...eachval, animationStyle: animationStyles[index] })
         }
         setStatistics(values)
-
       }
-    } catch (error) {
-
-    }
+    } catch (error) { }
   }
 
   // Dynamic achievements data from API
@@ -137,7 +130,7 @@ export function Hero() {
             {/* Social Proof statistics */}
             {statistics?.length > 0 &&
               <div className="flex flex-wrap gap-8 pt-4 border-t border-border">
-                {statistics?.slice(4, statistics.length)?.map((stat: any, idx) => (
+                {statistics?.slice(4, statistics.length)?.map((stat: any, idx: number) => (
                   <div key={idx}>
                     <div className="text-3xl font-bold text-text-primary">{stat?.payload?.number}</div>
                     <div className="text-sm text-text-secondary">{stat?.payload?.title}</div>
@@ -149,44 +142,46 @@ export function Hero() {
 
           {/* Right Side */}
           {statistics?.length > 0 &&
-            <div className="relative lg:block hidden">
-              {/* Professional Image Placeholder */}
-              <div className="relative">
-                <div className="w-full h-[600px] rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border shadow-strong flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-24 h-24 mx-auto bg-primary/30 rounded-full flex items-center justify-center">
-                      <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
+            <>
+              <div className="relative lg:block hidden">
+                {/* Professional Image Placeholder */}
+                <div className="relative">
+                  <div className="w-full h-[600px] rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border shadow-strong flex items-center justify-center">
+                    <div className="text-center space-y-4">
+                      <div className="w-24 h-24 mx-auto bg-primary/30 rounded-full flex items-center justify-center">
+                        <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      </div>
+                      <p className="text-text-secondary">Professional Development</p>
                     </div>
-                    <p className="text-text-secondary">Professional Development</p>
                   </div>
-                </div>
 
-                {/* Floating Stat Cards */}
-                {statistics?.slice(0, 4)?.map((stats: any) => (
-                  <div className={stats?.animationStyle} style={{ animationDelay: stats?.animationDelay }}>
-                    <StatCard
-                      value={stats?.payload?.number}
-                      label={stats?.payload?.title}
-                      floating
-                      className="w-48 bg-bg-card/95 backdrop-blur-sm"
-                    />
+                  {/* Floating Stat Cards */}
+                  {statistics?.slice(0, 4)?.map((stats: any, idx: number) => (
+                    <div key={idx} className={stats?.animationStyle} style={{ animationDelay: `${idx + 0.5}s` }}>
+                      <StatCard
+                        value={stats?.payload?.number}
+                        label={stats?.payload?.title}
+                        floating
+                        className="w-48 bg-bg-card/95 backdrop-blur-sm"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile: Show simplified version */}
+              <div className="lg:hidden space-y-6">
+                {statistics?.slice(0, 4)?.map((stats: any, idx: number) => (
+                  <div key={idx} className="grid grid-cols-2 gap-4">
+                    <StatCard value={stats?.payload?.number} label={stats?.payload?.title} floating />
                   </div>
                 ))}
-              </div>
-            </div>
-          }
 
-          {/* Mobile: Show simplified version */}
-          <div className="lg:hidden space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <StatCard value="5 Min" label="Avg Response" floating />
-              <StatCard value="100%" label="Transparency" floating />
-              <StatCard value="150+" label="Projects Shipped" floating />
-              <StatCard value="Sprint" label="Delivery" floating />
-            </div>
-          </div>
+              </div>
+            </>
+          }
         </div>
       </Container>
     </Section>
