@@ -93,7 +93,7 @@ export function Projects() {
   const [selectedImage, setSelectedImage] = useState<{ image: string; alt: string } | null>(null);
 
   return (
-    <Section py="xl" className="bg-bg-main">
+    <Section py="md" className="bg-bg-main">
       <Container>
         <div className="text-center mb-16">
           <MarkedText
@@ -109,7 +109,7 @@ export function Projects() {
           {projects.map((project: any, index: any) => (
             <div
               key={project.id}
-              className="group relative bg-bg-card border border-border/50 rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300 animate-fade-in"
+              className="group relative bg-bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Project Image */}

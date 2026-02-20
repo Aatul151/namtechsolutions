@@ -2,8 +2,10 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
+import { useComponyDetail } from '../../context/componyContext';
 
 export function MissionVision() {
+  const { componyProfile } = useComponyDetail();  
   return (
     <Section py="xl" >
       <Container>
@@ -28,10 +30,11 @@ export function MissionVision() {
               </div>
               <h3 className="text-2xl font-bold text-text-primary">Our Mission</h3>
             </div>
-            <p className="text-text-secondary text-lg leading-relaxed">
-              To empower businesses worldwide with cutting-edge software solutions that drive growth, 
-              efficiency, and innovation. We strive to deliver exceptional quality, maintain the highest 
-              standards of security, and build lasting partnerships with our clients.
+            <p className="text-text-secondary text-lg leading-relaxed"
+            dangerouslySetInnerHTML={{
+              __html : componyProfile?.mission
+            }}
+            >
             </p>
           </Card>
 
@@ -46,10 +49,11 @@ export function MissionVision() {
               </div>
               <h3 className="text-2xl font-bold text-text-primary">Our Vision</h3>
             </div>
-            <p className="text-text-secondary text-lg leading-relaxed">
-              To become a globally recognized leader in software development, known for innovation, 
-              reliability, and client success. We envision a future where technology seamlessly integrates 
-              with business needs, creating transformative digital experiences.
+            <p className="text-text-secondary text-lg leading-relaxed"
+              dangerouslySetInnerHTML={{
+                __html : componyProfile?.vision
+              }}
+             >
             </p>
           </Card>
         </div>

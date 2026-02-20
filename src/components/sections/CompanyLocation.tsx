@@ -2,8 +2,10 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
+import { useComponyDetail } from '../../context/componyContext';
 
 export function CompanyLocation() {
+  const { componyProfile } = useComponyDetail();
   return (
     <Section py="xl" className="bg-bg-muted">
       <Container>
@@ -28,8 +30,7 @@ export function CompanyLocation() {
             </div>
             <h3 className="text-xl font-semibold mb-3 text-text-primary">Location</h3>
             <p className="text-text-secondary">
-              Navsari, Gujarat<br />
-              India
+              {componyProfile?.address}
             </p>
           </Card>
 
@@ -42,7 +43,7 @@ export function CompanyLocation() {
             </div>
             <h3 className="text-xl font-semibold mb-3 text-text-primary">Email</h3>
             <p className="text-text-secondary">
-              info@namtechsolutions.com<br />
+              {componyProfile?.email}<br />
               <span className="text-sm">Response within 5 minutes</span>
             </p>
           </Card>
@@ -56,7 +57,7 @@ export function CompanyLocation() {
             </div>
             <h3 className="text-xl font-semibold mb-3 text-text-primary">Phone</h3>
             <p className="text-text-secondary">
-              +1 (555) 123-4567<br />
+              {componyProfile?.mobile_number}<br />
               <span className="text-sm">24/7 Support Available</span>
             </p>
           </Card>

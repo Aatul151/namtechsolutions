@@ -2,22 +2,17 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
 import { Card } from '../ui/Card';
+import { useComponyDetail } from '../../context/componyContext';
+import { APIENDPOINT } from '../../services/apihelper';
 
 interface AboutCompanyProps {
   title?: string;
-  content?: string; // HTML content from CKEditor
-  logoImage?: string; // Optional logo image path or URL
 }
 
 export function AboutCompany({
   title = "About [[Our Company]]",
-  content = `
-   <p style=\"text-align:justify;\"><strong>NAMTech Solutions</strong> is a growing software development company based in Navsari, focused on delivering modern and practical technology solutions. As a startup, we are dedicated to innovation, quality, and continuous improvement.</p><p style=\"text-align:justify;\">Our team works with a wide range of technologies to build reliable, scalable, and user-friendly software tailored to each client's needs. By combining local expertise with a global outlook, we help businesses turn their ideas into effective digital products that support growth and success.</p><p style=\"text-align:justify;\">At NAMTech Solutions, we value creativity, efficiency, and strong client relationships, striving to provide customized solutions that meet the unique requirements of every project while staying updated with the latest trends in technology.</p>
-  `,
-  logoImage
 }: AboutCompanyProps) {
-  // Use provided logo or a placeholder - logoImage can be a URL or imported image path
-  const displayLogo = logoImage;
+  const { componyProfile } = useComponyDetail();
   return (
     <Section id="about" py="md" className="relative overflow-hidden bg-gradient-to-b from-bg-main via-bg-card/50 to-bg-main">
       {/* Animated Background Elements */}
@@ -60,7 +55,7 @@ export function AboutCompany({
               <div className="relative">
                 <div
                   className="ckeditor-content"
-                  dangerouslySetInnerHTML={{ __html: content }}
+                  dangerouslySetInnerHTML={{ __html: componyProfile?.about }}
                 />
               </div>
             </Card>
@@ -73,22 +68,22 @@ export function AboutCompany({
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 rounded-3xl blur-3xl opacity-50"></div>
               <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
-              
+
               {/* Logo Card */}
               <Card className="p-8 md:p-12 lg:p-16 relative overflow-hidden border-2 border-border/50 hover:border-primary/30 transition-all duration-300 group">
                 {/* Animated Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 {/* Logo Container */}
                 <div className="relative flex flex-col items-center justify-center space-y-6">
                   {/* Logo Image */}
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
                     <div className="relative bg-bg-card p-8 rounded-2xl shadow-lg border border-border/50 group-hover:shadow-xl transition-shadow">
-                      {displayLogo ? (
-                        <img 
-                          src={displayLogo} 
-                          alt="NAMTech Solutions" 
+                      {componyProfile?.secondary_logo ? (
+                        <img
+                          src={APIENDPOINT + componyProfile?.secondary_logo?.fileUrl}
+                          alt="NAMTech Solutions"
                           className="w-full h-auto max-w-[200px] object-contain filter group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
@@ -102,18 +97,18 @@ export function AboutCompany({
                       )}
                     </div>
                   </div>
-                  
+
                   {/* Decorative Elements */}
                   <div className="flex items-center gap-2 mt-4">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                     <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
                     <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                   </div>
-                  
+
                   {/* Company Name */}
                   <div className="text-center space-y-2">
-                    <h3 className="text-xl md:text-2xl font-bold text-text-primary">NAMTech Solutions</h3>
-                    <p className="text-sm text-text-secondary">Innovation • Quality • Excellence</p>
+                    <h3 className="text-xl md:text-2xl font-bold text-text-primary">{componyProfile?.name}</h3>
+                    <p className="text-sm text-text-secondary">{componyProfile?.slogan}</p>
                   </div>
                 </div>
               </Card>
