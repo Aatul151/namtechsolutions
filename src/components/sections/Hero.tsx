@@ -5,24 +5,18 @@ import { Section } from '../ui/Section';
 import { StatCard } from '../ui/StatCard';
 import { MarkedText } from '../ui/MarkedText';
 import { AchievementCard } from '../ui/AchievementCard';
-import acvimentlogo from '../../assets/upworkLogo.png'
 import { useComponyDetail } from '../../context/componyContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getFormEntriesByFormName } from '../../services/formservices';
 import { FORMNAMES } from '../../utilities/codes';
 
-interface Achievement {
-  title: string;
-  certificate_image: string;
-  issuing_organization: string;
-  organization_logo?: string;
-}
-
 export function Hero() {
   const { componyProfile, setStatistics, statistics } = useComponyDetail();
+  const [achievements, setAchievements] = useState([]);
 
   useEffect(() => {
     getStatistics();
+    getAchievements();
   }, [])
 
   const getStatistics = async () => {
@@ -46,17 +40,12 @@ export function Hero() {
     } catch (error) { }
   }
 
-  // Dynamic achievements data from API
-  // Replace this with your API call
-  const achievements: Achievement[] = [
-    {
-      title: 'Top Rated Plus',
-      certificate_image: acvimentlogo, // Replace with actual image URL
-      issuing_organization: 'Upwork',
-      organization_logo: acvimentlogo, // Replace with actual logo URL
-    },
-    // Add more achievements from API
-  ];
+  const getAchievements = async () => {
+    try {
+      const data = await getFormEntriesByFormName(FORMNAMES.ACHIEVEMENT);
+      if (data && data?.length > 0) setAchievements(data)
+    } catch (error) { }
+  }
 
   return (
     <Section py="xs" className="relative overflow-hidden">
@@ -109,18 +98,18 @@ export function Hero() {
             </div>
 
             {/* Achievements */}
-            {achievements.length > 0 && (
+            {achievements?.length > 0 && (
               <div className="pt-3">
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
-                  {achievements.map((achievement, index) => (
+                  {achievements?.map((achievement: any, idx) => (
                     <AchievementCard
-                      key={index}
-                      title={achievement.title}
-                      certificate_image={achievement.certificate_image}
-                      issuing_organization={achievement.issuing_organization}
-                      organization_logo={achievement.organization_logo}
+                      key={idx}
+                      title={achievement?.payload?.title}
+                      certificate_image={achievement?.payload?.certificate_image?.fileUrl}
+                      issuing_organization={achievement?.payload?.issuing_organization}
+                      organization_logo={achievement?.payload?.image?.fileUrl}
                       className="animate-fade-in"
-                      style={{ animationDelay: `${index * 0.1}s` }}
+                      style={{ animationDelay: `${idx * 0.1}s` }}
                     />
                   ))}
                 </div>

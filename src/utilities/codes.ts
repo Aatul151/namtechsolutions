@@ -7,5 +7,6 @@ export const FORMNAMES = {
     TECHNOLOGIES: "technologies",
     WORK: 'work',
     TESTIMONIALS: 'testimonials',
-    JOURNEY: 'journey'
+    JOURNEY: 'journey',
+    ACHIEVEMENT : 'achievement'
 }
