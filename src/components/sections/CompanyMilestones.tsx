@@ -2,41 +2,24 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
-
-const milestones = [
-  {
-    year: '2020',
-    title: 'Company Founded',
-    description: 'NAMTech Solutions was established in Navsari with a vision to deliver innovative software solutions.',
-  },
-  {
-    year: '2021',
-    title: 'First 50 Projects',
-    description: 'Successfully delivered 50+ projects, building a strong reputation for quality and reliability.',
-  },
-  {
-    year: '2022',
-    title: 'Team Expansion',
-    description: 'Grew to 50+ expert engineers, expanding our capabilities across multiple technologies.',
-  },
-  {
-    year: '2023',
-    title: '150+ Projects',
-    description: 'Reached a milestone of 150+ completed projects with 4.9/5 client satisfaction rating.',
-  },
-  {
-    year: '2024',
-    title: 'Global Recognition',
-    description: 'Expanded services globally, serving clients across different industries and continents.',
-  },
-  {
-    year: '2025',
-    title: 'Innovation Leader',
-    description: 'Recognized as a leader in cutting-edge software development and digital transformation.',
-  },
-];
+import { useEffect, useState } from 'react';
+import { getFormEntriesByFormName } from '../../services/formservices';
+import { FORMNAMES } from '../../utilities/codes';
 
 export function CompanyMilestones() {
+  const [journey, setJourney] = useState([]);
+
+  useEffect(() => {
+    getJourney();
+  }, [])
+
+  const getJourney = async () => {
+    try {
+      const data = await getFormEntriesByFormName(FORMNAMES.JOURNEY);
+      if (data && data?.length > 0) setJourney(data);
+    } catch (error) { }
+  }
+
   return (
     <Section py="xl" className="bg-bg-muted relative overflow-hidden">
       {/* Background decoration */}
@@ -64,67 +47,90 @@ export function CompanyMilestones() {
           <div className="md:hidden absolute left-4 w-0.5 h-full bg-gradient-to-b from-primary via-secondary to-primary opacity-30"></div>
 
           <div className="space-y-8 md:space-y-12">
-            {milestones.map((milestone, index) => {
-              const isEven = index % 2 === 0;
+            {journey.map((step: any, idx: number) => {
+              const isEven = idx % 2 === 0;
               return (
-                <div
-                  key={index}
-                  className="relative animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {/* Desktop Layout */}
-                  <div className="hidden md:flex items-center gap-4">
-                    {/* Left Side - Year Badge (even) or Content (odd) */}
-                    <div className={`w-[calc(50%-20px)] flex ${isEven ? 'justify-end pr-4' : 'justify-start pl-4'}`}>
-                      {isEven ? (
-                        <Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
-                          <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{milestone.year}</div>
-                        </Card>
-                      ) : (
-                        <Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
-                          <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{milestone.title}</h3>
-                          <p className="text-sm md:text-base text-text-secondary leading-relaxed">{milestone.description}</p>
-                        </Card>
-                      )}
-                    </div>
+                <>
+                  {step?.payload?.active &&
+                    <div
+                      key={idx}
+                      className="relative animate-fade-in"
+                      style={{ animationDelay: `${idx * 0.1}s` }}
+                    >
+                      {/* Desktop Layout */}
+                      <div className="hidden md:flex items-center gap-4">
+                        {/* Left Side - Year Badge (even) or Content (odd) */}
+                        <div className={`w-[calc(50%-20px)] flex ${isEven ? 'justify-end pr-4' : 'justify-start pl-4'}`}>
+                          {isEven ? (
+                            step?.payload?.year &&
+                            (<Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
+                              <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{step?.payload?.year}</div>
+                            </Card>)
+                          ) : (
+                            (step?.payload?.title || step?.payload?.details) &&
+                            (<Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.payload?.title}</h3>
+                              <p className="text-sm md:text-base text-text-secondary leading-relaxed"
+                                dangerouslySetInnerHTML={{
+                                  __html: step?.payload?.details
+                                }}
+                              ></p>
+                            </Card>)
+                          )}
+                        </div>
 
-                    {/* Center Timeline Dot */}
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary border-4 border-bg-main z-10 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-primary"></div>
-                    </div>
+                        {/* Center Timeline Dot */}
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary border-4 border-bg-main z-10 flex items-center justify-center">
+                          <div className="w-2 h-2 rounded-full bg-primary"></div>
+                        </div>
 
-                    {/* Right Side - Content (even) or Year Badge (odd) */}
-                    <div className={`w-[calc(50%-20px)] flex ${!isEven ? 'justify-start pl-4' : 'justify-end pr-4'}`}>
-                      {isEven ? (
-                        <Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
-                          <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{milestone.title}</h3>
-                          <p className="text-sm md:text-base text-text-secondary leading-relaxed">{milestone.description}</p>
-                        </Card>
-                      ) : (
-                        <Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
-                          <div className="text-2xl md:text-3xl font-bold text-text-primary text-left">{milestone.year}</div>
-                        </Card>
-                      )}
-                    </div>
-                  </div>
+                        {/* Right Side - Content (even) or Year Badge (odd) */}
+                        <div className={`w-[calc(50%-20px)] flex ${!isEven ? 'justify-start pl-4' : 'justify-end pr-4'}`}>
+                          {isEven ? (
+                            (step?.payload?.title || step?.payload?.details) &&
+                            (<Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.payload?.title}</h3>
+                              <p className="text-sm md:text-base text-text-secondary leading-relaxed"
+                                dangerouslySetInnerHTML={{
+                                  __html: step?.payload?.details
+                                }}
+                              ></p>
+                            </Card>)
+                          ) : (
+                            step?.payload?.year &&
+                            (<Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
+                              <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{step?.payload?.year}</div>
+                            </Card>)
+                          )}
+                        </div>
+                      </div>
 
-                  {/* Mobile Layout */}
-                  <div className="md:hidden flex items-start gap-4">
-                    {/* Timeline Dot */}
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary border-4 border-bg-muted z-10 mt-1"></div>
-                    
-                    {/* Content */}
-                    <div className="flex-1 space-y-3">
-                      <Card className="p-4" noBaseStyles={true}>
-                        <div className="text-xl font-bold text-text-primary">{milestone.year}</div>
-                      </Card>
-                      <Card className="p-4 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
-                        <h3 className="text-lg font-semibold mb-2 text-text-primary">{milestone.title}</h3>
-                        <p className="text-sm text-text-secondary leading-relaxed">{milestone.description}</p>
-                      </Card>
-                    </div>
-                  </div>
-                </div>
+                      {/* Mobile Layout */}
+                      <div className="md:hidden flex items-start gap-4">
+                        {/* Timeline Dot */}
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary border-4 border-bg-muted z-10 mt-1"></div>
+
+                        {/* Content */}
+                        <div className="flex-1 space-y-3">
+                          {step?.payload?.year &&
+                            <Card className="p-4" noBaseStyles={true}>
+                              <div className="text-xl font-bold text-text-primary">{step?.payload?.year}</div>
+                            </Card>
+                          }
+                          {(step?.payload?.title || step?.payload?.details) &&
+                            <Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.payload?.title}</h3>
+                              <p className="text-sm md:text-base text-text-secondary leading-relaxed"
+                                dangerouslySetInnerHTML={{
+                                  __html: step?.payload?.details
+                                }}
+                              ></p>
+                            </Card>}
+                        </div>
+                      </div>
+                    </div >
+                  }
+                </>
               );
             })}
           </div>
