@@ -4,6 +4,9 @@ import { MarkedText } from '../ui/MarkedText';
 import { Card } from '../ui/Card';
 import { useComponyDetail } from '../../context/componyContext';
 import { APIENDPOINT } from '../../services/apihelper';
+import { getFormEntriesByFormName } from '../../services/formservices';
+import { FORMNAMES } from '../../utilities/codes';
+import { useEffect, useState } from 'react';
 
 interface AboutCompanyProps {
   title?: string;
@@ -13,6 +16,19 @@ export function AboutCompany({
   title = "About [[Our Company]]",
 }: AboutCompanyProps) {
   const { componyProfile } = useComponyDetail();
+  const [strengths, setStrengths] = useState([]);
+
+  useEffect(() => {
+    getStrengths();
+  }, [])
+
+  const getStrengths = async () => {
+    try {
+      const data = await getFormEntriesByFormName(FORMNAMES.STRENGTHS);
+      if (data && data?.length > 0) setStrengths(data);
+    } catch (error) { }
+  }
+  
   return (
     <Section id="about" py="md" className="relative overflow-hidden bg-gradient-to-b from-bg-main via-bg-card/50 to-bg-main">
       {/* Animated Background Elements */}
@@ -67,7 +83,7 @@ export function AboutCompany({
             {/* Right Column - Logo Display */}
             {(componyProfile?.secondary_logo || componyProfile?.name || componyProfile?.slogan) &&
               <div className="lg:col-span-5 flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <div className="relative w-full max-w-md">
+                <div className="relative w-full max-w-md h-full">
                   {/* Decorative Background Elements */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 rounded-3xl blur-3xl opacity-50"></div>
                   <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
@@ -121,39 +137,37 @@ export function AboutCompany({
         }
 
         {/* Bottom Feature Strip */}
-        <div className="mt-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <Card className="p-8 md:p-10 border-2 border-border/50 bg-gradient-to-r from-bg-card via-bg-main to-bg-card">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="space-y-2">
-                <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-text-primary">Secure & Reliable</h4>
-                <p className="text-sm text-text-secondary">Enterprise-grade security</p>
+        {strengths?.length > 0 &&
+          <div className="mt-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <Card className="p-8 md:p-10 border-2 border-border/50 bg-gradient-to-r from-bg-card via-bg-main to-bg-card">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
+                {strengths?.map((strength: any, idx: number) => (
+                  <div key={idx} className="space-y-2">
+                    {strength?.payload?.icon &&
+                      <div className="mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                        <img
+                          src={APIENDPOINT + strength?.payload?.icon?.fileUrl}
+                          alt={strength?.payload?.title}
+                          className='w-8 h-8'
+                        />
+                      </div>
+                    }
+                    {strength?.payload?.title &&
+                      <h4 className="text-lg font-semibold text-text-primary">{strength?.payload?.title}</h4>
+                    }
+                    {strength?.payload?.details &&
+                      <p className="text-sm text-text-secondary"
+                        dangerouslySetInnerHTML={{
+                          __html: strength?.payload?.details
+                        }}
+                      ></p>
+                    }
+                  </div>
+                ))}
               </div>
-              <div className="space-y-2">
-                <div className="w-16 h-16 mx-auto rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-4">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-text-primary">Fast Delivery</h4>
-                <p className="text-sm text-text-secondary">Agile methodology</p>
-              </div>
-              <div className="space-y-2">
-                <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-text-primary">24/7 Support</h4>
-                <p className="text-sm text-text-secondary">Always here to help</p>
-              </div>
-            </div>
-          </Card>
-        </div>
+            </Card>
+          </div>
+        }
       </Container>
     </Section>
   );
