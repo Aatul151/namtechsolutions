@@ -20,15 +20,17 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <a href="#" className="flex items-center">
-              <img
-                src={APIENDPOINT + componyProfile?.logo?.fileUrl}
-                alt="Namtech Solutions"
-                className="h-8 md:h-10 w-auto object-contain"
-              />
-            </a>
-          </div>
+          {componyProfile?.logo &&
+            <div className="flex-shrink-0">
+              <a href="#" className="flex items-center">
+                <img
+                  src={APIENDPOINT + componyProfile?.logo?.fileUrl}
+                  alt="Namtech Solutions"
+                  className="h-8 md:h-10 w-auto object-contain"
+                />
+              </a>
+            </div>
+          }
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">

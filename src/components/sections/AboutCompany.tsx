@@ -45,76 +45,80 @@ export function AboutCompany({
         </div>
 
         {/* Main Content - Asymmetric Layout */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
-          {/* Left Column - Large Content Area */}
-          <div className="lg:col-span-7 space-y-8 animate-fade-in">
-            <Card className="p-8 md:p-10 lg:p-12 border-2 border-border/50 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
-              {/* Decorative Corner Element */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"></div>
+        {(componyProfile?.about || componyProfile?.secondary_logo || componyProfile?.name || componyProfile?.slogan) &&
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
+            {/* Left Column - Large Content Area */}
+            {componyProfile?.about &&
+              <div className="lg:col-span-7 space-y-8 animate-fade-in">
+                <Card className="p-8 md:p-10 lg:p-12 border-2 border-border/50 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
+                  {/* Decorative Corner Element */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"></div>
 
-              <div className="relative">
-                <div
-                  className="ckeditor-content"
-                  dangerouslySetInnerHTML={{ __html: componyProfile?.about }}
-                />
-              </div>
-            </Card>
-          </div>
-
-          {/* Right Column - Logo Display */}
-          <div className="lg:col-span-5 flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full max-w-md">
-              {/* Decorative Background Elements */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 rounded-3xl blur-3xl opacity-50"></div>
-              <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
-
-              {/* Logo Card */}
-              <Card className="p-8 md:p-12 lg:p-16 relative overflow-hidden border-2 border-border/50 hover:border-primary/30 transition-all duration-300 group">
-                {/* Animated Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                {/* Logo Container */}
-                <div className="relative flex flex-col items-center justify-center space-y-6">
-                  {/* Logo Image */}
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                    <div className="relative bg-bg-card p-8 rounded-2xl shadow-lg border border-border/50 group-hover:shadow-xl transition-shadow">
-                      {componyProfile?.secondary_logo ? (
-                        <img
-                          src={APIENDPOINT + componyProfile?.secondary_logo?.fileUrl}
-                          alt="NAMTech Solutions"
-                          className="w-full h-auto max-w-[200px] object-contain filter group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="w-[200px] h-[200px] flex items-center justify-center">
-                          <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                            <svg className="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
+                    <div
+                      className="ckeditor-content"
+                      dangerouslySetInnerHTML={{ __html: componyProfile?.about }}
+                    />
+                  </div>
+                </Card>
+              </div>
+            }
+
+            {/* Right Column - Logo Display */}
+            {(componyProfile?.secondary_logo || componyProfile?.name || componyProfile?.slogan) &&
+              <div className="lg:col-span-5 flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="relative w-full max-w-md">
+                  {/* Decorative Background Elements */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 rounded-3xl blur-3xl opacity-50"></div>
+                  <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+                  <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
+
+                  {/* Logo Card */}
+                  <Card className="p-8 md:p-12 lg:p-16 relative overflow-hidden border-2 border-border/50 hover:border-primary/30 transition-all duration-300 group">
+                    {/* Animated Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    {/* Logo Container */}
+                    <div className="relative flex flex-col items-center justify-center space-y-6">
+                      {/* Logo Image */}
+                      {componyProfile?.secondary_logo &&
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                          <div className="relative bg-bg-card p-8 rounded-2xl shadow-lg border border-border/50 group-hover:shadow-xl transition-shadow">
+                            <img
+                              src={APIENDPOINT + componyProfile?.secondary_logo?.fileUrl}
+                              alt="NAMTech Solutions"
+                              className="w-full h-auto max-w-[200px] object-contain filter group-hover:scale-105 transition-transform duration-300"
+                            />
                           </div>
                         </div>
-                      )}
+                      }
+
+                      {/* Decorative Elements */}
+                      <div className="flex items-center gap-2 mt-4">
+                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                        <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
+                        <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                      </div>
+
+                      {/* Company Name */}
+                      {(componyProfile?.name || componyProfile?.slogan) &&
+                        <div className="text-center space-y-2">
+                          {componyProfile?.name &&
+                            <h3 className="text-xl md:text-2xl font-bold text-text-primary">{componyProfile?.name}</h3>
+                          }
+                          {componyProfile?.slogan &&
+                            <p className="text-sm text-text-secondary">{componyProfile?.slogan}</p>
+                          }
+                        </div>
+                      }
                     </div>
-                  </div>
-
-                  {/* Decorative Elements */}
-                  <div className="flex items-center gap-2 mt-4">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                    <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
-                    <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  </div>
-
-                  {/* Company Name */}
-                  <div className="text-center space-y-2">
-                    <h3 className="text-xl md:text-2xl font-bold text-text-primary">{componyProfile?.name}</h3>
-                    <p className="text-sm text-text-secondary">{componyProfile?.slogan}</p>
-                  </div>
+                  </Card>
                 </div>
-              </Card>
-            </div>
+              </div>
+            }
           </div>
-        </div>
+        }
 
         {/* Bottom Feature Strip */}
         <div className="mt-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>

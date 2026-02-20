@@ -79,13 +79,15 @@ export function Hero() {
           {/* Left Side */}
           <div className="space-y-8 animate-fade-in">
             {/* Animated Badge */}
-            <div className="inline-block">
-              <Badge variant="success" className="animate-slide-up">
-                <span className="flex items-center gap-2">
-                  {componyProfile?.welcome_tagline}
-                </span>
-              </Badge>
-            </div>
+            {componyProfile?.welcome_tagline &&
+              <div className="inline-block">
+                <Badge variant="success" className="animate-slide-up">
+                  <span className="flex items-center gap-2">
+                    {componyProfile?.welcome_tagline}
+                  </span>
+                </Badge>
+              </div>
+            }
 
             {/* Headline */}
             {componyProfile?.short_title &&
@@ -97,9 +99,11 @@ export function Hero() {
             }
 
             {/* Supporting Paragraph */}
-            <p className="text-xl text-text-secondary max-w-xl leading-relaxed">
-              {componyProfile?.short_description}
-            </p>
+            {componyProfile?.short_description &&
+              <p className="text-xl text-text-secondary max-w-xl leading-relaxed">
+                {componyProfile?.short_description}
+              </p>
+            }
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
@@ -131,36 +135,36 @@ export function Hero() {
             )}
 
             {/* Social Proof statistics */}
-            <div className="flex flex-wrap gap-8 pt-4 border-t border-border">
-              {statistics?.length > 0 &&
-                statistics?.slice(4, statistics.length)?.map((stat: any, idx) => (
+            {statistics?.length > 0 &&
+              <div className="flex flex-wrap gap-8 pt-4 border-t border-border">
+                {statistics?.slice(4, statistics.length)?.map((stat: any, idx) => (
                   <div key={idx}>
                     <div className="text-3xl font-bold text-text-primary">{stat?.payload?.number}</div>
                     <div className="text-sm text-text-secondary">{stat?.payload?.title}</div>
                   </div>
-                ))
-              }
-            </div>
+                ))}
+              </div>
+            }
           </div>
 
           {/* Right Side */}
-          <div className="relative lg:block hidden">
-            {/* Professional Image Placeholder */}
-            <div className="relative">
-              <div className="w-full h-[600px] rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border shadow-strong flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-24 h-24 mx-auto bg-primary/30 rounded-full flex items-center justify-center">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
+          {statistics?.length > 0 &&
+            <div className="relative lg:block hidden">
+              {/* Professional Image Placeholder */}
+              <div className="relative">
+                <div className="w-full h-[600px] rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border shadow-strong flex items-center justify-center">
+                  <div className="text-center space-y-4">
+                    <div className="w-24 h-24 mx-auto bg-primary/30 rounded-full flex items-center justify-center">
+                      <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      </svg>
+                    </div>
+                    <p className="text-text-secondary">Professional Development</p>
                   </div>
-                  <p className="text-text-secondary">Professional Development</p>
                 </div>
-              </div>
 
-              {/* Floating Stat Cards */}
-              {statistics?.length > 0 &&
-                statistics?.slice(0, 4)?.map((stats: any) => (
+                {/* Floating Stat Cards */}
+                {statistics?.slice(0, 4)?.map((stats: any) => (
                   <div className={stats?.animationStyle} style={{ animationDelay: stats?.animationDelay }}>
                     <StatCard
                       value={stats?.payload?.number}
@@ -169,10 +173,10 @@ export function Hero() {
                       className="w-48 bg-bg-card/95 backdrop-blur-sm"
                     />
                   </div>
-                ))
-              }
+                ))}
+              </div>
             </div>
-          </div>
+          }
 
           {/* Mobile: Show simplified version */}
           <div className="lg:hidden space-y-6">
