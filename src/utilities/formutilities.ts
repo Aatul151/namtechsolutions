@@ -5,9 +5,7 @@ import {
 export const customFormServices = {
     formReference: {
         fetchOptions: async (formName: string, fieldName: string) => {
-            try {
-                console.log("formName",formName);
-                
+            try {                
                 const response = await getFormEntriesByFormName(formName);
                 return response.map((entry: any) => ({
                     label:

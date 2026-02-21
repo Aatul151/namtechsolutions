@@ -26,14 +26,29 @@ function ContactUs() {
       if (!res?.success) return;
     } catch (error) { }
   }
+
+  const getPrimaryColor = () => {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-primary")
+      .trim();
+  };
+
+  const getSecondaryColor = () => {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-secondary")
+      .trim();
+  };
+
   return (
-    <Section py="xl">
+    <Section py="xs">
       <Container>
         {formDefination &&
           <FormRenderer
             formSchema={formDefination}
+            colors={{ 'primary': getPrimaryColor(), 'secondary': getSecondaryColor() }}
             services={customFormServices}
             onSubmit={handleSubmit}
+            hideTitle={true}
           />
         }
       </Container>
