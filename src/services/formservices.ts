@@ -13,3 +13,18 @@ export const getFormEntriesByFormName = async (
   const res = await api.get(`/form-entries`, { params });
   return res?.data;
 };
+
+export const fetchFormDefination = async (formName: string) => {
+  const res: any = await api.get(`/form-definitions/name/${formName}`);
+  if (res?.success) {
+    return res?.data;
+  };
+  return null;
+}
+
+export const submitFormEntry = async (formName: string, payload: any) => {
+  const payloadWithFormName = { formName, payload }
+  const res = await api.post(`/form-entries`, payloadWithFormName);
+  return res;
+}
+
