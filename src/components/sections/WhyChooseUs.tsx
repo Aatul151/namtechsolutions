@@ -45,12 +45,16 @@ export function WhyChooseUs() {
                   />
                 </div>
               }
-              <h3 className="text-xl font-semibold mb-2 text-text-primary">{feature?.payload?.title}</h3>
-              <p className="text-text-secondary"
-                dangerouslySetInnerHTML={{
-                  __html: feature?.payload?.description
-                }}
-              ></p>
+              {feature?.payload?.title &&
+                <h3 className="text-xl font-semibold mb-2 text-text-primary">{feature?.payload?.title}</h3>
+              }
+              {feature?.payload?.description &&
+                <p className="text-text-secondary"
+                  dangerouslySetInnerHTML={{
+                    __html: feature?.payload?.description
+                  }}
+                ></p>
+              }
             </Card>
           ))}
         </div>
