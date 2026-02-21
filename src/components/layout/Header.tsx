@@ -6,7 +6,7 @@ import { useScrollShadow } from '../../hooks/useScrollShadow';
 import { useComponyDetail } from '../../context/componyContext';
 import { APIENDPOINT } from '../../services/apihelper';
 
-export function Header() {
+export function Header({ navMenu }:any) {
   const { componyProfile } = useComponyDetail();
   const { theme, toggleTheme } = useTheme();
   const hasShadow = useScrollShadow();
@@ -35,27 +35,17 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-text-secondary hover:text-text-primary transition-colors">
-              Home
-            </Link>
-            <Link to="/about" className="text-text-secondary hover:text-text-primary transition-colors">
-              About
-            </Link>
-            <Link to="/services" className="text-text-secondary hover:text-text-primary transition-colors">
-              Services
-            </Link>
-            <Link to="/projects" className="text-text-secondary hover:text-text-primary transition-colors">
-              Projects
-            </Link>
-            <Link to="/why-us" className="text-text-secondary hover:text-text-primary transition-colors">
-              Why Us
-            </Link>
-            <Link to="/testimonials" className="text-text-secondary hover:text-text-primary transition-colors">
-              Testimonials
-            </Link>
-            <Link to="/contact" className="text-text-secondary hover:text-text-primary transition-colors">
-              Contact
-            </Link>
+            <nav className="hidden md:flex items-center space-x-8">
+              {navMenu?.filter((item:any) => !item?.isFooterLink)?.map((item:any) => (
+                <Link
+                  key={item?.path}
+                  to={item?.path}
+                  className="text-text-secondary hover:text-text-primary transition-colors"
+                >
+                  {item?.label}
+                </Link>
+              ))}
+            </nav>
           </nav>
 
           {/* Right Side Actions */}
@@ -103,29 +93,19 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden pb-4 border-t border-border mt-4 pt-4">
             <nav className="flex flex-col space-y-4">
-              <Link to="/" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Home
-              </Link>
-              <Link to="/about" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                About
-              </Link>
-              <Link to="/services" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Services
-              </Link>
-              <Link to="/projects" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Projects
-              </Link>
-              <Link to="/why-us" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Why Us
-              </Link>
-              <Link to="/testimonials" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Testimonials
-              </Link>
-              <Link to="/contact" className="text-text-secondary hover:text-text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Contact
-              </Link>
-              <Button variant="primary" size="md" className="w-full">
-                Get Started
+              {navMenu?.filter((item:any) => !item?.isFooterLink)?.map((item:any) => (
+                <Link
+                  key={item?.path}
+                  to={item?.path}
+                  className="text-text-secondary hover:text-text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item?.label}
+                </Link>
+              ))}
+
+              <Button variant="primary" size="md" className="w-full" onClick={() => { navigate('/contact'); setMobileMenuOpen(false) }}>
+                Contact Us
               </Button>
             </nav>
           </div>

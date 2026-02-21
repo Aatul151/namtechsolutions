@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useComponyDetail } from '../../context/componyContext';
 import { APIENDPOINT } from '../../services/apihelper';
 
-export function Footer() {
+export function Footer({ navMenu }: any) {
   const { componyProfile } = useComponyDetail();
   return (
     <footer className="bg-bg-card border-t border-border">
@@ -76,41 +76,17 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-text-secondary hover:text-primary transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-text-secondary hover:text-primary transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-text-secondary hover:text-primary transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/projects" className="text-text-secondary hover:text-primary transition-colors">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link to="/why-us" className="text-text-secondary hover:text-primary transition-colors">
-                  Why Choose Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/testimonials" className="text-text-secondary hover:text-primary transition-colors">
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-text-secondary hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
+              {navMenu?.map((item: any) => (
+                <li>
+                  <Link
+                    key={item?.path}
+                    to={item?.path}
+                    className="text-text-secondary hover:text-primary transition-colors"
+                  >
+                    {item?.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

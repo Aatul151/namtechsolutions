@@ -53,12 +53,24 @@ function App() {
       setLoading(false);
     }
   };
+
+  const navMenu = [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Services", path: "/services" },
+    { label: "Projects", path: "/projects" },
+    { label: "Why Us", path: "/why-us" },
+    { label: "Testimonials", path: "/testimonials" },
+    { label: "Contact", path: "/contact", isFooterLink : true },
+  ];
+
+
   return (
     <>
       <Loader />
       {guestToken && componyProfile ? (
         <div className="min-h-screen bg-bg-main">
-          <Header />
+          <Header navMenu={navMenu}/>
           <main>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -70,7 +82,7 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>
-          <Footer />
+          <Footer navMenu={navMenu}/>
         </div>
       ) : (
         <ErrorComponent />
