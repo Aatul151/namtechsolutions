@@ -2,13 +2,15 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
-import { useComponyDetail } from '../../context/componyContext';
+import detail from '../../assets/detail.json'
+
 
 export function MissionVision() {
-  const { componyProfile } = useComponyDetail();
+  const { profile } = detail
+
   return (
     <>
-      {(componyProfile?.mission || componyProfile?.vision) &&
+      {(profile?.mission || profile?.vision) &&
         <Section py="xl" >
           <Container>
             <>
@@ -24,7 +26,7 @@ export function MissionVision() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Mission */}
-                {componyProfile?.mission &&
+                {profile?.mission &&
                   <Card className="p-8 md:p-10 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -36,7 +38,7 @@ export function MissionVision() {
                     </div>
                     <p className="text-text-secondary text-lg leading-relaxed"
                       dangerouslySetInnerHTML={{
-                        __html: componyProfile?.mission
+                        __html: profile?.mission
                       }}
                     >
                     </p>
@@ -44,7 +46,7 @@ export function MissionVision() {
                 }
 
                 {/* Vision */}
-                {componyProfile?.vision &&
+                {profile?.vision &&
                   <Card className="p-8 md:p-10 hover border-2 border-border/50 hover:border-secondary/30 transition-all duration-300">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
@@ -57,7 +59,7 @@ export function MissionVision() {
                     </div>
                     <p className="text-text-secondary text-lg leading-relaxed"
                       dangerouslySetInnerHTML={{
-                        __html: componyProfile?.vision
+                        __html: profile?.vision
                       }}
                     >
                     </p>

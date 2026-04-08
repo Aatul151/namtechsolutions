@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react';
-import { APIENDPOINT } from '../../services/apihelper';
 
 interface AchievementCardProps {
   title: string;
@@ -27,13 +26,13 @@ export function AchievementCard({
       <div className="flex items-center justify-center mb-2">
         {organization_logo ? (
           <img
-            src={APIENDPOINT + organization_logo}
+            src={organization_logo}
             alt={issuing_organization}
             className="h-8 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
           />
         ) : (
           <img
-            src={APIENDPOINT + certificate_image}
+            src={certificate_image}
             alt={title}
             className="h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
           />

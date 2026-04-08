@@ -2,24 +2,11 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
-import { getFormEntriesByFormName } from '../../services/formservices';
-import { useEffect, useState } from 'react';
-import { FORMNAMES } from '../../utilities/codes';
-import { APIENDPOINT } from '../../services/apihelper';
+import detail from '../../assets/detail.json'
 
 export function WhyChooseUs() {
-  const [features, setFeatures] = useState([]);
+  const { why_us } = detail
 
-  useEffect(() => {
-    getFeatures();
-  }, [])
-
-  const getFeatures = async () => {
-    try {
-      const data = await getFormEntriesByFormName(FORMNAMES.WHY_US);
-      if (data && data?.length > 0) setFeatures(data);
-    } catch (error) { }
-  }
   return (
     <Section id="why-us" py="xl">
       <Container>
@@ -34,24 +21,24 @@ export function WhyChooseUs() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features?.map((feature: any, idx: number) => (
+          {why_us?.map((feature: any, idx: number) => (
             <Card key={idx} hover className="animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-              {feature?.payload?.icon &&
+              {feature?.icon &&
                 <div className="text-primary mb-4 w-8 h-8">
                   <img
-                    src={APIENDPOINT + feature?.payload?.icon?.fileUrl}
+                    src={feature?.icon}
                     alt='image'
                     className=''
                   />
                 </div>
               }
-              {feature?.payload?.title &&
-                <h3 className="text-xl font-semibold mb-2 text-text-primary">{feature?.payload?.title}</h3>
+              {feature?.title &&
+                <h3 className="text-xl font-semibold mb-2 text-text-primary">{feature?.title}</h3>
               }
-              {feature?.payload?.description &&
+              {feature?.description &&
                 <p className="text-text-secondary"
                   dangerouslySetInnerHTML={{
-                    __html: feature?.payload?.description
+                    __html: feature?.description
                   }}
                 ></p>
               }

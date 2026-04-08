@@ -1,27 +1,14 @@
-import { useEffect, useState } from 'react';
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
 import { ImageModal } from '../ui/ImageModal';
-import { getFormEntriesByFormName } from '../../services/formservices';
-import { FORMNAMES } from '../../utilities/codes';
-import { APIENDPOINT } from '../../services/apihelper';
 import ExpandableText from '../ui/ExpandableText';
+import detail from '../../assets/detail.json'
+import { useState } from 'react';
 
 export function Projects() {
   const [selectedImage, setSelectedImage] = useState<{ image: string; alt: string } | null>(null);
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    getProjects();
-  }, [])
-
-  const getProjects = async () => {
-    try {
-      const data = await getFormEntriesByFormName(FORMNAMES.WORK);
-      if (data && data?.length > 0) setProjects(data);
-    } catch (error) { }
-  }
+  const { projects } = detail
 
   return (
     <>
@@ -40,7 +27,7 @@ export function Projects() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects?.map((project: any, index: any) => {
-                const imgUrl = project?.payload?.banners?.fileUrl;
+                const imgUrl = project?.banners;
 
                 return (
                   <div
@@ -56,14 +43,14 @@ export function Projects() {
                           ? () =>
                             setSelectedImage({
                               image: imgUrl,
-                              alt: project?.payload?.name,
+                              alt: project?.name,
                             })
                           : undefined}
                     >
-                      {project?.payload?.banners &&
+                      {project?.banners &&
                         <img
-                          src={APIENDPOINT + imgUrl}
-                          alt={project?.payload?.name}
+                          src={imgUrl}
+                          alt={project?.name}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
@@ -73,13 +60,13 @@ export function Projects() {
                       }
 
                       {/* Product Type Badge - Top Right Corner */}
-                      {project?.payload?.type &&
+                      {project?.type &&
                         <div className="absolute top-3 right-3 z-10">
-                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project?.payload?.type === 'our product'
+                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project?.type === 'our product'
                             ? 'bg-primary text-white'
                             : 'bg-secondary text-white'
                             }`}>
-                            {project?.payload?.type}
+                            {project?.type}
                           </span>
                         </div>
                       }
@@ -88,24 +75,24 @@ export function Projects() {
                     {/* Project Content */}
                     <div className="p-5 space-y-4">
                       {/* Project Name */}
-                      {project?.payload?.name &&
+                      {project?.name &&
                         <h3 className="text-xl font-bold text-text-primary group-hover:text-primary transition-colors">
-                          {project?.payload?.name}
+                          {project?.name}
                         </h3>
                       }
 
                       {/* Description */}
-                      {project?.payload?.details &&
+                      {project?.details &&
                         <p className="text-sm text-text-secondary leading-relaxed"
                         >
-                          <ExpandableText text={project?.payload?.details} maxLines={3} />
+                          <ExpandableText text={project?.details} maxLines={3} />
                         </p>
                       }
 
                       {/* Technologies */}
-                      {project?.payload?.technologies_ref?.length > 0 &&
+                      {project?.technologies_ref?.length > 0 &&
                         <div className="flex flex-wrap gap-1.5">
-                          {project?.payload?.technologies_ref?.map((tech: any, techIndex: any) => (
+                          {project?.technologies_ref?.map((tech: any, techIndex: any) => (
                             <span
                               key={techIndex}
                               className="px-2 py-1 rounded-md bg-bg-muted text-text-secondary text-xs"
@@ -123,13 +110,13 @@ export function Projects() {
                       {/* Divider */}
 
                       {/* Client Review */}
-                      {project?.payload?.rating_ref && (
+                      {project?.rating_ref && (
                         <>
                           <div className="border-t border-border/30"></div>
                           <div className="space-y-2">
                             {/* Rating */}
                             <div className="flex items-center gap-1">
-                              {[...Array(project?.payload?.rating_ref?.rating)].map((_, i) => (
+                              {[...Array(project?.rating_ref?.rating)].map((_, i) => (
                                 <svg
                                   key={i}
                                   className="w-3.5 h-3.5 text-yellow-400"
@@ -142,22 +129,22 @@ export function Projects() {
                             </div>
 
                             {/* Review Text */}
-                            {project?.payload?.rating_ref?.message && (
+                            {project?.rating_ref?.message && (
                               <p className="text-xs text-text-secondary italic leading-relaxed">
-                                <ExpandableText text={project?.payload?.rating_ref?.message} maxLines={2} />
+                                <ExpandableText text={project?.rating_ref?.message} maxLines={2} />
                               </p>
                             )}
 
                             {/* Client Info */}
                             <div>
-                              {project?.payload?.rating_ref?.client_name &&
+                              {project?.rating_ref?.client_name &&
                                 <div className="font-medium text-xs text-text-primary">
-                                  {project?.payload?.rating_ref?.client_name}
+                                  {project?.rating_ref?.client_name}
                                 </div>
                               }
-                              {project?.payload?.rating_ref?.designation &&
+                              {project?.rating_ref?.designation &&
                                 <div className="text-xs text-text-secondary">
-                                  {project?.payload?.rating_ref?.designation}
+                                  {project?.rating_ref?.designation}
                                 </div>
                               }
                             </div>
@@ -166,9 +153,9 @@ export function Projects() {
                       )}
 
                       {/* View Project Link */}
-                      {project?.payload?.url && (
+                      {project?.url && (
                         <a
-                          href={project?.payload?.url}
+                          href={project?.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block pt-2 border-t border-border/30"
@@ -192,7 +179,7 @@ export function Projects() {
           {/* Image Modal */}
           {selectedImage && (
             <ImageModal
-              image={APIENDPOINT + selectedImage.image}
+              image={selectedImage.image}
               alt={selectedImage.alt}
               isOpen={!!selectedImage}
               onClose={() => setSelectedImage(null)}

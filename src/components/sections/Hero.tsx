@@ -1,53 +1,16 @@
 import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
-import { StatCard } from '../ui/StatCard';
 import { MarkedText } from '../ui/MarkedText';
-import { AchievementCard } from '../ui/AchievementCard';
-import { useComponyDetail } from '../../context/componyContext';
-import { useEffect, useState } from 'react';
-import { getFormEntriesByFormName } from '../../services/formservices';
-import { FORMNAMES } from '../../utilities/codes';
 import { useNavigate } from 'react-router-dom';
+import detail from '../../assets/detail.json'
+import Lottie from "lottie-react";
+import homeanim from "../../assets/lottie/Codeeee.json";
+
 
 export function Hero() {
-  const { componyProfile, setStatistics, statistics } = useComponyDetail();
-  const [achievements, setAchievements] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getStatistics();
-    getAchievements();
-  }, [])
-
-  const getStatistics = async () => {
-    try {
-      const data = await getFormEntriesByFormName(FORMNAMES.STATISTICS);
-      if (data) {
-        let values: any = []
-        const animationStyles = [
-          'absolute -top-8 -right-8 animate-float',
-          'absolute top-1/4 -left-8 animate-float',
-          'absolute bottom-1/4 -right-12 animate-float',
-          'absolute -bottom-8 left-8 animate-float',
-        ]
-
-        for (let index = 0; index < data?.length; index++) {
-          const eachval = data[index];
-          values?.push({ ...eachval, animationStyle: animationStyles[index] })
-        }
-        setStatistics(values)
-      }
-    } catch (error) { }
-  }
-
-  const getAchievements = async () => {
-    try {
-      const data = await getFormEntriesByFormName(FORMNAMES.ACHIEVEMENT);
-      if (data && data?.length > 0) setAchievements(data)
-    } catch (error) { }
-  }
+  const { profile } = detail
 
   return (
     <Section py="xs" className="relative overflow-hidden">
@@ -58,121 +21,127 @@ export function Hero() {
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
 
-      <Container className="relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <Container className="relative overflow-hidden ">
+        {/* premium ambient background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute left-10 top-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+          <div className="absolute right-0 bottom-0 h-[28rem] w-[28rem] rounded-full bg-secondary/20 blur-3xl" />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center">
           {/* Left Side */}
-          <div className="space-y-8 animate-fade-in">
-            {/* Animated Badge */}
-            {componyProfile?.welcome_tagline &&
-              <div className="inline-block">
-                <Badge variant="success" className="animate-slide-up">
-                  <span className="flex items-center gap-2">
-                    {componyProfile?.welcome_tagline}
-                  </span>
-                </Badge>
-              </div>
-            }
+          <div className="space-y-10">
+            <div className="space-y-6">
+              {profile?.short_title && (
+                <MarkedText
+                  as="h1"
+                  text={profile.short_title}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.02] tracking-tight max-w-3xl"
+                />
+              )}
 
-            {/* Headline */}
-            {componyProfile?.short_title &&
-              <MarkedText
-                as="h1"
-                text={componyProfile?.short_title}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance"
-              />
-            }
+              {profile?.short_description && (
+                <p className="text-lg md:text-xl text-text-secondary leading-8 max-w-2xl">
+                  {profile.short_description}
+                </p>
+              )}
+            </div>
 
-            {/* Supporting Paragraph */}
-            {componyProfile?.short_description &&
-              <p className="text-xl text-text-secondary max-w-xl leading-relaxed">
-                {componyProfile?.short_description}
-              </p>
-            }
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <Button variant="primary" size="lg" onClick={() => navigate('/about')}>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Button
+                variant="primary"
+                onClick={() => navigate('/about')}
+                className="px-7 py-3.5 text-sm rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
                 About Us
               </Button>
-              <Button variant="outline" size="lg" onClick={() => navigate('/projects')}>
+
+              <Button
+                variant="outline"
+                onClick={() => navigate('/projects')}
+                className="px-7 py-3.5 text-sm rounded-2xl border-2"
+              >
                 View Our Work
               </Button>
             </div>
 
-            {/* Achievements */}
-            {achievements?.length > 0 && (
-              <div className="pt-3">
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
-                  {achievements?.map((achievement: any, idx) => (
-                    <AchievementCard
-                      key={idx}
-                      title={achievement?.payload?.title}
-                      certificate_image={achievement?.payload?.certificate_image?.fileUrl}
-                      issuing_organization={achievement?.payload?.issuing_organization}
-                      organization_logo={achievement?.payload?.image?.fileUrl}
-                      className="animate-fade-in"
-                      style={{ animationDelay: `${idx * 0.1}s` }}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
+            {profile?.statistics?.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 max-w-3xl">
+                {profile.statistics.slice(0, 3).map((stat, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/60 backdrop-blur-xl px-6 py-5 shadow-sm dark:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <h3 className="text-3xl font-bold tracking-tight text-text-primary dark:text-white">
+                      {stat?.number}
+                    </h3>
 
-            {/* Social Proof statistics */}
-            {statistics?.length > 0 &&
-              <div className="flex flex-wrap gap-8 pt-4 border-t border-border">
-                {statistics?.slice(4, statistics.length)?.map((stat: any, idx: number) => (
-                  <div key={idx}>
-                    <div className="text-3xl font-bold text-text-primary">{stat?.payload?.number}</div>
-                    <div className="text-sm text-text-secondary">{stat?.payload?.title}</div>
+                    <p className="mt-2 text-sm text-text-secondary dark:text-zinc-400">
+                      {stat?.title}
+                    </p>
                   </div>
                 ))}
               </div>
-            }
+            )}
           </div>
 
           {/* Right Side */}
-          {statistics?.length > 0 &&
-            <>
-              <div className="relative lg:block hidden">
-                {/* Professional Image Placeholder */}
-                <div className="relative">
-                  <div className="w-full h-[600px] rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border shadow-strong flex items-center justify-center">
-                    <div className="text-center space-y-4">
-                      <div className="w-24 h-24 mx-auto bg-primary/30 rounded-full flex items-center justify-center">
-                        <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                      </div>
-                      <p className="text-text-secondary">Professional Development</p>
-                    </div>
-                  </div>
+          <div className="relative hidden lg:flex justify-center items-center min-h-[640px] w-full">
+            {/* ambient glow */}
+            <div className="absolute w-[540px] h-[540px] rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/10 blur-3xl" />
+            <div className="absolute top-12 right-12 w-40 h-40 rounded-full bg-primary/20 blur-2xl" />
+            <div className="absolute bottom-16 left-6 w-32 h-32 rounded-full bg-secondary/20 blur-2xl" />
 
-                  {/* Floating Stat Cards */}
-                  {statistics?.slice(0, 4)?.map((stats: any, idx: number) => (
-                    <div key={idx} className={stats?.animationStyle} style={{ animationDelay: `${idx + 0.5}s` }}>
-                      <StatCard
-                        value={stats?.payload?.number}
-                        label={stats?.payload?.title}
-                        floating
-                        className="w-48 bg-bg-card/95 backdrop-blur-sm"
-                      />
-                    </div>
-                  ))}
+            {/* depth layer */}
+            <div className="absolute w-[460px] h-[460px] rounded-[42px] bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 rotate-6 shadow-2xl" />
+
+            {/* main preview card */}
+            <div className="relative z-10 w-full max-w-[520px] rounded-[36px] bg-white/75 dark:bg-white/10 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex gap-2">
+                  <span className="w-3 h-3 rounded-full bg-red-400" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <span className="w-3 h-3 rounded-full bg-green-400" />
                 </div>
               </div>
 
-              {/* Mobile: Show simplified version */}
-              <div className="lg:hidden space-y-6">
-                {statistics?.slice(0, 4)?.map((stats: any, idx: number) => (
-                  <div key={idx} className="grid grid-cols-2 gap-4">
-                    <StatCard value={stats?.payload?.number} label={stats?.payload?.title} floating />
-                  </div>
-                ))}
-
+              <div className="rounded-3xl overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-white/5 dark:to-white/10 border border-border/40 dark:border-white/10">
+                <Lottie animationData={homeanim} loop className="w-full h-auto" />
               </div>
-            </>
-          }
+            </div>
+
+            {/* floating achievement cards */}
+            {profile?.achievement?.slice(0, 3).map((item, idx) => {
+              const positions = [
+                "top-6 -right-4",
+                "bottom-16 -left-8",
+                "top-1/2 -left-12"
+              ];
+
+              return (
+                <div
+                  key={idx}
+                  className={`absolute ${positions[idx]} z-20 min-w-[200px] rounded-2xl border border-white/60 dark:border-white/10 bg-white/90 dark:bg-zinc-900/80 backdrop-blur-xl px-4 py-3 shadow-xl`}
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={item?.image}
+                      alt={item?.title}
+                      className="w-11 h-11 rounded-xl object-contain bg-muted dark:bg-white/5 p-1"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-text-primary dark:text-white leading-5">
+                        {item?.title}
+                      </p>
+                      <p className="text-xs text-text-secondary dark:text-zinc-400">
+                        {item?.issuing_organization}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Container>
     </Section>

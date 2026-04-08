@@ -2,23 +2,11 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
-import { useEffect, useState } from 'react';
-import { getFormEntriesByFormName } from '../../services/formservices';
-import { FORMNAMES } from '../../utilities/codes';
+import detail from '../../assets/detail.json'
+
 
 export function CompanyMilestones() {
-  const [journey, setJourney] = useState([]);
-
-  useEffect(() => {
-    getJourney();
-  }, [])
-
-  const getJourney = async () => {
-    try {
-      const data = await getFormEntriesByFormName(FORMNAMES.JOURNEY);
-      if (data && data?.length > 0) setJourney(data);
-    } catch (error) { }
-  }
+  const { about } = detail;
 
   return (
     <Section py="xl" className="bg-bg-muted relative overflow-hidden">
@@ -42,16 +30,16 @@ export function CompanyMilestones() {
         <div className="relative">
           {/* Timeline line - Desktop */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary via-secondary to-primary opacity-30"></div>
-          
+
           {/* Timeline line - Mobile */}
           <div className="md:hidden absolute left-4 w-0.5 h-full bg-gradient-to-b from-primary via-secondary to-primary opacity-30"></div>
 
           <div className="space-y-8 md:space-y-12">
-            {journey.map((step: any, idx: number) => {
+            {about.journey.map((step: any, idx: number) => {
               const isEven = idx % 2 === 0;
               return (
                 <>
-                  {step?.payload?.active &&
+                  {step?.active &&
                     <div
                       key={idx}
                       className="relative animate-fade-in"
@@ -62,17 +50,17 @@ export function CompanyMilestones() {
                         {/* Left Side - Year Badge (even) or Content (odd) */}
                         <div className={`w-[calc(50%-20px)] flex ${isEven ? 'justify-end pr-4' : 'justify-start pl-4'}`}>
                           {isEven ? (
-                            step?.payload?.year &&
+                            step?.year &&
                             (<Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
-                              <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{step?.payload?.year}</div>
+                              <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{step?.year}</div>
                             </Card>)
                           ) : (
-                            (step?.payload?.title || step?.payload?.details) &&
+                            (step?.title || step?.details) &&
                             (<Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
-                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.payload?.title}</h3>
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.title}</h3>
                               <p className="text-sm md:text-base text-text-secondary leading-relaxed"
                                 dangerouslySetInnerHTML={{
-                                  __html: step?.payload?.details
+                                  __html: step?.details
                                 }}
                               ></p>
                             </Card>)
@@ -87,19 +75,19 @@ export function CompanyMilestones() {
                         {/* Right Side - Content (even) or Year Badge (odd) */}
                         <div className={`w-[calc(50%-20px)] flex ${!isEven ? 'justify-start pl-4' : 'justify-end pr-4'}`}>
                           {isEven ? (
-                            (step?.payload?.title || step?.payload?.details) &&
+                            (step?.title || step?.details) &&
                             (<Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
-                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.payload?.title}</h3>
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.title}</h3>
                               <p className="text-sm md:text-base text-text-secondary leading-relaxed"
                                 dangerouslySetInnerHTML={{
-                                  __html: step?.payload?.details
+                                  __html: step?.details
                                 }}
                               ></p>
                             </Card>)
                           ) : (
-                            step?.payload?.year &&
+                            step?.year &&
                             (<Card className="p-4 md:p-6 transition-all duration-300" noBaseStyles={true}>
-                              <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{step?.payload?.year}</div>
+                              <div className="text-2xl md:text-3xl font-bold text-text-primary text-right">{step?.year}</div>
                             </Card>)
                           )}
                         </div>
@@ -112,17 +100,17 @@ export function CompanyMilestones() {
 
                         {/* Content */}
                         <div className="flex-1 space-y-3">
-                          {step?.payload?.year &&
+                          {step?.year &&
                             <Card className="p-4" noBaseStyles={true}>
-                              <div className="text-xl font-bold text-text-primary">{step?.payload?.year}</div>
+                              <div className="text-xl font-bold text-text-primary">{step?.year}</div>
                             </Card>
                           }
-                          {(step?.payload?.title || step?.payload?.details) &&
+                          {(step?.title || step?.details) &&
                             <Card className="p-4 md:p-6 lg:p-8 hover border-2 border-border/50 hover:border-primary/30 transition-all duration-300">
-                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.payload?.title}</h3>
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-text-primary">{step?.title}</h3>
                               <p className="text-sm md:text-base text-text-secondary leading-relaxed"
                                 dangerouslySetInnerHTML={{
-                                  __html: step?.payload?.details
+                                  __html: step?.details
                                 }}
                               ></p>
                             </Card>}

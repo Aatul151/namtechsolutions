@@ -1,0 +1,557 @@
+{
+    "profile": {
+        "name": "NAMTech Solutions",
+        "slogan": "Innovation • Quality • Excellence",
+        "welcome_message": "We Build High-Quality Mobile Apps & Web Platforms",
+        "about": "<p><strong>NAMTech Solutions</strong> is a growing software development company based in Navsari, focused on delivering modern and practical technology solutions. As a startup, we are dedicated to innovation, quality, and continuous improvement.</p><p>Our team works with a wide range of technologies to build reliable, scalable, and user-friendly software tailored to each client’s needs. By combining local expertise with a global outlook, we help businesses turn their ideas into effective digital products that support growth and success.</p><p>At NAMTech Solutions, we value creativity, efficiency, and strong client relationships, striving to provide customized solutions that meet the unique requirements of every project while staying updated with the latest trends in technology.</p>",
+        "address": "316, Uma darshan arcade, Near J.K Tower, Kabilpore, Navsari, Gujarat",
+        "pincode": 396424,
+        "email": "aatul.work@gmail.com",
+        "mobile_number": 9998950000,
+        "telephone": null,
+        "website_url": "https://namtechsolutions.in",
+        "upwork": "https://upwork.com",
+        "linkedin": "",
+        "fiverr": "",
+        "twitter": "",
+        "facebook": "",
+        "instagram": "",
+        "logo": "/images/logo/namTechSolutions.png",
+        "short_title": " Build [[Premium Software]] That Scales",
+        "vision": "<p>To become a globally recognized leader in software development, known for innovation, reliability, and client success. We envision a future where technology seamlessly integrates with business needs, creating transformative digital experiences.</p>",
+        "gst_number": "",
+        "google_map_url": "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1363.0757975027534!2d72.95726595794977!3d20.94939337492353!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1771649990193!5m2!1sen!2sin",
+        "secondary_logo": "/images/logo/logo.png",
+        "short_description": "Enterprise-grade software development services. We deliver scalable, secure, and innovative solutions that drive your business forward.",
+        "mission": "<p>To empower businesses worldwide with cutting-edge software solutions that drive growth, efficiency, and innovation. We strive to deliver exceptional quality, maintain the highest standards of security, and build lasting partnerships with our clients.</p>",
+        "primary_color": "#0f3fd2",
+        "secondary_color": "#cd740e",
+        "copyright_text": "<p>Copyright © 2024 &nbsp;<a href=\"https://namtechsolutions.in\">NAMTech Solutions</a>&nbsp; | All rights reserved</p>",
+        "maintenance_mode": false,
+        "achievement": [
+            {
+                "title": "Top Rated Plus",
+                "type": "achievement",
+                "issuing_organization": "Upwork",
+                "certificate_image": "/images/achievement/upworkLogo.png",
+                "description": "",
+                "image": "/images/achievement/upworkLogo.png"
+            }
+        ],
+        "statistics": [
+            {
+                "animationStyle": "absolute -top-8 -right-8 animate-float",
+                "title": "Client Rating",
+                "number": 4.9,
+                "icon": "/images/statistics/r_1771568020745_gufq16y.png"
+            },
+            {
+                "animationStyle": "absolute top-1/4 -left-8 animate-float",
+                "title": "Technologies Use",
+                "number": 25,
+                "icon": "/images/statistics/ea_1771568054269_c51gv1s.jpg"
+            },
+            {
+                "animationStyle": "absolute bottom-1/4 -right-12 animate-float",
+                "title": "Years of Experience",
+                "number": 3,
+                "icon": "/images/statistics/Experience_1771568080477_wkvirpr.png"
+            },
+            {
+                "animationStyle": "absolute -bottom-8 left-8 animate-float",
+                "title": "Team Members",
+                "number": 10,
+                "icon": "/images/statistics/Team_1771568106198_nphyhgh.jpg"
+            },
+            {
+                "animationStyle": "absolute -top-8 -right-8 animate-float",
+                "title": "Completed Projects",
+                "number": 12,
+                "icon": "/images/statistics/Projectschecj_1771568162862_06b2alp.png"
+            },
+            {
+                "animationStyle": "absolute -top-8 -right-8 animate-float",
+                "title": "Global Customers",
+                "number": 40,
+                "icon": "/images/statistics/Global_Customers_1771568185172_su3jbm9.png"
+            }
+        ]
+    },
+    "about": {
+        "strengths": [
+            {
+                "title": "Flexibility",
+                "details": "<p>We value your feedback every step of the way. We welcome your feedback throughout the entire process and are flexible with what we can offer to meet your business needs.</p>",
+                "icon": "/images/strengths/Flexibility.png"
+            },
+            {
+                "title": "Support",
+                "details": "<p>From day one we provide an expert team of designers and developers who are at the forefront of the digital industry to help &amp; guide you. We also offer post-development service upon request.</p>",
+                "icon": "/images/strengths/Support.png"
+            },
+            {
+                "title": "High Quality",
+                "details": "<p>Be it web development, custom application development, or UI/UX design you are guaranteed professional results that will give you higher traffic and a good conversion rate.</p>",
+                "icon": "/images/strengths/highquality.png"
+            },
+            {
+                "title": "Scalability",
+                "details": "<p>Our solutions are built to grow with your business. Whether you're starting small or expanding rapidly, we ensure your platform remains flexible, efficient, and ready for future demands.</p>",
+                "icon": "/images/strengths/scalability.png"
+            }
+        ],
+        "journey": [
+            {
+                "year": "2026",
+                "title": "AI & Emerging Tech Jury 2025",
+                "details": "<p>Specialized jury focused on artificial intelligence, cybersecurity, and next-gen IT innovations.</p>",
+                "active": true
+            },
+            {
+                "year": "2024",
+                "title": "Tech Growth & Scaling",
+                "details": "<p>Industry leaders reviewing scalable IT startup solutions and digital transformation projects.</p>",
+                "active": true
+            },
+            {
+                "year": "2023",
+                "title": "Company Founded",
+                "details": "<p>NAMTech Solutions was established in Navsari with a vision to deliver innovative software solutions.</p>",
+                "active": true
+            }
+        ]
+    },
+    "our_services": {
+        "services": [
+            {
+                "Title": "CRM Integration Services",
+                "description": "Integrate and customize leading CRM platforms such as Zoho CRM and Salesforce to streamline customer management, automate workflows, and improve sales and support operations.",
+                "image": null,
+                "technologis_ref": [
+                    {
+                        "_id": "69955313310c655a390ec909",
+                        "name": "Hubspot",
+                        "logo": "/images/technologies/hubspot_1771393801911_sji8kmm.png"
+                    },
+                    {
+                        "_id": "699553a3310c655a390eca29",
+                        "name": "Salesforce",
+                        "logo": "/images/technologies/salesforce_1771393945958_us9rvw1.png"
+                    },
+                    {
+                        "_id": "699553d1310c655a390ecaa1",
+                        "name": "Zoho",
+                        "logo": "/images/technologies/zoho_1771393997784_3swp28b.png"
+                    }
+                ]
+            },
+            {
+                "Title": "Database Design & Development",
+                "description": "Design, develop, and optimize secure, scalable, and high-performance database systems to ensure efficient data management and fast application performance.",
+                "image": "/images/services/databse_1771579464655_7ps3ywu.png",
+                "technologis_ref": [
+                    {
+                        "_id": "699552fb310c655a390ec8d9",
+                        "name": "Firebase",
+                        "logo": "/images/technologies/firebase_1771393783952_isuem20.png"
+                    },
+                    {
+                        "_id": "69955346310c655a390ec969",
+                        "name": "MongoDB",
+                        "logo": "/images/technologies/mongodb_1771393858026_6pdz1zu.png"
+                    },
+                    {
+                        "_id": "69955354310c655a390ec981",
+                        "name": "mysql",
+                        "logo": "/images/technologies/mysql_1771393868499_es3dgjs.png"
+                    },
+                    {
+                        "_id": "69955395310c655a390eca11",
+                        "name": "Redis",
+                        "logo": "/images/technologies/redis_1771393934471_vybzjob.png"
+                    },
+                    {
+                        "_id": "699556eb310c655a390ece77",
+                        "name": "Postgresql",
+                        "logo": "/images/technologies/Postgresql_1771394793810_vqltryk.png"
+                    }
+                ]
+            },
+            {
+                "Title": "Cloud Solutions",
+                "description": "Deploy and manage applications on cloud platforms for high availability.",
+                "image": "/images/services/cloud_solution_1771579678861_8lpi1z0.png",
+                "technologis_ref": [
+                    {
+                        "_id": "69955603310c655a390ecd7e",
+                        "name": "AWS",
+                        "logo": "/images/technologies/AWS_1771394562147_jl6oswb.png"
+                    },
+                    {
+                        "_id": "69955622310c655a390ecd96",
+                        "name": "DigitalOcean",
+                        "logo": "/images/technologies/DigitalOcean_1771394593643_f4vkj7s.png"
+                    },
+                    {
+                        "_id": "69955641310c655a390ecdae",
+                        "name": "Docker",
+                        "logo": "/images/technologies/Docker_1771394624357_r09v7tr.png"
+                    },
+                    {
+                        "_id": "6995565b310c655a390ecdc6",
+                        "name": "Nginx",
+                        "logo": "/images/technologies/Nginx_1771394650333_hddjdad.png"
+                    }
+                ]
+            },
+            {
+                "Title": "Backend Development",
+                "description": "Build secure and scalable server-side applications and APIs.",
+                "image": null,
+                "technologis_ref": [
+                    {
+                        "_id": "69955370310c655a390ec9c9",
+                        "name": "Node.js",
+                        "logo": "/images/technologies/node_1771393900103_nxf5y23.png"
+                    },
+                    {
+                        "_id": "69955584310c655a390ecce5",
+                        "name": "Express js",
+                        "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
+                    },
+                    {
+                        "_id": "699555be310c655a390eccfd",
+                        "name": "NestJS",
+                        "logo": "/images/technologies/NestJS_1771394493660_l5r4t5s.jpg"
+                    }
+                ]
+            },
+            {
+                "Title": "Mobile App Development",
+                "description": "Build high-quality native and cross-platform mobile apps designed for performance, usability, and scalability.",
+                "image": "/images/services/app_1771391414390_xp0zl3e.png",
+                "technologis_ref": [
+                    {
+                        "_id": "6995531b310c655a390ec921",
+                        "name": "Ionic",
+                        "logo": "/images/technologies/ionic_1771393815542_m18hot1.png"
+                    },
+                    {
+                        "_id": "699554c9310c655a390ecc29",
+                        "name": "React Native",
+                        "logo": "/images/technologies/native_1771394248033_temhahh.png"
+                    }
+                ]
+            },
+            {
+                "Title": "Website Development",
+                "description": "Build modern, responsive websites and web applications optimized for performance, usability, and scalability.",
+                "image": "/images/services/webdev_1771391381348_py80b0i.png",
+                "technologis_ref": [
+                    {
+                        "_id": "699552d8310c655a390ec891",
+                        "name": "Angular",
+                        "logo": "/images/technologies/angular_1771393746758_rpqrcbv.png"
+                    },
+                    {
+                        "_id": "699552e8310c655a390ec8a9",
+                        "name": "Bootstrap",
+                        "logo": "/images/technologies/bootstrap_1771393758483_h2ufkg1.png"
+                    },
+                    {
+                        "_id": "699552f2310c655a390ec8c1",
+                        "name": "CSS",
+                        "logo": "/images/technologies/css_1771393773222_vo6issa.png"
+                    },
+                    {
+                        "_id": "69955305310c655a390ec8f1",
+                        "name": "Html",
+                        "logo": "/images/technologies/html_1771393793490_fgn2x7u.png"
+                    },
+                    {
+                        "_id": "6995532f310c655a390ec939",
+                        "name": "javaScript",
+                        "logo": "/images/technologies/js_1771393824035_8udwuoo.png"
+                    },
+                    {
+                        "_id": "6995533c310c655a390ec951",
+                        "name": "MUI",
+                        "logo": "/images/technologies/matui_1771393844834_un3boa5.png"
+                    },
+                    {
+                        "_id": "6995535d310c655a390ec999",
+                        "name": ".net",
+                        "logo": "/images/technologies/net_1771393881536_hoxzui5.png"
+                    },
+                    {
+                        "_id": "69955367310c655a390ec9b1",
+                        "name": "Next.js",
+                        "logo": "/images/technologies/next1_1771393890103_sgudxvg.png"
+                    },
+                    {
+                        "_id": "69955380310c655a390ec9e1",
+                        "name": "Python",
+                        "logo": "/images/technologies/python_1771393912977_atb0frd.png"
+                    },
+                    {
+                        "_id": "69955389310c655a390ec9f9",
+                        "name": "React.js",
+                        "logo": "/images/technologies/react_1771393925288_61bj0mo.png"
+                    },
+                    {
+                        "_id": "699553aa310c655a390eca41",
+                        "name": "Scss",
+                        "logo": "/images/technologies/scss_1771393960026_vbn5ctm.png"
+                    },
+                    {
+                        "_id": "699553b5310c655a390eca59",
+                        "name": "Strapi",
+                        "logo": "/images/technologies/strapi_1771393966473_482zpx8.png"
+                    },
+                    {
+                        "_id": "699553c0310c655a390eca71",
+                        "name": "TypeScript",
+                        "logo": "/images/technologies/typescript_1771393977047_25oz784.png"
+                    },
+                    {
+                        "_id": "699553c9310c655a390eca89",
+                        "name": "Vite.js",
+                        "logo": "/images/technologies/vite_1771393988705_3z9qq6k.png"
+                    }
+                ]
+            },
+            {
+                "Title": "UI/UX",
+                "description": "Design modern, intuitive UI/UX that improves usability and user satisfaction.",
+                "image": "/images/services/UI_1771391342267_8ykmenm.png",
+                "technologis_ref": [
+                    {
+                        "_id": "69955446310c655a390ecb58",
+                        "name": "Figma",
+                        "logo": "/images/technologies/figma_1771394117745_fsuyeg5.png"
+                    }
+                ]
+            }
+        ],
+        "technologies": [
+            {
+                "name": "Postgresql",
+                "logo": "/images/technologies/Postgresql_1771394793810_vqltryk.png"
+            },
+            {
+                "name": "Nginx",
+                "logo": "/images/technologies/Nginx_1771394650333_hddjdad.png"
+            },
+            {
+                "name": "Docker",
+                "logo": "/images/technologies/Docker_1771394624357_r09v7tr.png"
+            },
+            {
+                "name": "DigitalOcean",
+                "logo": "/images/technologies/DigitalOcean_1771394593643_f4vkj7s.png"
+            },
+            {
+                "name": "AWS",
+                "logo": "/images/technologies/AWS_1771394562147_jl6oswb.png"
+            },
+            {
+                "name": "NestJS",
+                "logo": "/images/technologies/NestJS_1771394493660_l5r4t5s.jpg"
+            },
+            {
+                "name": "Express js",
+                "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
+            },
+            {
+                "name": "React Native",
+                "logo": "/images/technologies/native_1771394248033_temhahh.png"
+            },
+            {
+                "name": "Figma",
+                "logo": "/images/technologies/figma_1771394117745_fsuyeg5.png"
+            },
+            {
+                "name": "Zoho",
+                "logo": "/images/technologies/zoho_1771393997784_3swp28b.png"
+            }
+        ]
+    },
+    "why_us": [
+        {
+            "title": "Rapid Response",
+            "description": "<p>Average response time under 30 minutes. We understand that time is critical.</p>",
+            "icon": "/images/why_us/rapid_1771582118301_24klsxp.png"
+        },
+        {
+            "title": "Agile Methodology",
+            "description": "<p>Sprint-based delivery with continuous integration and deployment pipelines.</p>",
+            "icon": "/images/why_us/agile_1771582066044_85g5pip.png"
+        },
+        {
+            "title": "Transparent Process",
+            "description": "<p>100% transparency with regular updates, code reviews, and open communication.</p>",
+            "icon": "/images/why_us/eye_1771582090306_a0d80go.png"
+        },
+        {
+            "title": "Scalable Architecture",
+            "description": "<p>Built to grow with your business, handling millions of users seamlessly.</p>",
+            "icon": "/images/why_us/architecture_1771582097580_levuiru.png"
+        },
+        {
+            "title": "Enterprise Security",
+            "description": "<p>NDA-protected, SOC 2 compliant, and following industry best practices.</p>",
+            "icon": "/images/why_us/lock_1771582103446_ijyokkc.png"
+        }
+    ],
+    "testimonials": [
+        {
+            "client_name": "Mr. Json li",
+            "designation": "CEO, Talent Directory",
+            "message": "Professional, responsive, and highly skilled — delivered exactly what we needed and more!",
+            "rating": 5
+        },
+        {
+            "client_name": "Mr. Manoj jain",
+            "designation": "Founder, Relixi",
+            "message": "Excellent communication and focused work! They diligently met our project needs and exceeded expectations.Great development skills!",
+            "rating": 5
+        },
+        {
+            "client_name": "Mr Allown D.",
+            "designation": "Founder, Datalix",
+            "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
+            "rating": 5
+        }
+    ],
+    "projects": [
+        {
+            "name": "Sooj AI",
+            "url": "https://i-ai.in/",
+            "type": "our product",
+            "rating": "",
+            "banners": "/images/projects/soojAI_1771653247419_x8xgg5r.png",
+            "details": "<p>Transform your images into meaningful, category-specific content with ease using our AI-powered platform. Whether you’re managing e-commerce listings, blog visuals, or social media posts, our system intelligently analyzes your images and generates tailored text to match your needs. No more manual tagging or time-consuming content creation — just upload an image, choose your category, and let our AI handle the rest. It's fast, accurate, and scalable for businesses of any size. Streamline your workflow and boost engagement with intelligent automation that understands your visual data.</p>",
+            "technologies_ref": [
+                {
+                    "_id": "69955370310c655a390ec9c9",
+                    "name": "Node.js",
+                    "logo": "/images/technologies/node_1771393900103_nxf5y23.png"
+                }
+            ]
+        },
+        {
+            "name": "Talent Directory",
+            "url": "",
+            "type": "",
+            "rating": "69959c4d66047687ac2711f7",
+            "banners": "/images/projects/talent-directory_1771648319849_asqpqgm.png",
+            "details": "<p>Discover and connect with the best bioinformatics professionals across World.</p>",
+            "technologies_ref": [
+                {
+                    "_id": "69955370310c655a390ec9c9",
+                    "name": "Node.js",
+                    "logo": "/images/technologies/node_1771393900103_nxf5y23 copy.png"
+                },
+                {
+                    "_id": "69955389310c655a390ec9f9",
+                    "name": "React.js",
+                    "logo": "/images/technologies/react_1771393925288_61bj0mo.png"
+                },
+                {
+                    "_id": "69955584310c655a390ecce5",
+                    "name": "Express js",
+                    "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
+                },
+                {
+                    "_id": "69955622310c655a390ecd96",
+                    "name": "DigitalOcean",
+                    "logo": "/images/technologies/DigitalOcean_1771394593643_f4vkj7s.png"
+                },
+                {
+                    "_id": "699556eb310c655a390ece77",
+                    "name": "Postgresql",
+                    "logo": "/images/technologies/Postgresql_1771394793810_vqltryk.png"
+                }
+            ],
+            "rating_ref": {
+                "_id": "69959c4d66047687ac2711f7",
+                "client_name": "Mr. Json li",
+                "designation": "CEO, Talent Directory",
+                "message": "Professional, responsive, and highly skilled — delivered exactly what we needed and more!",
+                "rating": 5
+            }
+        },
+        {
+            "name": "TPRM - Risk Management",
+            "url": " https://tprm.riskpro.in",
+            "type": "client product",
+            "rating": "69959c1566047687ac2711d4",
+            "banners": "/images/projects/riskpro_1771648185966_5mon68w.png",
+            "details": "<p>Risk 365 is an automated, collaborative SaaS platform to perform assessments. Save time and improve security with our secure, paperless system.</p>",
+            "technologies_ref": [
+                {
+                    "_id": "6995533c310c655a390ec951",
+                    "name": "MUI",
+                    "logo": "/images/technologies/matui_1771393844834_un3boa5.png"
+                },
+                {
+                    "_id": "69955346310c655a390ec969",
+                    "name": "MongoDB",
+                    "logo": "/images/technologies/mongodb_1771393858026_6pdz1zu.png"
+                },
+                {
+                    "_id": "69955370310c655a390ec9c9",
+                    "name": "Node.js",
+                    "logo": "/images/technologies/node_1771393900103_nxf5y23.png"
+                },
+                {
+                    "_id": "69955389310c655a390ec9f9",
+                    "name": "React.js",
+                    "logo": "/images/technologies/react_1771393925288_61bj0mo.png"
+                },
+                {
+                    "_id": "699553c9310c655a390eca89",
+                    "name": "Vite.js",
+                    "logo": "/images/technologies/vite-7S7rnGAv_1771583392446_tkx3p5h.png"
+                },
+                {
+                    "_id": "69955584310c655a390ecce5",
+                    "name": "Express js",
+                    "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
+                }
+            ],
+            "rating_ref": {
+                "_id": "69959c1566047687ac2711d4",
+                "client_name": "Mr. Manoj jain",
+                "designation": "Founder, Relixi",
+                "message": "Excellent communication and focused work! They diligently met our project needs and exceeded expectations.Great development skills!",
+                "rating": 5
+            }
+        },
+        {
+            "name": "Datalix",
+            "url": "https://datalix.com/",
+            "client_review": "69954f3a310c655a390ec6a8",
+            "details": "<p>Datalix People Search allows you to quickly and easily find a single contact or multiple contacts, identify their email address and export the results to CSV or push the results to your CRM</p>",
+            "banners": "/images/projects/datalix-DiE5YnQy_1771393221233_7d92wco.png",
+            "client_name": "Allon D.",
+            "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
+            "rating": "69959bbf66047687ac2711c2",
+            "rating_ref": {
+                "_id": "69959bbf66047687ac2711c2",
+                "client_name": "Mr Allown D.",
+                "designation": "Founder, Datalix",
+                "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
+                "rating": 5
+            },
+            "type": "",
+            "technologies_ref": [
+                {
+                    "_id": "699552d8310c655a390ec891",
+                    "name": "Angular",
+                    "logo": "/images/technologies/angular_1771393746758_rpqrcbv.png"
+                }
+            ]
+        }
+    ]
+}

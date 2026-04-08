@@ -3,11 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { useTheme } from '../../hooks/useTheme';
 import { useScrollShadow } from '../../hooks/useScrollShadow';
-import { useComponyDetail } from '../../context/componyContext';
-import { APIENDPOINT } from '../../services/apihelper';
+import detail from '../../assets/detail.json';
 
-export function Header({ navMenu }:any) {
-  const { componyProfile } = useComponyDetail();
+export function Header({ navMenu }: any) {
+  const { profile } = detail
   const { theme, toggleTheme } = useTheme();
   const hasShadow = useScrollShadow();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,11 +20,11 @@ export function Header({ navMenu }:any) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          {componyProfile?.logo &&
+          {profile?.logo &&
             <div className="flex-shrink-0">
               <a href="#" className="flex items-center">
                 <img
-                  src={APIENDPOINT + componyProfile?.logo?.fileUrl}
+                  src={profile?.logo}
                   alt="Namtech Solutions"
                   className="h-8 md:h-10 w-auto object-contain"
                 />
@@ -36,7 +35,7 @@ export function Header({ navMenu }:any) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <nav className="hidden md:flex items-center space-x-8">
-              {navMenu?.filter((item:any) => !item?.isFooterLink)?.map((item:any) => (
+              {navMenu?.filter((item: any) => !item?.isFooterLink)?.map((item: any) => (
                 <Link
                   key={item?.path}
                   to={item?.path}
@@ -93,7 +92,7 @@ export function Header({ navMenu }:any) {
         {mobileMenuOpen && (
           <div className="md:hidden pb-4 border-t border-border mt-4 pt-4">
             <nav className="flex flex-col space-y-4">
-              {navMenu?.filter((item:any) => !item?.isFooterLink)?.map((item:any) => (
+              {navMenu?.filter((item: any) => !item?.isFooterLink)?.map((item: any) => (
                 <Link
                   key={item?.path}
                   to={item?.path}

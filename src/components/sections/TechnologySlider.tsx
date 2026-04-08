@@ -1,25 +1,11 @@
-import { useEffect, useState } from 'react';
-import { getFormEntriesByFormName } from '../../services/formservices';
-import { FORMNAMES } from '../../utilities/codes';
-import { APIENDPOINT } from '../../services/apihelper';
+import detail from '../../assets/detail.json'
 
 export function TechnologySlider() {
-  const [technologies, setTechnologies] = useState([]);
-
-  useEffect(() => {
-    getTechnologies();
-  }, [])
-
-  const getTechnologies = async () => {
-    try {
-      const data = await getFormEntriesByFormName(FORMNAMES.TECHNOLOGIES);
-      if (data && data?.length > 0) setTechnologies(data);
-    } catch (error) { }
-  }
+  const { our_services } = detail;
 
   return (
     <>
-      {technologies?.length > 0 &&
+      {our_services.technologies?.length > 0 &&
         <section className="w-full py-4 md:py-16 lg:py-20 bg-bg-main border-y border-border/30 overflow-hidden relative">
           {/* Subtle background decoration */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -29,13 +15,13 @@ export function TechnologySlider() {
           <div className="w-full relative overflow-hidden py-4 md:py-8">
             {/* Slider Track */}
             <div className="flex animate-scroll gap-4 md:gap-8 lg:gap-12 items-center">
-              {technologies?.map((tech: any, idx: number) => (
+              {our_services.technologies?.map((tech: any, idx: number) => (
                 <div
-                  key={`${tech?.payload?.name}-${idx}`}
+                  key={`${tech?.name}-${idx}`}
                   className="flex flex-col items-center justify-center gap-2 md:gap-4 flex-shrink-0 group px-2 md:px-6"
                 >
                   {/* Logo Container with enhanced styling */}
-                  {tech?.payload?.logo &&
+                  {tech?.logo &&
                     <div className="relative">
                       {/* Glow effect on hover */}
                       <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -46,13 +32,13 @@ export function TechnologySlider() {
                         <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary/0 via-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:via-primary/5 group-hover:to-secondary/10 transition-all duration-500"></div>
 
                         <img
-                          src={APIENDPOINT + tech?.payload?.logo?.fileUrl}
-                          alt={tech?.payload?.name}
+                          src={tech?.logo}
+                          alt={tech?.name}
                           className="relative z-10 w-full h-full object-contain filter group-hover:scale-110 group-hover:brightness-110 transition-all duration-500"
                           onError={(e) => {
                             // Fallback to placeholder if image fails to load
                             const target = e.target as HTMLImageElement;
-                            target.src = `https://via.placeholder.com/80x80/6366f1/ffffff?text=${tech?.payload?.name.charAt(0)}`;
+                            target.src = `https://via.placeholder.com/80x80/6366f1/ffffff?text=${tech?.name.charAt(0)}`;
                           }}
                         />
                       </div>
@@ -60,10 +46,10 @@ export function TechnologySlider() {
                   }
 
                   {/* Tech Name with enhanced styling */}
-                  {tech?.payload?.name &&
+                  {tech?.name &&
                     <div className="relative">
                       <span className="text-xs md:text-sm lg:text-base font-semibold text-text-secondary group-hover:text-primary transition-all duration-300 text-center whitespace-nowrap relative z-10">
-                        {tech?.payload?.name}
+                        {tech?.name}
                       </span>
                       {/* Underline effect on hover */}
                       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300"></div>

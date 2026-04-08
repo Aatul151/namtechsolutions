@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { Loader } from "./components/ui/Loader";
-import { useEffect, useState } from "react";
+import { useEffect, } from "react";
 import { useComponyDetail } from "./context/componyContext";
 import { getFormEntriesByFormName } from "./services/formservices";
 import { FORMNAMES } from "./utilities/codes";
@@ -15,12 +15,12 @@ import { WhyChooseUsPage } from "./pages/WhyChooseUsPage";
 import { TestimonialsPage } from "./pages/TestimonialsPage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
-import ErrorComponent from "./components/ui/ErrorComponent";
+
 
 function App() {
   const { setLoading } = useLoader();
-  const { setComponyProfile, componyProfile } = useComponyDetail();
-  const [guestToken, setGuestToken] = useState<string | null>(null);
+  const { setComponyProfile } = useComponyDetail();
+  // const [ setGuestToken] = useState<string | null>(null);
 
   useEffect(() => {
     fetchGuestToken();
@@ -31,7 +31,7 @@ function App() {
       setLoading(true);
       const responseToken = await fetchGuestUserToken();
       if (responseToken) {
-        setGuestToken(responseToken);
+        // setGuestToken(responseToken);
         getComponyProfile();
       }
       setLoading(false);
@@ -61,32 +61,32 @@ function App() {
     { label: "Projects", path: "/projects" },
     { label: "Why Us", path: "/why-us" },
     { label: "Testimonials", path: "/testimonials" },
-    { label: "Contact", path: "/contact", isFooterLink : true },
+    { label: "Contact", path: "/contact", isFooterLink: true },
   ];
 
 
   return (
     <>
       <Loader />
-      {guestToken && componyProfile ? (
-        <div className="min-h-screen bg-bg-main">
-          <Header navMenu={navMenu}/>
-          <main>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/why-us" element={<WhyChooseUsPage />} />
-              <Route path="/testimonials" element={<TestimonialsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </main>
-          <Footer navMenu={navMenu}/>
-        </div>
-      ) : (
+      {/* {guestToken && componyProfile ? ( */}
+      <div className="min-h-screen bg-bg-main">
+        <Header navMenu={navMenu} />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/why-us" element={<WhyChooseUsPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
+        <Footer navMenu={navMenu} />
+      </div>
+      {/* ) : (
         <ErrorComponent />
-      )}
+      )} */}
     </>
   );
 }
