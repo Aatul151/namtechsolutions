@@ -27,6 +27,7 @@ export function Header({ navMenu }: any) {
                   src={profile?.logo}
                   alt="Namtech Solutions"
                   className="h-8 md:h-10 w-auto object-contain"
+                  onClick={() => navigate("/")}
                 />
               </a>
             </div>

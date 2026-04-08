@@ -9,6 +9,7 @@ import { WhyChooseUsPage } from "./pages/WhyChooseUsPage";
 import { TestimonialsPage } from "./pages/TestimonialsPage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
+import ScrollToTop from "./components/sections/Scroller";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       <Loader />
       {/* {guestToken && componyProfile ? ( */}
       <div className="min-h-screen bg-bg-main">
+        <ScrollToTop />
         <Header navMenu={navMenu} />
         <main>
           <Routes>
