@@ -1,4 +1,3 @@
-import { MarkedText } from '../ui/MarkedText';
 import detail from '../../assets/detail.json';
 
 export function CompanyLocation() {
@@ -8,64 +7,60 @@ export function CompanyLocation() {
     <>
       {(profile?.address || profile?.email || profile?.mobile_number) &&
 
-        <div className="rounded-2xl border border-border bg-bg-card p-6 md:p-7 shadow-sm 
-                        hover:shadow-lg transition-all duration-300">
+        <div className="grid gap-6 border-y border-zinc-200 py-6 dark:border-white/10 lg:grid-cols-3">
+          {/* Address */}
+          {profile?.address && (
+            <div className="flex items-start gap-3 lg:pr-6 lg:border-r lg:border-zinc-200 dark:lg:border-white/10">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                📍
+              </div>
 
-          {/* Title */}
-          <div className="mb-6">
-            <MarkedText as="h2" text="Get in [[Touch]]" />
-            <p className="text-sm md:text-base text-text-secondary mt-2">
-              We're here to help you.
-            </p>
-          </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+                  Address
+                </p>
+                <p className="text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  {profile.address}
+                </p>
+              </div>
+            </div>
+          )}
 
-          {/* Info List */}
-          <ul className="space-y-5">
+          {/* Email */}
+          {profile?.email && (
+            <div className="flex items-start gap-3 lg:px-6 lg:border-r lg:border-zinc-200 dark:lg:border-white/10">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+                ✉️
+              </div>
 
-            {/* Address */}
-            {profile?.address && (
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  📍
-                </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+                  Email
+                </p>
+                <p className="break-all text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  {profile.email}
+                </p>
+              </div>
+            </div>
+          )}
 
-                <div className="text-sm md:text-base">
-                  <p className="font-semibold text-text-primary">Address</p>
-                  <p className="text-text-secondary">{profile.address}</p>
-                </div>
-              </li>
-            )}
+          {/* Phone */}
+          {profile?.mobile_number && (
+            <div className="flex items-start gap-3 lg:pl-6">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                📞
+              </div>
 
-            {/* Email */}
-            {profile?.email && (
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary/10 text-secondary">
-                  ✉️
-                </div>
-
-                <div className="text-sm md:text-base">
-                  <p className="font-semibold text-text-primary">Email</p>
-                  <p className="text-text-secondary">{profile.email}</p>
-                </div>
-              </li>
-            )}
-
-            {/* Phone */}
-            {profile?.mobile_number && (
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  📞
-                </div>
-
-                <div className="text-sm md:text-base">
-                  <p className="font-semibold text-text-primary">Phone</p>
-                  <p className="text-text-secondary">{profile.mobile_number}</p>
-                </div>
-              </li>
-            )}
-
-          </ul>
-
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+                  Phone
+                </p>
+                <p className="text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  {profile.mobile_number}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       }
     </>

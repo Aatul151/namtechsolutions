@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useLoader } from '../../hooks/useLoader';
 import { APIENDPOINT } from '../../services/apihelper';
+import detail from '../../assets/detail.json'
 
 export function Loader() {
   const { isLoading } = useLoader();
   const [isVisible, setIsVisible] = useState(true);
-  const logoImage = localStorage.getItem('logo') || null
+  const { profile } = detail
+  const logoImage = profile?.secondary_logo || null
 
   useEffect(() => {
     if (!isLoading) {
@@ -29,12 +31,12 @@ export function Loader() {
           {logoImage ? (
             <div className="relative w-24 h-24 md:w-32 md:h-32">
               <img
-                src={APIENDPOINT + logoImage}
+                src={logoImage}
                 alt="Logo"
                 className="w-full h-full object-contain animate-pulse"
               />
               {/* Spinning ring */}
-              <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-secondary animate-spin"></div>
+              {/* <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-secondary animate-spin"></div> */}
             </div>
           ) : (
             <>
