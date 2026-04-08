@@ -425,6 +425,78 @@
     ],
     "projects": [
         {
+            "name": "Datalix",
+            "url": "https://datalix.com/",
+            "client_review": "69954f3a310c655a390ec6a8",
+            "details": "<p>Datalix People Search allows you to quickly and easily find a single contact or multiple contacts, identify their email address and export the results to CSV or push the results to your CRM</p>",
+            "banners": "/images/projects/datalix-DiE5YnQy_1771393221233_7d92wco.png",
+            "client_name": "Allon D.",
+            "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
+            "rating": "69959bbf66047687ac2711c2",
+            "rating_ref": {
+                "_id": "69959bbf66047687ac2711c2",
+                "client_name": "Mr Allown D.",
+                "designation": "Founder, Datalix",
+                "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
+                "rating": 5
+            },
+            "type": "",
+            "technologies_ref": [
+                {
+                    "_id": "699552d8310c655a390ec891",
+                    "name": "Angular",
+                    "logo": "/images/technologies/angular_1771393746758_rpqrcbv.png"
+                }
+            ]
+        },
+        {
+            "name": "TPRM - Risk Management",
+            "url": " https://tprm.riskpro.in",
+            "type": "client product",
+            "rating": "69959c1566047687ac2711d4",
+            "banners": "/images/projects/riskpro_1771648185966_5mon68w.png",
+            "details": "<p>Risk 365 is an automated, collaborative SaaS platform to perform assessments. Save time and improve security with our secure, paperless system.</p>",
+            "technologies_ref": [
+                {
+                    "_id": "6995533c310c655a390ec951",
+                    "name": "MUI",
+                    "logo": "/images/technologies/matui_1771393844834_un3boa5.png"
+                },
+                {
+                    "_id": "69955346310c655a390ec969",
+                    "name": "MongoDB",
+                    "logo": "/images/technologies/mongodb_1771393858026_6pdz1zu.png"
+                },
+                {
+                    "_id": "69955370310c655a390ec9c9",
+                    "name": "Node.js",
+                    "logo": "/images/technologies/node_1771393900103_nxf5y23.png"
+                },
+                {
+                    "_id": "69955389310c655a390ec9f9",
+                    "name": "React.js",
+                    "logo": "/images/technologies/react_1771393925288_61bj0mo.png"
+                },
+                {
+                    "_id": "699553c9310c655a390eca89",
+                    "name": "Vite.js",
+                    "logo": "/images/technologies/vite-7S7rnGAv_1771583392446_tkx3p5h.png"
+                },
+                {
+                    "_id": "69955584310c655a390ecce5",
+                    "name": "Express js",
+                    "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
+                }
+            ],
+            "rating_ref": {
+                "_id": "69959c1566047687ac2711d4",
+                "client_name": "Mr. Manoj jain",
+                "designation": "Founder, Relixi",
+                "message": "Excellent communication and focused work! They diligently met our project needs and exceeded expectations.Great development skills!",
+                "rating": 5
+            }
+        },
+        {
             "name": "Sooj AI",
             "url": "https://i-ai.in/",
             "type": "our product",
@@ -480,78 +552,6 @@
                 "message": "Professional, responsive, and highly skilled — delivered exactly what we needed and more!",
                 "rating": 5
             }
-        },
-        {
-            "name": "TPRM - Risk Management",
-            "url": " https://tprm.riskpro.in",
-            "type": "client product",
-            "rating": "69959c1566047687ac2711d4",
-            "banners": "/images/projects/riskpro_1771648185966_5mon68w.png",
-            "details": "<p>Risk 365 is an automated, collaborative SaaS platform to perform assessments. Save time and improve security with our secure, paperless system.</p>",
-            "technologies_ref": [
-                {
-                    "_id": "6995533c310c655a390ec951",
-                    "name": "MUI",
-                    "logo": "/images/technologies/matui_1771393844834_un3boa5.png"
-                },
-                {
-                    "_id": "69955346310c655a390ec969",
-                    "name": "MongoDB",
-                    "logo": "/images/technologies/mongodb_1771393858026_6pdz1zu.png"
-                },
-                {
-                    "_id": "69955370310c655a390ec9c9",
-                    "name": "Node.js",
-                    "logo": "/images/technologies/node_1771393900103_nxf5y23.png"
-                },
-                {
-                    "_id": "69955389310c655a390ec9f9",
-                    "name": "React.js",
-                    "logo": "/images/technologies/react_1771393925288_61bj0mo.png"
-                },
-                {
-                    "_id": "699553c9310c655a390eca89",
-                    "name": "Vite.js",
-                    "logo": "/images/technologies/vite-7S7rnGAv_1771583392446_tkx3p5h.png"
-                },
-                {
-                    "_id": "69955584310c655a390ecce5",
-                    "name": "Express js",
-                    "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
-                }
-            ],
-            "rating_ref": {
-                "_id": "69959c1566047687ac2711d4",
-                "client_name": "Mr. Manoj jain",
-                "designation": "Founder, Relixi",
-                "message": "Excellent communication and focused work! They diligently met our project needs and exceeded expectations.Great development skills!",
-                "rating": 5
-            }
-        },
-        {
-            "name": "Datalix",
-            "url": "https://datalix.com/",
-            "client_review": "69954f3a310c655a390ec6a8",
-            "details": "<p>Datalix People Search allows you to quickly and easily find a single contact or multiple contacts, identify their email address and export the results to CSV or push the results to your CRM</p>",
-            "banners": "/images/projects/datalix-DiE5YnQy_1771393221233_7d92wco.png",
-            "client_name": "Allon D.",
-            "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
-            "rating": "69959bbf66047687ac2711c2",
-            "rating_ref": {
-                "_id": "69959bbf66047687ac2711c2",
-                "client_name": "Mr Allown D.",
-                "designation": "Founder, Datalix",
-                "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
-                "rating": 5
-            },
-            "type": "",
-            "technologies_ref": [
-                {
-                    "_id": "699552d8310c655a390ec891",
-                    "name": "Angular",
-                    "logo": "/images/technologies/angular_1771393746758_rpqrcbv.png"
-                }
-            ]
         }
     ]
 }

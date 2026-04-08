@@ -17,7 +17,7 @@ const ExpandableText = ({ text, maxLines = 2 }: any) => {
   if (!text) return null;
 
   return (
-    <div className="text-xs text-text-secondary italic">
+    <div className="text-sm leading-7 text-zinc-600 dark:text-zinc-400">
       <p
         ref={textRef}
         style={{
@@ -32,9 +32,9 @@ const ExpandableText = ({ text, maxLines = 2 }: any) => {
       {overflow && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-primary text-xs"
+          className="mt-2 inline-flex items-center text-xs font-medium text-primary transition hover:opacity-80"
         >
-          {expanded ? "See less" : "See more"}
+          {expanded ? "Show less" : "Read more"}
         </button>
       )}
     </div>

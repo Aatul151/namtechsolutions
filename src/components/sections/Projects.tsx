@@ -25,19 +25,19 @@ export function Projects() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="space-y-16">
               {projects?.map((project: any, index: any) => {
                 const imgUrl = project?.banners;
 
                 return (
                   <div
                     key={project?._id}
-                    className="group relative bg-bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300 animate-fade-in"
+                    className="grid items-center gap-8 border-b border-zinc-200 pb-12 dark:border-white/10 lg:grid-cols-2 animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    {/* Project Image */}
+                    {/* Image */}
                     <div
-                      className="relative h-48 overflow-hidden cursor-pointer"
+                      className="group relative overflow-hidden rounded-3xl cursor-pointer"
                       onClick={
                         imgUrl
                           ? () =>
@@ -45,90 +45,91 @@ export function Projects() {
                               image: imgUrl,
                               alt: project?.name,
                             })
-                          : undefined}
+                          : undefined
+                      }
                     >
-                      {project?.banners &&
+                      {project?.banners && (
                         <img
                           src={imgUrl}
                           alt={project?.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          className="h-[320px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = `https://via.placeholder.com/600x400/6366f1/ffffff?text=${project.name}`;
+                            target.src = `https://via.placeholder.com/800x500/6366f1/ffffff?text=${project.name}`;
                           }}
                         />
-                      }
+                      )}
 
-                      {/* Product Type Badge - Top Right Corner */}
-                      {project?.type &&
-                        <div className="absolute top-3 right-3 z-10">
-                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project?.type === 'our product'
-                            ? 'bg-primary text-white'
-                            : 'bg-secondary text-white'
-                            }`}>
-                            {project?.type}
+                      {project?.type && (
+                        <div className="absolute left-4 top-4">
+                          <span
+                            className={`rounded-full px-3 py-1 text-xs font-medium ${project?.type === "our product"
+                              ? "bg-primary text-white"
+                              : "bg-secondary text-white"
+                              }`}
+                          >
+                            {project.type}
                           </span>
                         </div>
-                      }
+                      )}
                     </div>
 
-                    {/* Project Content */}
-                    <div className="p-5 space-y-4">
-                      {/* Project Name */}
-                      {project?.name &&
-                        <h3 className="text-xl font-bold text-text-primary group-hover:text-primary transition-colors">
-                          {project?.name}
+                    {/* Content */}
+                    <div className="space-y-5">
+                      {project?.name && (
+                        <h3 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                          {project.name}
                         </h3>
-                      }
+                      )}
 
-                      {/* Description */}
-                      {project?.details &&
-                        <p className="text-sm text-text-secondary leading-relaxed"
-                        >
-                          <ExpandableText text={project?.details} maxLines={3} />
-                        </p>
-                      }
+                      {project?.details && (
+                        <div className="text-base leading-8 text-zinc-600 dark:text-zinc-400">
+                          <ExpandableText text={project.details} maxLines={4} />
+                        </div>
+                      )}
 
-                      {/* Technologies */}
-                      {project?.technologies_ref?.length > 0 &&
-                        <div className="flex flex-wrap gap-1.5">
-                          {project?.technologies_ref?.map((tech: any, techIndex: any) => (
+                      {/* technologies */}
+                      {project?.technologies_ref?.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies_ref.map((tech: any, techIndex: any) => (
                             <span
                               key={techIndex}
-                              className="px-2 py-1 rounded-md bg-bg-muted text-text-secondary text-xs"
+                              className="text-sm text-zinc-500 dark:text-zinc-400"
                             >
                               {tech?.name}
+                              {techIndex !== project.technologies_ref.length - 1 && " •"}
                             </span>
                           ))}
-                          {/* {project.technologies.length > 4 && (
-                          <span className="px-2 py-1 rounded-md bg-bg-muted text-text-secondary text-xs">
-                            +{project.technologies.length - 4}
-                          </span>
-                        )} */}
                         </div>
-                      }
-                      {/* Divider */}
+                      )}
 
-                      {/* View Project Link */}
+                      {/* link */}
                       {project?.url && (
                         <a
-                          href={project?.url}
+                          href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block pt-2 border-t border-border/30"
-                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 pt-2 text-sm font-medium text-primary"
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs text-text-secondary">View Project</span>
-                            <svg className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </div>
+                          View Project
+                          <svg
+                            className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
                         </a>
                       )}
                     </div>
                   </div>
-                )
+                );
               })}
             </div>
           </Container>
