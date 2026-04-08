@@ -140,7 +140,7 @@ function ContactUs() {
                 Success ✅
               </h2>
               <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
-                Your message has been sent successfully.
+                Thank you for reaching out. We will contact you shortly through the email address or mobile number you have provided.
               </p>
               <button
                 onClick={() => {

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useLoader } from '../../hooks/useLoader';
-import { APIENDPOINT } from '../../services/apihelper';
 import detail from '../../assets/detail.json'
 
 export function Loader() {

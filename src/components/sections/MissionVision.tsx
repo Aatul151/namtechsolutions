@@ -1,6 +1,5 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
-import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
 import detail from '../../assets/detail.json'
 
