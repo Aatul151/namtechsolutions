@@ -2,11 +2,12 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { Card } from '../ui/Card';
 import { MarkedText } from '../ui/MarkedText';
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 
 export function CompanyMilestones() {
-  const { about } = detail;
+  const { componyProfile } = useComponyDetail();
+  const { about } = componyProfile;
 
   return (
     <Section py="xl" className="bg-bg-muted relative overflow-hidden">

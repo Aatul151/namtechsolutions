@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useLoader } from '../../hooks/useLoader';
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 export function Loader() {
   const { isLoading } = useLoader();
+  const { componyProfile } = useComponyDetail();
+
   const [isVisible, setIsVisible] = useState(true);
-  const { profile } = detail
+  const { profile } = componyProfile
   const logoImage = profile?.secondary_logo || null
 
   useEffect(() => {

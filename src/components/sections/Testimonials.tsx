@@ -1,10 +1,11 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
-import detail from '../../assets/detail.json';
+import { useComponyDetail } from '../../context/componyContext';
 
 export function Testimonials() {
-  const { testimonials } = detail;
+    const { componyProfile } = useComponyDetail();
+  const { testimonials } = componyProfile;
 
   return (
     <>
@@ -22,7 +23,7 @@ export function Testimonials() {
             </div>
 
             <div className="relative grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {testimonials?.map((testimonial, index) => (
+              {testimonials?.map((testimonial: any, index: number) => (
                 <div
                   key={index}
                   className="group relative pl-6 animate-fade-in"

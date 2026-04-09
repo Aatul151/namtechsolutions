@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { useTheme } from '../../hooks/useTheme';
 import { useScrollShadow } from '../../hooks/useScrollShadow';
-import detail from '../../assets/detail.json';
+import { useComponyDetail } from '../../context/componyContext';
 
 export function Header({ navMenu }: any) {
-  const { profile } = detail
+  const { componyProfile } = useComponyDetail();
+  const { profile } = componyProfile
   const { theme, toggleTheme } = useTheme();
   const hasShadow = useScrollShadow();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

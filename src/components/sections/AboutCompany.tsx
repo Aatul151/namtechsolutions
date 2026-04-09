@@ -1,7 +1,7 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 
 interface AboutCompanyProps {
@@ -11,7 +11,8 @@ interface AboutCompanyProps {
 export function AboutCompany({
   title = "About [[Our Company]]",
 }: AboutCompanyProps) {
-  const { profile, about } = detail;
+  const { componyProfile } = useComponyDetail();
+  const { profile, about } = componyProfile;
 
   return (
     <Section id="about" py="md" className="relative overflow-hidden bg-gradient-to-b from-bg-main via-bg-card/50 to-bg-main">

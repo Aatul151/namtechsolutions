@@ -1,10 +1,11 @@
 import { Section } from '../ui/Section';
 import { Container } from '../ui/Container';
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 
 function GoogleMap() {
-    const { profile } = detail
+    const { componyProfile } = useComponyDetail();
+    const { profile } = componyProfile
 
     return (
         <Section py="xs" className="relative overflow-hidden">

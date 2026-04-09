@@ -1,10 +1,11 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 export function WhyChooseUs() {
-  const { why_us } = detail
+  const { componyProfile } = useComponyDetail();
+  const { why_us } = componyProfile
 
   return (
     <Section id="why-us" py="xl">
@@ -20,7 +21,7 @@ export function WhyChooseUs() {
         </div>
 
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {why_us?.map((feature, idx) => (
+          {why_us?.map((feature: any, idx: number) => (
             <div
               key={idx}
               className="group flex items-start gap-4 animate-fade-in"

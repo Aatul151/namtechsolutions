@@ -10,8 +10,17 @@ import { TestimonialsPage } from "./pages/TestimonialsPage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import ScrollToTop from "./components/sections/Scroller";
+import { useEffect } from "react";
+import { useComponyDetail } from "./context/componyContext";
 
 function App() {
+  const { setComponyProfile } = useComponyDetail();
+
+  useEffect(() => {
+    fetch("/lib/detail.json")
+      .then((res) => res.json())
+      .then((data) => setComponyProfile(data));
+  }, []);
 
   const navMenu = [
     { label: "Home", path: "/" },

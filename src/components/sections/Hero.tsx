@@ -3,14 +3,15 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
 import { useNavigate } from 'react-router-dom';
-import detail from '../../assets/detail.json'
 import Lottie from "lottie-react";
 import homeanim from "../../assets/lottie/Codeeee.json";
+import { useComponyDetail } from '../../context/componyContext';
 
 
 export function Hero() {
   const navigate = useNavigate();
-  const { profile } = detail
+    const { componyProfile } = useComponyDetail();
+  const { profile } = componyProfile
 
   return (
     <Section py="xs" className="relative overflow-hidden">
@@ -67,7 +68,7 @@ export function Hero() {
 
             {profile?.statistics?.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 max-w-3xl">
-                {profile.statistics.slice(0, 3).map((stat, idx) => (
+                {profile.statistics.slice(0, 3).map((stat:any, idx:any) => (
                   <div
                     key={idx}
                     className="rounded-2xl border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/60 backdrop-blur-xl px-6 py-5 shadow-sm dark:shadow-lg transition-all duration-300 hover:-translate-y-1"
@@ -111,7 +112,7 @@ export function Hero() {
             </div>
 
             {/* floating achievement cards */}
-            {profile?.achievement?.slice(0, 3).map((item, idx) => {
+            {profile?.achievement?.slice(0, 3).map((item:any, idx:any) => {
               const positions = [
                 "top-6 -right-4",
                 "bottom-16 -left-8",

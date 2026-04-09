@@ -1,11 +1,12 @@
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 
 export function MissionVision() {
-  const { profile } = detail
+  const { componyProfile } = useComponyDetail();
+  const { profile } = componyProfile
 
   return (
     <>

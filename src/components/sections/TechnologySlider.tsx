@@ -1,7 +1,8 @@
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 export function TechnologySlider() {
-  const { our_services } = detail;
+  const { componyProfile } = useComponyDetail();
+  const { our_services } = componyProfile;
 
   return (
     <>

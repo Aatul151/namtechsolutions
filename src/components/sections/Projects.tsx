@@ -3,12 +3,13 @@ import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
 import { ImageModal } from '../ui/ImageModal';
 import ExpandableText from '../ui/ExpandableText';
-import detail from '../../assets/detail.json'
 import { useState } from 'react';
+import { useComponyDetail } from '../../context/componyContext';
 
 export function Projects() {
   const [selectedImage, setSelectedImage] = useState<{ image: string; alt: string } | null>(null);
-  const { projects } = detail
+  const { componyProfile } = useComponyDetail();
+  const { projects } = componyProfile
 
   return (
     <>

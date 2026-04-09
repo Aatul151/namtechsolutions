@@ -2,10 +2,11 @@ import { useRef } from 'react';
 import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
-import detail from '../../assets/detail.json';
+import { useComponyDetail } from '../../context/componyContext';
 
 export function Services() {
-  const { our_services } = detail;
+  const { componyProfile } = useComponyDetail();
+  const { our_services } = componyProfile;
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -34,7 +35,7 @@ export function Services() {
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-6 hide-scrollbar"
           >
-            {our_services?.services.map((service, index) => (
+            {our_services?.services.map((service: any, index: number) => (
               <div
                 key={index}
                 className="flex h-[390px] w-80 flex-shrink-0 snap-center cursor-pointer flex-col overflow-hidden rounded-3xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900/80 shadow-sm dark:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -66,7 +67,7 @@ export function Services() {
 
                 {/* Technology badges */}
                 <div className="mb-4 mt-3 flex flex-wrap justify-center gap-1.5 px-4">
-                  {service.technologis_ref?.map((tech, tidx) => (
+                  {service.technologis_ref?.map((tech: any, tidx: number) => (
                     <span
                       key={tidx}
                       className="rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-0.5 text-[11px] font-medium text-zinc-700 dark:text-zinc-300"

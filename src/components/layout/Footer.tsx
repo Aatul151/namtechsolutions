@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import detail from '../../assets/detail.json'
+import { useComponyDetail } from '../../context/componyContext';
 
 export function Footer({ navMenu }: any) {
-  const { profile } = detail
+  const { componyProfile } = useComponyDetail();
+  const { profile } = componyProfile
 
   return (
     <footer className="bg-bg-card border-t border-border">

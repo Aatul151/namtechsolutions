@@ -1,15 +1,17 @@
 import { useRef, useState } from "react";
 import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
-import details from '../../assets/detail.json'
 import emailjs from '@emailjs/browser';
 import { emailjsConfig } from "../../services/apihelper";
+import { useComponyDetail } from "../../context/componyContext";
 
 function ContactUs() {
+  const { componyProfile } = useComponyDetail();
+
   const [loader, setLoader] = useState<boolean>(false)
   const form = useRef<any>();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const { our_services } = details
+  const { our_services } = componyProfile
 
   const sendEmail = (e: any) => {
     setLoader(true)
@@ -100,7 +102,7 @@ function ContactUs() {
               <option value="" disabled>
                 Select a service
               </option>
-              {our_services?.services?.map((service, idx) => (
+              {our_services?.services?.map((service:any, idx:any) => (
                 <option key={idx} value={service.Title}>
                   {service.Title}
                 </option>

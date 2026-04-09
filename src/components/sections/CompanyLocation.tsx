@@ -1,7 +1,8 @@
-import detail from '../../assets/detail.json';
+import { useComponyDetail } from '../../context/componyContext';
 
 export function CompanyLocation() {
-  const { profile } = detail;
+  const { componyProfile } = useComponyDetail();
+  const { profile } = componyProfile;
 
   return (
     <>
