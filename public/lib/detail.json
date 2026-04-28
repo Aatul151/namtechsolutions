@@ -426,7 +426,7 @@
     "projects": [
         {
             "name": "Datalix",
-            "url": "https://datalix.com/",
+            "url": "https://app.datalix.com/",
             "client_review": "69954f3a310c655a390ec6a8",
             "details": "<p>Datalix People Search allows you to quickly and easily find a single contact or multiple contacts, identify their email address and export the results to CSV or push the results to your CRM</p>",
             "banners": "/images/projects/datalix-DiE5YnQy_1771393221233_7d92wco.png",
@@ -552,6 +552,36 @@
                 "message": "Professional, responsive, and highly skilled — delivered exactly what we needed and more!",
                 "rating": 5
             }
+        }
+    ],
+    "teamCertificates": [
+        {
+            "id": 1,
+            "image": "/images/team/1.png",
+            "title": "Employe Of The Month",
+            "date": "2026-03-1",
+            "type": "Frontend Developer"
+        },
+        {
+            "id": 2,
+            "image": "/images/team/2.jpg",
+            "title": "Rising Star",
+            "date": "2026-04-18",
+            "type": "Fresher Frontend Developer"
+        },
+        {
+            "id": 3,
+            "image": "/images/team/3.jpg",
+            "title": "Punctuality",
+            "date": "2026-04-18",
+            "type": "Frontend Developer"
+        },
+        {
+            "id": 4,
+            "image": "/images/team/4.jpeg",
+            "title": "Team Player Award",
+            "date": "2026-04-18",
+            "type": "Full Stack Developer"
         }
     ]
 }

@@ -12,6 +12,8 @@ import { ProjectsPage } from "./pages/ProjectsPage";
 import ScrollToTop from "./components/sections/Scroller";
 import { useEffect } from "react";
 import { useComponyDetail } from "./context/componyContext";
+import NotFoundPage from "./components/ui/NotFoundPage";
+import TeamPage from "./pages/TeamPage";
 
 function App() {
   const { setComponyProfile } = useComponyDetail();
@@ -24,12 +26,28 @@ function App() {
 
   const navMenu = [
     { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
+    {
+      label: "Company",
+      // path: "/team",
+      children: [
+        {
+          label: "About",
+          path: "/about",
+          description: "Company overview"
+        },
+        {
+          label: "Team",
+          path: "/team",
+          description: "Achievements"
+        }
+      ]
+    },
     { label: "Services", path: "/services" },
     { label: "Projects", path: "/projects" },
     { label: "Why Us", path: "/why-us" },
     { label: "Testimonials", path: "/testimonials" },
     { label: "Contact", path: "/contact", isFooterLink: true },
+
   ];
 
 
@@ -49,6 +67,8 @@ function App() {
             <Route path="/why-us" element={<WhyChooseUsPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer navMenu={navMenu} />

@@ -27,7 +27,7 @@ export function CTASection() {
               Get started with a free consultation today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="primary" size="lg" onClick={() => navigate('/contact')}>
+              <Button variant="outline" size="lg" onClick={() => navigate('/contact')}>
                 Contact now
               </Button>
             </div>

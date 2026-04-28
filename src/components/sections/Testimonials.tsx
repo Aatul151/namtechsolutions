@@ -9,7 +9,7 @@ export function Testimonials() {
 
   return (
     <>
-      {testimonials.length > 0 &&
+      {testimonials?.length > 0 &&
         <Section id="testimonials" py="xl" className="bg-bg-muted">
           <Container>
             <div className="text-center mb-16">

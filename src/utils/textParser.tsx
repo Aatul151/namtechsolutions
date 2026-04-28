@@ -40,11 +40,11 @@ export function parseGradientText(
       </GradientText>
     );
 
-    lastIndex = match.index + match[0].length;
+    lastIndex = match.index + match[0]?.length;
   }
 
   // Add remaining text after last marker
-  if (lastIndex < text.length) {
+  if (lastIndex < text?.length) {
     parts.push(
       <span key={`text-${key++}`}>
         {text.slice(lastIndex)}
@@ -53,7 +53,7 @@ export function parseGradientText(
   }
 
   // If no markers found, return the original text
-  if (parts.length === 0) {
+  if (parts?.length === 0) {
     return [text];
   }
 

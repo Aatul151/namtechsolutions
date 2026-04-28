@@ -127,12 +127,12 @@ export function AboutCompany({
         }
 
         {/* Bottom Feature Strip */}
-        {about.strengths?.length > 0 &&
+        {about?.strengths?.length > 0 &&
           <div className="mt-24">
 
             <div className="flex flex-wrap justify-center gap-6 md:gap-8">
 
-              {about.strengths?.map((strength: any, idx: number) => (
+              {about?.strengths?.map((strength: any, idx: number) => (
                 <div
                   key={idx}
                   className="group relative w-[260px] p-[1px] rounded-2xl 

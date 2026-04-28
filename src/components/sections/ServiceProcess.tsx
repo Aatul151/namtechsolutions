@@ -78,7 +78,7 @@ export function ServiceProcess() {
             {processSteps.map((step, index) => (
               <div key={index} className="relative animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 {/* Connecting Line - Mobile/Tablet */}
-                {index < processSteps.length - 1 && (
+                {index < processSteps?.length - 1 && (
                   <div className="lg:hidden absolute top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-secondary opacity-20 -z-10"></div>
                 )}
 

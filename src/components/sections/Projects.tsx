@@ -98,7 +98,7 @@ export function Projects() {
                               className="text-sm text-zinc-500 dark:text-zinc-400"
                             >
                               {tech?.name}
-                              {techIndex !== project.technologies_ref.length - 1 && " •"}
+                              {techIndex !== project.technologies_ref?.length - 1 && " •"}
                             </span>
                           ))}
                         </div>
