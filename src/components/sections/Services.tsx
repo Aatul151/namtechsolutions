@@ -3,6 +3,7 @@ import { Container } from '../ui/Container';
 import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
 import { useComponyDetail } from '../../context/componyContext';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 
 export function Services() {
   const { componyProfile } = useComponyDetail();
@@ -29,98 +30,86 @@ export function Services() {
           </p>
         </div>
 
-        {/* Scrollable Cards */}
-        <div className="relative">
+        {/* Scrollable Cards Container */}
+        <div className="relative group/container px-4 md:px-0">
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-6 hide-scrollbar"
+            className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory py-10 hide-scrollbar"
           >
-            {our_services?.services.map((service: any, index: number) => (
+            {our_services?.services?.map((service: any, index: number) => (
               <div
                 key={index}
-                className="flex h-[390px] w-80 flex-shrink-0 snap-center cursor-pointer flex-col overflow-hidden rounded-3xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900/80 shadow-sm dark:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="relative flex h-[420px] w-80 flex-shrink-0 snap-center cursor-pointer flex-col overflow-hidden rounded-[2rem] 
+                   border border-zinc-200/60 dark:border-white/5 
+                   bg-white/70 dark:bg-zinc-900/40 backdrop-blur-xl
+                   shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)]
+                   transition-all duration-500 ease-out 
+                   hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)] 
+                   dark:hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] group"
               >
-                {/* Top image/icon */}
-                <div className="flex h-28 items-center justify-center bg-zinc-50 dark:bg-zinc-800/60 border-b border-zinc-100 dark:border-white/5">
-                  {service.image ? (
+                {/* Glow Effect Background */}
+                <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-primary/5 blur-[80px] transition-opacity group-hover:opacity-100 opacity-0" />
+
+                {/* Top image/icon section - Made more minimalist */}
+                <div className="relative flex h-32 items-center justify-center overflow-hidden border-b border-zinc-100/50 dark:border-white/5 bg-zinc-50/50 dark:bg-white/[0.02]">
+                  {service?.image ? (
                     <img
-                      src={service.image}
-                      alt={service.Title}
-                      className="h-16 w-16 object-contain"
+                      src={service?.image}
+                      alt={service?.Title}
+                      className="h-14 w-14 object-contain transition-transform duration-500 group-hover:scale-110"
                     />
                   ) : (
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-3xl font-bold text-primary">
-                      {service.Title.charAt(0)}
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-2xl font-bold text-primary ring-1 ring-primary/20 transition-all duration-500 group-hover:rotate-6">
+                      {service?.Title?.charAt(0)}
                     </div>
                   )}
                 </div>
 
-                {/* Title */}
-                <h3 className="mt-5 px-4 text-center text-xl font-semibold text-zinc-900 dark:text-white">
-                  {service.Title}
-                </h3>
+                {/* Text Content */}
+                <div className="flex flex-1 flex-col px-6 py-6">
+                  <h3 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                    {service?.Title}
+                  </h3>
 
-                {/* Description */}
-                <p className="flex-1 px-5 pt-2 text-center text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                  {service.description}
-                </p>
+                  <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {service?.description}
+                  </p>
+                </div>
 
-                {/* Technology badges */}
-                <div className="mb-4 mt-3 flex flex-wrap justify-center gap-1.5 px-4">
-                  {service.technologis_ref?.map((tech: any, tidx: number) => (
+                {/* Technology badges - Re-styled for premium feel */}
+                <div className="mb-6 flex flex-wrap gap-2 px-6">
+                  {service?.technologis_ref?.slice(0, 3)?.map((tech: any, tidx: number) => (
                     <span
                       key={tidx}
-                      className="rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-0.5 text-[11px] font-medium text-zinc-700 dark:text-zinc-300"
+                      className="rounded-lg border border-zinc-200/50 dark:border-white/5 bg-zinc-100/50 dark:bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
                     >
-                      {tech.name}
+                      {tech?.name}
                     </span>
                   ))}
+                  {service?.technologis_ref?.length > 3 && (
+                    <span className="text-[10px] font-bold text-primary/60 mt-1">+{service?.technologis_ref?.length - 3}</span>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Left Button */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute top-1/2 -left-2 -translate-y-1/2 rounded-full border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900 p-2 shadow-md transition hover:bg-primary hover:text-white"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Navigation Buttons - Hidden on mobile, visible on group hover */}
+          <div className="hidden md:block opacity-0 group-hover/container:opacity-100 transition-opacity duration-300">
+            <button
+              onClick={() => scroll("left")}
+              className="absolute top-1/2 -left-6 -translate-y-1/2 rounded-full border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 p-3 shadow-xl backdrop-blur-md transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-90"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
+              <ChevronLeft className="h-5 w-5" />
+            </button>
 
-          {/* Right Button */}
-          <button
-            onClick={() => scroll("right")}
-            className="absolute top-1/2 -right-2 -translate-y-1/2 rounded-full border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900 p-2 shadow-md transition hover:bg-primary hover:text-white"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            <button
+              onClick={() => scroll("right")}
+              className="absolute top-1/2 -right-6 -translate-y-1/2 rounded-full border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 p-3 shadow-xl backdrop-blur-md transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-90"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </Container>
     </Section>

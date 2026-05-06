@@ -75,7 +75,11 @@
                 "number": 40,
                 "icon": "/images/statistics/Global_Customers_1771568185172_su3jbm9.png"
             }
-        ]
+        ],
+        "scroller": {
+            "title": "Global HQ",
+            "subTitle": "India"
+        }
     },
     "about": {
         "strengths": [

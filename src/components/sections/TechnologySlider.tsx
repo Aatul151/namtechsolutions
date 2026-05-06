@@ -6,7 +6,7 @@ export function TechnologySlider() {
 
   return (
     <>
-      {our_services.technologies?.length > 0 &&
+      {our_services?.technologies?.length > 0 &&
         <section className="w-full py-4 md:py-16 lg:py-20 bg-bg-main border-y border-border/30 overflow-hidden relative">
           {/* Subtle background decoration */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -16,7 +16,7 @@ export function TechnologySlider() {
           <div className="w-full relative overflow-hidden py-4 md:py-8">
             {/* Slider Track */}
             <div className="flex animate-scroll gap-4 md:gap-8 lg:gap-12 items-center">
-              {our_services.technologies?.map((tech: any, idx: number) => (
+              {our_services?.technologies?.map((tech: any, idx: number) => (
                 <div
                   key={`${tech?.name}-${idx}`}
                   className="flex flex-col items-center justify-center gap-2 md:gap-4 flex-shrink-0 group px-2 md:px-6"

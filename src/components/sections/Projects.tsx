@@ -69,7 +69,7 @@ export function Projects() {
                               : "bg-secondary text-white"
                               }`}
                           >
-                            {project.type}
+                            {project?.type}
                           </span>
                         </div>
                       )}
@@ -79,26 +79,26 @@ export function Projects() {
                     <div className="space-y-5">
                       {project?.name && (
                         <h3 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                          {project.name}
+                          {project?.name}
                         </h3>
                       )}
 
                       {project?.details && (
                         <div className="text-base leading-8 text-zinc-600 dark:text-zinc-400">
-                          <ExpandableText text={project.details} maxLines={4} />
+                          <ExpandableText text={project?.details} maxLines={4} />
                         </div>
                       )}
 
                       {/* technologies */}
                       {project?.technologies_ref?.length > 0 && (
                         <div className="flex flex-wrap gap-2">
-                          {project.technologies_ref.map((tech: any, techIndex: any) => (
+                          {project?.technologies_ref?.map((tech: any, techIndex: any) => (
                             <span
                               key={techIndex}
                               className="text-sm text-zinc-500 dark:text-zinc-400"
                             >
                               {tech?.name}
-                              {techIndex !== project.technologies_ref?.length - 1 && " •"}
+                              {techIndex !== project?.technologies_ref?.length - 1 && " •"}
                             </span>
                           ))}
                         </div>
