@@ -36,7 +36,7 @@ export function CompanyMilestones() {
           <div className="md:hidden absolute left-4 w-0.5 h-full bg-gradient-to-b from-primary via-secondary to-primary opacity-30"></div>
 
           <div className="space-y-8 md:space-y-12">
-            {about.journey.map((step: any, idx: number) => {
+            {about?.journey?.map((step: any, idx: number) => {
               const isEven = idx % 2 === 0;
               return (
                 <>
