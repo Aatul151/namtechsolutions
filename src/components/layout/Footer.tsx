@@ -16,7 +16,7 @@ export function Footer({ navMenu }: any) {
                 <img
                   src={profile?.logo}
                   alt="Namtech Solutions"
-                  className="h-8 md:h-10 w-auto object-contain"
+                  className="h-8 md:h-14 w-auto object-contain"
                 />
               </div>
             }

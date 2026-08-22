@@ -6,9 +6,9 @@
         "about": "<p><strong>NAMTech Solutions</strong> is a growing software development company based in Navsari, focused on delivering modern and practical technology solutions. As a startup, we are dedicated to innovation, quality, and continuous improvement.</p><p>Our team works with a wide range of technologies to build reliable, scalable, and user-friendly software tailored to each client’s needs. By combining local expertise with a global outlook, we help businesses turn their ideas into effective digital products that support growth and success.</p><p>At NAMTech Solutions, we value creativity, efficiency, and strong client relationships, striving to provide customized solutions that meet the unique requirements of every project while staying updated with the latest trends in technology.</p>",
         "address": "316, Uma darshan arcade, Near J.K Tower, Kabilpore, Navsari, Gujarat",
         "pincode": 396424,
-        "email": "aatul.work@gmail.com",
+        "email": "contact@namtechsolutions.in",
         "mobile_number": 9173538312,
-        "whatsApp_message":"Hi! I'm reaching out from your website.",
+        "whatsApp_message": "Hi! I'm reaching out from your website.",
         "telephone": null,
         "website_url": "https://namtechsolutions.in",
         "upwork": "https://upwork.com",
@@ -108,8 +108,14 @@
         "journey": [
             {
                 "year": "2026",
-                "title": "AI & Emerging Tech Jury 2025",
-                "details": "<p>Specialized jury focused on artificial intelligence, cybersecurity, and next-gen IT innovations.</p>",
+                "title": "Next-Generation Software Development",
+                "details": "<p>Focused on building AI-enabled, scalable, and high-performance software solutions tailored to modern business needs.</p>",
+                "active": true
+            },
+            {
+                "year": "2025",
+                "title": "Expanding Digital Solutions",
+                "details": "<p>Expanded our expertise in modern web development, cloud technologies, AI integration, and custom software solutions to deliver greater value for businesses.</p>",
                 "active": true
             },
             {
@@ -430,10 +436,10 @@
     ],
     "projects": [
         {
-            "name": "Datalix",
+            "name": "Datalix | Lead Gen Platform",
             "url": "https://app.datalix.com/",
             "client_review": "69954f3a310c655a390ec6a8",
-            "details": "<p>Datalix People Search allows you to quickly and easily find a single contact or multiple contacts, identify their email address and export the results to CSV or push the results to your CRM</p>",
+            "details": "<p>Lead Generation platform with provide a feature to find Companies, people associated with the company, CRM Integration, Profile setting, live analyzing company, and find phone and email of persons.</p>",
             "banners": "/images/projects/datalix-DiE5YnQy_1771393221233_7d92wco.png",
             "client_name": "Allon D.",
             "message": "Excellent work! The team delivered exceptional results with a keen focus on quality and efficiency.",
@@ -448,14 +454,36 @@
             "type": "",
             "technologies_ref": [
                 {
-                    "_id": "699552d8310c655a390ec891",
-                    "name": "Angular",
-                    "logo": "/images/technologies/angular_1771393746758_rpqrcbv.png"
+                    "name": "Angular"
+                },
+                {
+                    "name": "D3"
+                },
+                {
+                    "name": "Node.js"
+                },
+                {
+                    "name": "AWS"
+                },
+                {
+                    "name": "Kubernets"
+                },
+                {
+                    "name": "Google Chrome extension"
+                },
+                {
+                    "name": "MySQL"
+                },
+                {
+                    "name": "Redis"
+                },
+                {
+                    "name": "Redis"
                 }
             ]
         },
         {
-            "name": "TPRM - Risk Management",
+            "name": "Risk Management Platform",
             "url": " https://tprm.riskpro.in",
             "type": "client product",
             "rating": "69959c1566047687ac2711d4",
@@ -463,9 +491,7 @@
             "details": "<p>Risk 365 is an automated, collaborative SaaS platform to perform assessments. Save time and improve security with our secure, paperless system.</p>",
             "technologies_ref": [
                 {
-                    "_id": "6995533c310c655a390ec951",
-                    "name": "MUI",
-                    "logo": "/images/technologies/matui_1771393844834_un3boa5.png"
+                    "name": "React"
                 },
                 {
                     "_id": "69955346310c655a390ec969",
@@ -483,14 +509,10 @@
                     "logo": "/images/technologies/react_1771393925288_61bj0mo.png"
                 },
                 {
-                    "_id": "699553c9310c655a390eca89",
-                    "name": "Vite.js",
-                    "logo": "/images/technologies/vite-7S7rnGAv_1771583392446_tkx3p5h.png"
+                    "name": "Custom Form Builder"
                 },
                 {
-                    "_id": "69955584310c655a390ecce5",
-                    "name": "Express js",
-                    "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
+                    "name": "Manage Any Data Collection"
                 }
             ],
             "rating_ref": {
@@ -502,52 +524,40 @@
             }
         },
         {
-            "name": "Sooj AI",
+            "name": "Sooj AI | Your Images, Our Insight, Your Solutions.",
             "url": "https://i-ai.in/",
             "type": "our product",
             "rating": "",
             "banners": "/images/projects/soojAI_1771653247419_x8xgg5r.png",
-            "details": "<p>Transform your images into meaningful, category-specific content with ease using our AI-powered platform. Whether you’re managing e-commerce listings, blog visuals, or social media posts, our system intelligently analyzes your images and generates tailored text to match your needs. No more manual tagging or time-consuming content creation — just upload an image, choose your category, and let our AI handle the rest. It's fast, accurate, and scalable for businesses of any size. Streamline your workflow and boost engagement with intelligent automation that understands your visual data.</p>",
+            "details": "<p>Sooj AI empowers businesses to unlock valuable insights from their images using cutting-edge AI. Improve decision-making and discover innovative solutions tailored for enterprise needs.</p>",
             "technologies_ref": [
                 {
-                    "_id": "69955370310c655a390ec9c9",
-                    "name": "Node.js",
-                    "logo": "/images/technologies/node_1771393900103_nxf5y23.png"
+                    "name": "Gemini AI"
+                },
+                {
+                    "name": "React"
+                },
+                {
+                    "name": "Node.js"
                 }
             ]
         },
         {
-            "name": "Talent Directory",
-            "url": "",
+            "name": "Australian Bioinformatics Service Alliance",
+            "url": "https://bioinformaticservicealliance.au/",
             "type": "",
             "rating": "69959c4d66047687ac2711f7",
             "banners": "/images/projects/talent-directory_1771648319849_asqpqgm.png",
-            "details": "<p>Discover and connect with the best bioinformatics professionals across World.</p>",
+            "details": "<p>Informative Platform for Australian Bioinformatics Service Alliance Person profiles.</p>",
             "technologies_ref": [
                 {
-                    "_id": "69955370310c655a390ec9c9",
-                    "name": "Node.js",
-                    "logo": "/images/technologies/node_1771393900103_nxf5y23 copy.png"
+                    "name": "React"
                 },
                 {
-                    "_id": "69955389310c655a390ec9f9",
-                    "name": "React.js",
-                    "logo": "/images/technologies/react_1771393925288_61bj0mo.png"
+                    "name": "Node.js"
                 },
                 {
-                    "_id": "69955584310c655a390ecce5",
-                    "name": "Express js",
-                    "logo": "/images/technologies/express_js_1771394432744_hp1wqmz.png"
-                },
-                {
-                    "_id": "69955622310c655a390ecd96",
-                    "name": "DigitalOcean",
-                    "logo": "/images/technologies/DigitalOcean_1771394593643_f4vkj7s.png"
-                },
-                {
-                    "_id": "699556eb310c655a390ece77",
-                    "name": "Postgresql",
-                    "logo": "/images/technologies/Postgresql_1771394793810_vqltryk.png"
+                    "name": "PostgreSQL"
                 }
             ],
             "rating_ref": {
@@ -557,6 +567,54 @@
                 "message": "Professional, responsive, and highly skilled — delivered exactly what we needed and more!",
                 "rating": 5
             }
+        },
+        {
+            "name": "Silur Clinic CRM System - Plastic Surgery, Hair Transplant & Aesthetics Clinic",
+            "url": "https://silurclinic.com/",
+            "type": "",
+            "banners": "/images/projects/silur.png",
+            "details": "<p>Silur Clinic CRM is a medical center located in Tirana, Albania specialized in Plastic Surgery, Aesthetics and Hair Transplant.Silur Clinic in Tirana offers advanced aesthetic and plastic surgery procedures performed by experienced, board-certified specialists. With a strong focus on safety, natural results, and personalized care, Silur Clinic delivers trusted, professional treatments in a modern medical environment. Book your consultation today.</p>",
+            "technologies_ref": [
+                {
+                    "name": "Angular"
+                },
+                {
+                    "name": "Tailwind CSS"
+                },
+                {
+                    "name": "TypeScript"
+                },
+                {
+                    "name": "Animation"
+                },
+                {
+                    "name": "Node.js"
+                },
+                {
+                    "name": "Socket.io"
+                },
+                {
+                    "name": "MongoDB"
+                }
+            ]
+        },
+        {
+            "name": "School Management System",
+            "url": "",
+            "type": "",
+            "banners": "/images/projects/school_mgmt.png",
+            "details": "<p>School Management System is a platform for managing schools and students.</p>",
+            "technologies_ref": [
+                {
+                    "name": "React"
+                },
+                {
+                    "name": "Node.js"
+                },
+                {
+                    "name": "MongoDB"
+                }
+            ]
         }
     ],
     "teamCertificates": [
@@ -587,6 +645,14 @@
             "title": "Team Player Award",
             "date": "2026-04-18",
             "type": "Full Stack Developer"
+        }
+    ],
+    "certificates": [
+        {
+            "id": 1,
+            "title": "Udyam Registration",
+            "description": "",
+            "image": "/images/certificates/udyam_registration.png"
         }
     ]
 }

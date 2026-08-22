@@ -11,7 +11,7 @@ export function MissionVision() {
   return (
     <>
       {(profile?.mission || profile?.vision) &&
-        <Section py="xl" >
+        <Section py="xl" className='bg-bg-muted' >
           <Container>
             <>
               <div className="text-center mb-16">
