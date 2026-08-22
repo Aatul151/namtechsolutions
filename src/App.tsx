@@ -21,7 +21,17 @@ function App() {
   useEffect(() => {
     fetch("/lib/detail.json")
       .then((res) => res.json())
-      .then((data) => setComponyProfile(data));
+      .then((data) => {
+        setComponyProfile(data);
+        const profile = data?.profile;
+        const root = document.documentElement;
+        if (profile?.primary_color) {
+          root.style.setProperty("--color-primary", profile.primary_color);
+        }
+        if (profile?.secondary_color) {
+          root.style.setProperty("--color-secondary", profile.secondary_color);
+        }
+      });
   }, []);
 
   const navMenu = [
@@ -54,7 +64,6 @@ function App() {
   return (
     <>
       <Loader />
-      {/* {guestToken && componyProfile ? ( */}
       <div className="min-h-screen bg-bg-main">
         <ScrollToTop />
         <Header navMenu={navMenu} />
@@ -73,9 +82,6 @@ function App() {
         </main>
         <Footer navMenu={navMenu} />
       </div>
-      {/* ) : (
-        <ErrorComponent />
-      )} */}
     </>
   );
 }

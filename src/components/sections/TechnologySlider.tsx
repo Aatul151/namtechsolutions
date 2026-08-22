@@ -1,110 +1,91 @@
+import { useMemo } from 'react';
 import { useComponyDetail } from '../../context/componyContext';
+
+type Tech = { name: string; logo: string };
+
+const SIZE_CLASSES = [
+  'h-6 w-6 md:h-7 md:w-7',
+  'h-10 w-10 md:h-12 md:w-12',
+  'h-8 w-8 md:h-9 md:w-9',
+  'h-14 w-14 md:h-16 md:w-16',
+  'h-7 w-7 md:h-8 md:w-8',
+  'h-12 w-12 md:h-14 md:w-14',
+  'h-9 w-9 md:h-10 md:w-10',
+  'h-5 w-5 md:h-6 md:w-6',
+  'h-16 w-16 md:h-20 md:w-20',
+  'h-8 w-8 md:h-9 md:w-9',
+];
+
+const OFFSET_CLASSES = [
+  'mt-0',
+  'mt-1 md:mt-2',
+  '-mt-1',
+  'mt-2 md:mt-3',
+  '-mt-0.5',
+  'mt-1',
+  '-mt-1 md:-mt-2',
+  'mt-0.5',
+];
+
+function techKey(name: string) {
+  return name.toLowerCase().replace(/[\s._-]+/g, '');
+}
+
+function collectTechnologies(profile: any): Tech[] {
+  const byKey = new Map<string, Tech>();
+  const add = (item: any) => {
+    if (!item?.logo || !item?.name) return;
+    const key = techKey(item.name);
+    if (key === 'reactthreefiber' || key === 'sql') return;
+    if (!byKey.has(key)) {
+      byKey.set(key, { name: item.name, logo: item.logo });
+    }
+  };
+
+  profile?.our_services?.technologies?.forEach(add);
+  profile?.our_services?.services?.forEach((service: any) => {
+    service?.technologis_ref?.forEach(add);
+  });
+
+  return Array.from(byKey.values());
+}
 
 export function TechnologySlider() {
   const { componyProfile } = useComponyDetail();
-  const { our_services } = componyProfile;
+  const technologies = useMemo(
+    () => collectTechnologies(componyProfile),
+    [componyProfile],
+  );
+
+  if (!technologies.length) return null;
 
   return (
-    <>
-      {our_services?.technologies?.length > 0 &&
-        <section className="w-full py-4 md:py-16 lg:py-20 bg-bg-main border-y border-border/30 overflow-hidden relative">
-          {/* Subtle background decoration */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/3 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-          </div>
+    <section className="relative w-full overflow-hidden border-y border-border/30 bg-bg-main">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgb(15_63_210/0.06),transparent_62%)]" />
 
-          <div className="w-full relative overflow-hidden py-4 md:py-8">
-            {/* Slider Track */}
-            <div className="flex animate-scroll gap-4 md:gap-8 lg:gap-12 items-center">
-              {our_services?.technologies?.map((tech: any, idx: number) => (
-                <div
-                  key={`${tech?.name}-${idx}`}
-                  className="flex flex-col items-center justify-center gap-2 md:gap-4 flex-shrink-0 group px-2 md:px-6"
-                >
-                  {/* Logo Container with enhanced styling */}
-                  {tech?.logo &&
-                    <div className="relative">
-                      {/* Glow effect on hover */}
-                      <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                      {/* Main logo container */}
-                      <div className="relative w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-xl md:rounded-2xl bg-bg-card border-2 border-border/50 flex items-center justify-center group-hover:border-primary/60 group-hover:shadow-2xl group-hover:shadow-primary/20 transition-all duration-500 p-2 md:p-4 backdrop-blur-sm">
-                        {/* Inner glow */}
-                        <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary/0 via-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:via-primary/5 group-hover:to-secondary/10 transition-all duration-500"></div>
-
-                        <img
-                          src={tech?.logo}
-                          alt={tech?.name}
-                          className="relative z-10 w-full h-full object-contain filter group-hover:scale-110 group-hover:brightness-110 transition-all duration-500"
-                          onError={(e) => {
-                            // Fallback to placeholder if image fails to load
-                            const target = e.target as HTMLImageElement;
-                            target.src = `https://via.placeholder.com/80x80/6366f1/ffffff?text=${tech?.name.charAt(0)}`;
-                          }}
-                        />
-                      </div>
-                    </div>
-                  }
-
-                  {/* Tech Name with enhanced styling */}
-                  {tech?.name &&
-                    <div className="relative">
-                      <span className="text-xs md:text-sm lg:text-base font-semibold text-text-secondary group-hover:text-primary transition-all duration-300 text-center whitespace-nowrap relative z-10">
-                        {tech?.name}
-                      </span>
-                      {/* Underline effect on hover */}
-                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300"></div>
-                    </div>
-                  }
-                </div>
-              ))}
-            </div>
-
-            {/* Enhanced Gradient Overlays - Hidden on mobile */}
-            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-bg-main via-bg-main to-transparent z-20 pointer-events-none"></div>
-            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-bg-main via-bg-main to-transparent z-20 pointer-events-none"></div>
-
-            {/* Shine effect overlays - Hidden on mobile */}
-            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white/10 dark:from-white/5 to-transparent z-15 pointer-events-none"></div>
-            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white/10 dark:from-white/5 to-transparent z-15 pointer-events-none"></div>
-          </div>
-
-          {/* Enhanced CSS Animation */}
-          <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% / 3));
-          }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-          width: fit-content;
-        }
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-        
-        /* Smooth fade-in for items */
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .group {
-          animation: fadeInUp 0.6s ease-out backwards;
-        }
-      `}</style>
-        </section>
-      }
-    </>
+      <div className="relative flex flex-wrap items-center justify-center gap-x-4 gap-y-4 px-4 py-5 sm:gap-x-5 sm:gap-y-5 sm:px-6 sm:py-6 md:px-8 md:py-7">
+        {technologies.map((tech, index) => (
+          <figure
+            key={`${tech.logo}-${index}`}
+            className={`tech-mosaic-item group relative flex items-center justify-center ${OFFSET_CLASSES[index % OFFSET_CLASSES.length]}`}
+            style={{ animationDelay: `${(index % 9) * 0.28}s` }}
+          >
+            <img
+              src={tech.logo}
+              alt={tech.name}
+              title={tech.name}
+              className={`${SIZE_CLASSES[index % SIZE_CLASSES.length]} object-contain opacity-80 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100`}
+              onError={(event) => {
+                const target = event.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
+            <figcaption className="pointer-events-none absolute -bottom-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-bg-card px-1.5 py-0.5 text-[9px] font-semibold text-text-primary opacity-0 shadow-soft transition-opacity duration-200 group-hover:opacity-100">
+              {tech.name}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
   );
 }

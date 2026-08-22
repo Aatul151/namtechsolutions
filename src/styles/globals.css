@@ -3,31 +3,31 @@
 @tailwind utilities;
 
 :root {
-  /* Primary Colors */
-  --color-primary: #2563eb;
-  --color-secondary: #f97316;
+  /* Logo colors: NAMTech blue + orange */
+  --color-primary: #0f3fd2;
+  --color-secondary: #cd740e;
 
-  /* Light Theme */
-  --bg-main: #ffffff;
-  --bg-card: #f9fafb;
-  --bg-muted: #f3f4f6;
-  --text-primary: #111827;
-  --text-secondary: #6b7280;
-  --border-color: #e5e7eb;
-  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-strong: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Light Theme — tinted from logo blue, not grey/black */
+  --bg-main: #f4f7ff;
+  --bg-card: #ffffff;
+  --bg-muted: #eaf0ff;
+  --text-primary: #0c1b4d;
+  --text-secondary: #4b5b88;
+  --border-color: #d5def5;
+  --shadow-soft: 0 1px 3px 0 rgb(15 63 210 / 0.08), 0 1px 2px -1px rgb(15 63 210 / 0.08);
+  --shadow-strong: 0 10px 15px -3px rgb(15 63 210 / 0.12), 0 4px 6px -4px rgb(205 116 14 / 0.12);
 }
 
 .dark {
-  /* Dark Theme */
-  --bg-main: #0f172a;
-  --bg-card: #1e293b;
-  --bg-muted: #334155;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --border-color: #334155;
-  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
-  --shadow-strong: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  /* Navy from the logo, not black */
+  --bg-main: #0d2466;
+  --bg-card: #14307a;
+  --bg-muted: #183890;
+  --text-primary: #f4f7ff;
+  --text-secondary: #c5d4f5;
+  --border-color: #2a4cb0;
+  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+  --shadow-strong: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.25);
 }
 
 * {
@@ -237,4 +237,95 @@ body {
 }
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+.hero-float-main {
+  animation: heroFloat 5.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.hero-float-phone {
+  animation: heroFloat 6.4s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.hero-float-ai {
+  animation: heroFloat 4.8s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.hero-orbit-ring {
+  transform-origin: 270px 255px;
+  animation: heroSpin 28s linear infinite;
+}
+
+.hero-orbit-ring-slow {
+  animation-duration: 40s;
+  animation-direction: reverse;
+}
+
+.hero-code {
+  opacity: 0.55;
+  animation: heroCode 2.8s ease-in-out infinite;
+}
+
+.hero-chart-line {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: heroDraw 3.2s ease-in-out infinite;
+}
+
+.hero-spark {
+  transform-origin: 492px 64px;
+  animation: heroSpark 1.8s ease-in-out infinite;
+}
+
+.hero-logo-chip {
+  animation: heroFloat 5.5s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes heroSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heroCode {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes heroDraw {
+  0% { stroke-dashoffset: 160; }
+  40%, 70% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -160; }
+}
+
+@keyframes heroSpark {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: scale(1.25) rotate(18deg); opacity: 1; }
+}
+
+.process-ring {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: processSpin 22s linear infinite;
+}
+
+@keyframes processSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.tech-mosaic-item {
+  animation: techFloat 5.6s ease-in-out infinite;
+}
+
+@keyframes techFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }

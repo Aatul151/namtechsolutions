@@ -1,6 +1,10 @@
+import { Seo } from "../seo/Seo";
+import { pageSeo } from "../../seo/pageSeo";
+
 export default function NotFoundPage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 px-6">
+            <Seo {...pageSeo.notFound} />
             <div className="text-center max-w-lg">
 
                 {/* 404 Text */}

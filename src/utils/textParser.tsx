@@ -35,7 +35,10 @@ export function parseGradientText(
 
     // Add the gradient text
     parts.push(
-      <GradientText key={`gradient-${key++}`} className={gradientClassName}>
+      <GradientText
+        key={`gradient-${key++}`}
+        {...(gradientClassName ? { gradient: gradientClassName } : {})}
+      >
         {match[1]}
       </GradientText>
     );

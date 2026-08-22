@@ -9,28 +9,35 @@ export function CTASection() {
   return (
     <Section id="contact" py="xl">
       <Container>
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 border border-border p-12 md:p-16 text-center">
-          {/* Background decoration */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-          </div>
+        <div
+          className="relative overflow-hidden rounded-[2rem] px-8 py-16 text-center text-white md:px-16 md:py-20"
+          style={{
+            background:
+              'linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 55%, var(--color-secondary)) 100%)',
+          }}
+        >
+          <div className="pointer-events-none absolute -left-16 top-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute -right-10 bottom-0 h-64 w-64 rounded-full bg-secondary/40 blur-3xl" />
 
           <div className="relative z-10">
             <MarkedText
               as="h2"
-              text="Ready to Build Something [[Amazing?]]"
-              className="text-4xl md:text-5xl font-bold mb-6"
+              text="Ready to build something [[useful]]?"
+              className="mb-6 text-4xl font-semibold tracking-tight text-white md:text-5xl"
+              gradientClassName="from-white to-amber-200"
             />
-            <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help transform your ideas into reality.
-              Get started with a free consultation today.
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-white/85">
+              Tell us what you are building. We’ll help you choose the right approach
+              and start with a clear plan.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="outline" size="lg" onClick={() => navigate('/contact')}>
-                Contact now
-              </Button>
-            </div>
+            <Button
+              variant="primary"
+              size="lg"
+              className="!bg-white !text-primary hover:!bg-white/90"
+              onClick={() => navigate('/contact')}
+            >
+              Talk to us
+            </Button>
           </div>
         </div>
       </Container>

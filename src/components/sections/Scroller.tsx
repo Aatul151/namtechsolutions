@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useComponyDetail } from '../../context/componyContext';
 
@@ -7,13 +7,18 @@ const ScrollToTop = () => {
     const { componyProfile } = useComponyDetail();
     const { profile } = componyProfile;
 
-    const { pathname } = useLocation();
+    const { pathname, search, hash } = useLocation();
+    const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
+        if (pathname.length > 1 && pathname.endsWith('/')) {
+            navigate(`${pathname.replace(/\/+$/, '')}${search}${hash}`, { replace: true });
+            return;
+        }
         window.scrollTo(0, 0);
-    }, [pathname]);
+    }, [pathname, search, hash, navigate]);
 
     useEffect(() => {
         const handleScroll = () => {

@@ -4,6 +4,7 @@ import { Section } from '../ui/Section';
 import { MarkedText } from '../ui/MarkedText';
 import { useComponyDetail } from '../../context/componyContext';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { ServiceLogo } from '../ui/ServiceLogo';
 
 export function Services() {
   const { componyProfile } = useComponyDetail();
@@ -52,17 +53,7 @@ export function Services() {
 
                 {/* Top image/icon section - Made more minimalist */}
                 <div className="relative flex h-32 items-center justify-center overflow-hidden border-b border-zinc-100/50 dark:border-white/5 bg-zinc-50/50 dark:bg-white/[0.02]">
-                  {service?.image ? (
-                    <img
-                      src={service?.image}
-                      alt={service?.Title}
-                      className="h-14 w-14 object-contain transition-transform duration-500 group-hover:scale-110"
-                    />
-                  ) : (
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-2xl font-bold text-primary ring-1 ring-primary/20 transition-all duration-500 group-hover:rotate-6">
-                      {service?.Title?.charAt(0)}
-                    </div>
-                  )}
+                  <ServiceLogo service={service} />
                 </div>
 
                 {/* Text Content */}

@@ -15,7 +15,7 @@ export function Footer({ navMenu }: any) {
               <div className="flex-shrink-0 mb-4">
                 <img
                   src={profile?.logo}
-                  alt="Namtech Solutions"
+                  alt="NAMTech Solutions"
                   className="h-8 md:h-14 w-auto object-contain"
                 />
               </div>
@@ -77,17 +77,19 @@ export function Footer({ navMenu }: any) {
           <div>
             <h4 className="font-semibold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {navMenu?.map((item: any) => (
-                <li>
-                  <Link
-                    key={item?.path}
-                    to={item?.path}
-                    className="text-text-secondary hover:text-primary transition-colors"
-                  >
-                    {item?.label}
-                  </Link>
-                </li>
-              ))}
+              {navMenu
+                ?.flatMap((item: any) => (item?.children ? item.children : [item]))
+                ?.filter((item: any) => item?.path)
+                ?.map((item: any) => (
+                  <li key={item.path}>
+                    <Link
+                      to={item.path}
+                      className="text-text-secondary hover:text-primary transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 

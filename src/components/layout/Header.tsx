@@ -1,134 +1,172 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/Button';
-import { useTheme } from '../../hooks/useTheme';
 import { useScrollShadow } from '../../hooks/useScrollShadow';
 import { useComponyDetail } from '../../context/componyContext';
 
+function SubmenuIcon({ label }: { label: string }) {
+  const name = label.toLowerCase();
+  if (name.includes('team')) {
+    return (
+      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198A5.97 5.97 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+        />
+      </svg>
+    );
+  }
+  return (
+    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21"
+      />
+    </svg>
+  );
+}
+
 export function Header({ navMenu }: any) {
   const { componyProfile } = useComponyDetail();
-  const { profile } = componyProfile
-  const { theme, toggleTheme } = useTheme();
+  const { profile } = componyProfile;
   const hasShadow = useScrollShadow();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const links = navMenu?.filter((item: any) => !item?.isFooterLink) ?? [];
+
+  const isActive = (item: any) => {
+    if (item?.path && location.pathname === item.path) return true;
+    return item?.children?.some((child: any) => location.pathname === child.path);
+  };
 
   return (
-    <header
-      className={`sticky top-0 left-0 right-0 z-50 bg-bg-main/80 backdrop-blur-md border-b border-border transition-shadow duration-300 ${hasShadow ? 'shadow-strong' : ''
+    <header className="sticky top-0 z-50">
+      <div className="h-[3px] bg-gradient-to-r from-primary via-secondary to-primary" />
+      <div
+        className={`border-b border-border bg-bg-main ${
+          hasShadow ? 'shadow-soft' : ''
         }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          {profile?.logo &&
-            <div className="flex-shrink-0">
-              <a href="#" className="flex items-center">
-                <img
-                  src={profile?.logo}
-                  alt="Namtech Solutions"
-                  className="h-14 w-auto object-contain"
-                  onClick={() => navigate("/")}
-                />
-              </a>
-            </div>
-          }
+      >
+        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <Link to="/" className="flex flex-shrink-0 items-center" onClick={() => setMobileMenuOpen(false)}>
+            {profile?.logo && (
+              <img
+                src={profile.logo}
+                alt={profile?.name || 'NAMTech Solutions'}
+                className="h-11 w-auto object-contain lg:h-12"
+              />
+            )}
+          </Link>
 
-          {/* Desktop Navigation */}
-          {/* <nav className="hidden md:flex items-center space-x-8">
-            <nav className="hidden md:flex items-center space-x-8">
-              {navMenu?.filter((item: any) => !item?.isFooterLink)?.map((item: any) => (
-                <Link
-                  key={item?.path}
-                  to={item?.path}
-                  className="text-text-secondary hover:text-text-primary transition-colors"
-                >
-                  {item?.label}
-                </Link>
-              ))}
-            </nav>
-          </nav> */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navMenu
-              ?.filter((item: any) => !item?.isFooterLink)
-              ?.map((item: any) => (
-                <div key={item.path} className="relative group">
+          <nav className="hidden items-center rounded-full border border-primary/15 bg-bg-card/80 p-1 shadow-soft lg:flex">
+            {links.map((item: any) => {
+              const active = isActive(item);
 
-                  {/* Main link */}
-                  <Link to={item.path} className="text-text-secondary hover:text-text-primary transition-colors">
-                    {item.label}
-                  </Link>
-
-                  {/* Dropdown */}
-                  {item?.children && (
-                    <div className="absolute left-0 top-full pt-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
-                      <div className="w-[420px] rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-2xl p-4">
-                        {/* Title */}
-                        <div className="px-2 pb-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                          Explore
-                        </div>
-
-                        {/* Grid items */}
-                        <div className="grid grid-cols-2 gap-2">
-                          {item?.children?.map((sub: any) => (
+              if (item?.children) {
+                return (
+                  <div key={item.label} className="relative group">
+                    <button
+                      type="button"
+                      className={`flex items-center gap-1 rounded-full px-4 py-2 text-[13px] font-medium transition-all ${
+                        active
+                          ? 'bg-primary text-white shadow-soft'
+                          : 'text-text-secondary hover:bg-primary/8 hover:text-primary'
+                      }`}
+                    >
+                      {item.label}
+                      <svg className="h-3.5 w-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                    <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                      <div className="overflow-hidden rounded-[1.75rem] border border-primary/15 bg-bg-card p-1.5 shadow-strong">
+                        {item.children.map((sub: any) => {
+                          const selected = location.pathname === sub.path;
+                          return (
                             <Link
-                              key={sub?.path}
-                              to={sub?.path}
-                              className="group flex items-start gap-3 p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
-                              {/* Icon box */}
-                              <div className="w-9 h-9 flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all">
-                                <span className="text-lg">✨</span>
-                              </div>
-
-                              {/* Text */}
-                              <div>
-                                <div className="text-sm font-semibold text-gray-800 dark:text-white">{sub?.label}</div>
-                                <div className="text-xs text-gray-500 dark:text-gray-400">{sub?.description || "Quick access"}</div>
-                              </div>
-
+                              key={sub.path}
+                              to={sub.path}
+                              className={`group/sub flex items-center gap-3 rounded-full px-3 py-2.5 transition-all ${
+                                selected
+                                  ? 'bg-primary text-white shadow-soft'
+                                  : 'hover:bg-primary hover:text-white hover:shadow-soft'
+                              }`}
+                            >
+                              <span
+                                className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition-all ${
+                                  selected
+                                    ? 'bg-white/20 text-white'
+                                    : 'bg-primary/10 text-primary group-hover/sub:bg-white/20 group-hover/sub:text-white'
+                                }`}
+                              >
+                                <SubmenuIcon label={sub.label} />
+                              </span>
+                              <span>
+                                <span
+                                  className={`block text-[13px] font-semibold transition-colors ${
+                                    selected ? 'text-white' : 'text-text-primary group-hover/sub:text-white'
+                                  }`}
+                                >
+                                  {sub.label}
+                                </span>
+                                <span
+                                  className={`block text-[11px] transition-colors ${
+                                    selected ? 'text-white/80' : 'text-text-secondary group-hover/sub:text-white/80'
+                                  }`}
+                                >
+                                  {sub.description}
+                                </span>
+                              </span>
                             </Link>
-                          ))}
-
-                        </div>
+                          );
+                        })}
                       </div>
                     </div>
-                  )}
-                </div>
-              ))}
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`rounded-full px-4 py-2 text-[13px] font-medium transition-all ${
+                    active
+                      ? 'bg-primary text-white shadow-soft'
+                      : 'text-text-secondary hover:bg-primary/8 hover:text-primary'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center gap-4">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              )}
-            </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="hidden items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-[11px] font-medium text-text-secondary xl:flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+              Open for projects
+            </span>
 
-            {/* CTA Button */}
-            <Button variant="primary" size="md" className="hidden sm:inline-flex" onClick={() => navigate('/contact')}>
-              Contact Us
+            <Button
+              variant="primary"
+              size="sm"
+              className="hidden sm:inline-flex"
+              onClick={() => navigate('/contact')}
+            >
+              Let&apos;s talk
             </Button>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-bg-muted transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-bg-card lg:hidden"
               aria-label="Toggle menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -137,87 +175,85 @@ export function Header({ navMenu }: any) {
               </svg>
             </button>
           </div>
-
-
         </div>
 
-        {/* Mobile Menu */}
-
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-x-0 top-[72px] z-50 p-4 animate-slide-down">
-            {/* Solid Premium Container */}
-            <nav className=" relative overflow-hidden rounded-[2.5rem] p-8 bg-white dark:bg-slate-950 border border-slate-100 dark:border-white/5 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.8)]">
-              {/* Decorative Accent - Top "Diamond Cut" Bar */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-slate-100 dark:bg-white/10 rounded-full mt-3" />
-              <div className="flex flex-col space-y-2 mt-4">
-                {navMenu?.filter((item: any) => !item?.isFooterLink)?.map((item: any) => {
-                  const isOpen = openMenu === item?.label;
+          <div className="border-t border-border bg-bg-card p-4 lg:hidden">
+            <nav className="flex flex-col gap-1">
+              {links.map((item: any) => {
+                const isOpen = openMenu === item?.label;
+                const active = isActive(item);
 
-                  return (
-                    <div key={item?.path || item?.label} className="group">
-                      {/* Main Item */}
-                      <div
-                        className={`flex items-center justify-between cursor-pointer px-5 py-4 rounded-2xl transition-all duration-300 ${isOpen ? "bg-slate-50 dark:bg-white/5 shadow-inner" : "hover:bg-slate-50/80 dark:hover:bg-white/[0.03]"}`}
-                        onClick={() => {
-                          if (item?.children) {
-                            setOpenMenu(isOpen ? null : item.label);
-                          } else {
-                            navigate(item.path);
-                            setMobileMenuOpen(false);
-                          }
-                        }}
-                      >
-                        <span className={` text-[15px] tracking-tight font-medium transition-colors ${isOpen ? "text-blue-600 dark:text-blue-400" : "text-slate-800 dark:text-slate-200"}`}>
-                          {item?.label}
-                        </span>
-
-                        {item?.children && (
-                          <span className={`transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`}>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={isOpen ? "text-blue-500" : "text-slate-400"}>
-                              <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Submenu with Smooth Height Logic */}
+                return (
+                  <div key={item?.path || item?.label}>
+                    <button
+                      type="button"
+                      className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium ${
+                        active ? 'bg-primary/10 text-primary' : 'text-text-primary hover:bg-primary/5'
+                      }`}
+                      onClick={() => {
+                        if (item?.children) {
+                          setOpenMenu(isOpen ? null : item.label);
+                        } else {
+                          navigate(item.path);
+                          setMobileMenuOpen(false);
+                        }
+                      }}
+                    >
+                      {item.label}
                       {item?.children && (
-                        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
-                          <div className="my-2 ml-7 flex flex-col space-y-1 border-l border-slate-200 dark:border-white/10">
-                            {item.children.map((sub: any) => (
-                              <Link
-                                key={sub?.path}
-                                to={sub?.path}
-                                className="px-6 py-3 text-sm text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                {sub?.label}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
+                        <svg className={`h-4 w-4 transition ${isOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                        </svg>
                       )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Solid CTA Section */}
-              <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5">
-                <button
-                  className="w-full py-4 rounded-[1.5rem] font-bold text-xs tracking-[0.2em] uppercase bg-slate-950 dark:bg-white text-white dark:text-slate-950  hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl shadow-slate-900/10 dark:shadow-white/5"
-                  onClick={() => {
-                    navigate("/contact");
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  Get in Touch
-                </button>
-              </div>
+                    </button>
+                    {item?.children && isOpen && (
+                      <div className="mb-2 ml-3 flex flex-col gap-1">
+                        {item.children.map((sub: any) => {
+                          const selected = location.pathname === sub.path;
+                          return (
+                            <Link
+                              key={sub.path}
+                              to={sub.path}
+                              className={`group/sub flex items-center gap-3 rounded-full px-3 py-2.5 text-sm font-medium transition-all ${
+                                selected
+                                  ? 'bg-primary text-white shadow-soft'
+                                  : 'text-text-secondary hover:bg-primary hover:text-white'
+                              }`}
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              <span
+                                className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${
+                                  selected
+                                    ? 'bg-white/20 text-white'
+                                    : 'bg-primary/10 text-primary group-hover/sub:bg-white/20 group-hover/sub:text-white'
+                                }`}
+                              >
+                                <SubmenuIcon label={sub.label} />
+                              </span>
+                              {sub.label}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </nav>
+            <Button
+              variant="primary"
+              className="mt-4 w-full"
+              onClick={() => {
+                navigate('/contact');
+                setMobileMenuOpen(false);
+              }}
+            >
+              Let&apos;s talk
+            </Button>
           </div>
         )}
-      </div >
-    </header >
+      </div>
+    </header>
   );
 }

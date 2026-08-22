@@ -1,19 +1,24 @@
 import { Hero } from '../components/sections/Hero';
-import { AboutCompany } from '../components/sections/AboutCompany';
-import { Services } from '../components/sections/Services';
+import { HomeAbout } from '../components/sections/HomeAbout';
+import { HomeServices } from '../components/sections/HomeServices';
 import { Stats } from '../components/sections/Stats';
-import { WhyChooseUs } from '../components/sections/WhyChooseUs';
+import { HomeWhyUs } from '../components/sections/HomeWhyUs';
 import { Testimonials } from '../components/sections/Testimonials';
 import { CTASection } from '../components/sections/CTASection';
+import { TechnologySlider } from '../components/sections/TechnologySlider';
+import { Seo } from '../components/seo/Seo';
+import { pageSeo } from '../seo/pageSeo';
 
 export function HomePage() {
   return (
     <>
+      <Seo {...pageSeo.home} />
       <Hero />
-      <AboutCompany />
-      <Services />
+      <TechnologySlider />
+      <HomeAbout />
+      <HomeServices />
       <Stats />
-      <WhyChooseUs />
+      <HomeWhyUs />
       <Testimonials />
       <CTASection />
     </>

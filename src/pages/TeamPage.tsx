@@ -2,6 +2,8 @@ import { useState } from "react";
 import { MarkedText } from "../components/ui/MarkedText";
 import { useComponyDetail } from "../context/componyContext";
 import ImagePreviewModal from "../components/ui/ImagePreviewModal";
+import { Seo } from "../components/seo/Seo";
+import { pageSeo } from "../seo/pageSeo";
 
 export default function TeamPage() {
     const { componyProfile } = useComponyDetail();
@@ -13,6 +15,7 @@ export default function TeamPage() {
 
     return (
         <div className="bg-zinc-50 py-16 dark:bg-zinc-950/40 md:py-24">
+            <Seo {...pageSeo.team} />
 
             {/* Header */}
             <div className="mb-14 text-center">

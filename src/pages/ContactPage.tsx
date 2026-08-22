@@ -4,10 +4,13 @@ import GoogleMap from '../components/sections/GoogleMap';
 import { Container } from '../components/ui/Container';
 import { MarkedText } from '../components/ui/MarkedText';
 import { Section } from '../components/ui/Section';
+import { Seo } from '../components/seo/Seo';
+import { pageSeo } from '../seo/pageSeo';
 
 export function ContactPage() {
   return (
     <Section className="bg-zinc-50 py-16 dark:bg-zinc-950/40 md:py-24">
+      <Seo {...pageSeo.contact} />
       <Container size="lg">
         {/* heading */}
         <div className="mb-14 text-center">
