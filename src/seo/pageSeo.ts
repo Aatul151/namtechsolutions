@@ -58,6 +58,12 @@ export const pageSeo = {
       'Contact NAMTech Solutions in Navsari, Gujarat. Email contact@namtechsolutions.in to discuss custom web, mobile, AI, or cloud software.',
     path: '/contact',
   },
+  privacy: {
+    title: `Privacy Policy | ${SITE_NAME}`,
+    description:
+      'Read how NAMTech Solutions collects, uses, and protects personal information and cookies on namtechsolutions.in.',
+    path: '/privacy-policy',
+  },
   notFound: {
     title: `Page Not Found | ${SITE_NAME}`,
     description:
@@ -76,4 +82,5 @@ export const indexablePages: PageSeoConfig[] = [
   pageSeo.testimonials,
   pageSeo.team,
   pageSeo.contact,
+  pageSeo.privacy,
 ];

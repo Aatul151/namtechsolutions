@@ -14,6 +14,8 @@ import { useEffect } from "react";
 import { useComponyDetail } from "./context/componyContext";
 import NotFoundPage from "./components/ui/NotFoundPage";
 import TeamPage from "./pages/TeamPage";
+import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
+import { CookieConsent } from "./components/layout/CookieConsent";
 
 function App() {
   const { setComponyProfile } = useComponyDetail();
@@ -77,10 +79,12 @@ function App() {
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/team" element={<TeamPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer navMenu={navMenu} />
+        <CookieConsent />
       </div>
     </>
   );

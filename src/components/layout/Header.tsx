@@ -52,13 +52,24 @@ export function Header({ navMenu }: any) {
         }`}
       >
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex flex-shrink-0 items-center" onClick={() => setMobileMenuOpen(false)}>
+          <Link to="/" className="flex min-w-0 flex-shrink-0 items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
             {profile?.logo && (
               <img
                 src={profile.logo}
                 alt={profile?.name || 'NAMTech Solutions'}
                 className="h-11 w-auto object-contain lg:h-12"
               />
+            )}
+            {profile?.slogan && (
+              <>
+                <span className="hidden h-8 w-px bg-border sm:block" aria-hidden="true" />
+                <span className="hidden max-w-[10.5rem] text-[12px] font-semibold leading-snug tracking-wide sm:block lg:max-w-none">
+                  <span className="text-primary">{profile.slogan.split(',')[0]}{profile.slogan.includes(',') ? ',' : ''}</span>
+                  {profile.slogan.includes(',') && (
+                    <span className="text-secondary">{profile.slogan.slice(profile.slogan.indexOf(',') + 1)}</span>
+                  )}
+                </span>
+              </>
             )}
           </Link>
 

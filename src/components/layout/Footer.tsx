@@ -1,16 +1,23 @@
 import { Link } from 'react-router-dom';
 import { useComponyDetail } from '../../context/componyContext';
+import { resetCookieConsent } from './CookieConsent';
 
 export function Footer({ navMenu }: any) {
   const { componyProfile } = useComponyDetail();
   const { profile } = componyProfile
+  const quickLinks = navMenu
+    ?.flatMap((item: any) => (item?.children ? item.children : [item]))
+    ?.filter((item: any) => item?.path) ?? [];
+  const splitAt = Math.ceil(quickLinks.length / 2);
+  const primaryLinks = quickLinks.slice(0, splitAt);
+  const secondaryLinks = quickLinks.slice(splitAt);
 
   return (
     <footer className="bg-bg-card border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
+          <div>
             {profile?.logo &&
               <div className="flex-shrink-0 mb-4">
                 <img
@@ -77,19 +84,32 @@ export function Footer({ navMenu }: any) {
           <div>
             <h4 className="font-semibold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {navMenu
-                ?.flatMap((item: any) => (item?.children ? item.children : [item]))
-                ?.filter((item: any) => item?.path)
-                ?.map((item: any) => (
-                  <li key={item.path}>
-                    <Link
-                      to={item.path}
-                      className="text-text-secondary hover:text-primary transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+              {primaryLinks.map((item: any) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className="text-text-secondary hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-text-primary mb-4">Explore</h4>
+            <ul className="space-y-2">
+              {secondaryLinks.map((item: any) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className="text-text-secondary hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -135,14 +155,23 @@ export function Footer({ navMenu }: any) {
           }
         </div>
 
-        {profile?.copyright_text &&
-          <div className="mt-8 pt-8 border-t border-border text-center text-text-secondary text-sm"
-            dangerouslySetInnerHTML={{
-              __html: profile?.copyright_text
-            }}
-          >
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-8 text-sm text-text-secondary sm:flex-row">
+          <p>
+            © {new Date().getFullYear()} {profile?.name || 'NAMTech Solutions'}. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">
+              Privacy Policy
+            </Link>
+            <button
+              type="button"
+              className="hover:text-primary transition-colors"
+              onClick={resetCookieConsent}
+            >
+              Cookie preferences
+            </button>
           </div>
-        }
+        </div>
       </div>
     </footer>
   );

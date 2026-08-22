@@ -11,14 +11,14 @@
         "whatsApp_message": "Hi! I'm reaching out from your website.",
         "telephone": null,
         "website_url": "https://namtechsolutions.in",
-        "upwork": "https://www.upwork.com/freelancers/atulp11",
+        "upwork": "",
         "linkedin": "https://www.linkedin.com/in/atul-prajapati-70535b17a/",
         "fiverr": "",
         "twitter": "",
-        "facebook": "",
+        "facebook": "https://www.facebook.com/people/NAMTech-Solutions/61591482003589/",
         "instagram": "",
         "logo": "/images/logo/namTechSolutions.png",
-        "short_title": "Build [[Software That Scales]]",
+        "short_title": "Turn Ideas Into [[Software That Scales]]",
         "vision": "<p>To become a trusted technology partner for businesses worldwide by building software that is useful, reliable, scalable, and designed around real business outcomes.</p>",
         "gst_number": "",
         "google_map_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d276.24202319966207!2d72.95765641652818!3d20.94916549662551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa4c55963fcc05d1d%3A0xa3c2b1b29ba3d9bc!2sNAMTech%20Solutions!5e1!3m2!1sen!2sin!4v1787383045175!5m2!1sen!2sin",
@@ -61,12 +61,12 @@
             {
                 "animationStyle": "absolute -top-8 -right-8 animate-float",
                 "title": "Projects Delivered",
-                "number": 20,
+                "number": 30,
                 "icon": "/images/statistics/Projectschecj_1771568162862_06b2alp.png"
             },
             {
                 "animationStyle": "absolute -top-8 -right-8 animate-float",
-                "title": "Happy Customers",
+                "title": "Happy Repeat Customers",
                 "number": 15,
                 "icon": "/images/statistics/Global_Customers_1771568185172_su3jbm9.png"
             }

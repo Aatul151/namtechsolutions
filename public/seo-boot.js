@@ -32,6 +32,10 @@
     '/contact': {
       title: 'Contact Us | NAMTech Solutions',
       description: 'Contact NAMTech Solutions in Navsari, Gujarat. Email contact@namtechsolutions.in to discuss custom web, mobile, AI, or cloud software.'
+    },
+    '/privacy-policy': {
+      title: 'Privacy Policy | NAMTech Solutions',
+      description: 'Read how NAMTech Solutions collects, uses, and protects personal information and cookies on namtechsolutions.in.'
     }
   };
 
