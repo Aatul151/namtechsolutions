@@ -64,6 +64,12 @@ export const pageSeo = {
       'Read how NAMTech Solutions collects, uses, and protects personal information and cookies on namtechsolutions.in.',
     path: '/privacy-policy',
   },
+  celebration: {
+    title: `Happy Diwali | ${SITE_NAME}`,
+    description:
+      'NAMTech Solutions wishes you a Happy Diwali. A festival greeting from our software team in Gujarat — Dil Se, Tech Tak.',
+    path: '/celebration',
+  },
   notFound: {
     title: `Page Not Found | ${SITE_NAME}`,
     description:
@@ -83,4 +89,5 @@ export const indexablePages: PageSeoConfig[] = [
   pageSeo.team,
   pageSeo.contact,
   pageSeo.privacy,
+  pageSeo.celebration,
 ];

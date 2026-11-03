@@ -36,6 +36,10 @@
     '/privacy-policy': {
       title: 'Privacy Policy | NAMTech Solutions',
       description: 'Read how NAMTech Solutions collects, uses, and protects personal information and cookies on namtechsolutions.in.'
+    },
+    '/celebration': {
+      title: 'Happy Diwali | NAMTech Solutions',
+      description: 'NAMTech Solutions wishes you a Happy Diwali. A festival greeting from our software team in Gujarat — Dil Se, Tech Tak.'
     }
   };
 

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { Loader } from "./components/ui/Loader";
@@ -15,10 +15,14 @@ import { useComponyDetail } from "./context/componyContext";
 import NotFoundPage from "./components/ui/NotFoundPage";
 import TeamPage from "./pages/TeamPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
+import { CelebrationPage } from "./pages/CelebrationPage";
 import { CookieConsent } from "./components/layout/CookieConsent";
+import { DiwaliFloat } from "./components/layout/DiwaliFloat";
 
 function App() {
+  const { pathname } = useLocation();
   const { setComponyProfile } = useComponyDetail();
+  const isCelebration = pathname === "/celebration";
 
   useEffect(() => {
     fetch("/lib/detail.json")
@@ -66,12 +70,13 @@ function App() {
   return (
     <>
       <Loader />
-      <div className="min-h-screen bg-bg-main">
-        <ScrollToTop />
-        <Header navMenu={navMenu} />
+      <div className={`min-h-screen ${isCelebration ? "bg-[#12081f]" : "bg-bg-main"}`}>
+        {!isCelebration && <ScrollToTop />}
+        {!isCelebration && <Header navMenu={navMenu} />}
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
@@ -80,10 +85,12 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/celebration" element={<CelebrationPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
-        <Footer navMenu={navMenu} />
+        {!isCelebration && <Footer navMenu={navMenu} />}
+        <DiwaliFloat />
         <CookieConsent />
       </div>
     </>
