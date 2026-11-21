@@ -15,9 +15,7 @@ import { useComponyDetail } from "./context/componyContext";
 import NotFoundPage from "./components/ui/NotFoundPage";
 import TeamPage from "./pages/TeamPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
-import { CelebrationPage } from "./pages/CelebrationPage";
 import { CookieConsent } from "./components/layout/CookieConsent";
-import { DiwaliFloat } from "./components/layout/DiwaliFloat";
 
 function App() {
   const { pathname } = useLocation();
@@ -85,12 +83,12 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            <Route path="/celebration" element={<CelebrationPage />} />
+            {/* <Route path="/celebration" element={<CelebrationPage />} /> */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         {!isCelebration && <Footer navMenu={navMenu} />}
-        <DiwaliFloat />
+        {/* <DiwaliFloat /> */}
         <CookieConsent />
       </div>
     </>
